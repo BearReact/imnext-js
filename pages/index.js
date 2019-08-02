@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { i18n, Link, withTranslation } from '../i18n'
 
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 
 const Homepage = ({ t }) => (
     <React.Fragment>
@@ -13,7 +12,7 @@ const Homepage = ({ t }) => (
             <div>
                 <button
                     type='button'
-                    onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'de' : 'en')}
+                    onClick={() => i18n.changeLanguage(i18n.language === 'en-US' ? 'zh-CN' : 'en-US')}
                 >
                     {t('change-locale')}
                 </button>
@@ -33,12 +32,11 @@ const Homepage = ({ t }) => (
                 </Link>
             </div>
         </main>
-        <Footer />
     </React.Fragment>
 )
 
 Homepage.getInitialProps = async () => ({
-    namespacesRequired: ['common', 'footer'],
+    namespacesRequired: ['common'],
 })
 
 Homepage.propTypes = {

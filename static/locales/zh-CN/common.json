@@ -1,6 +1,6 @@
 {
+  "change-locale": "語系切換",
   "h1": "Ein einfaches Beispiel",
-  "change-locale": "更改語系 Locale",
   "to-second-page": "Zur zweiten Seite",
   "error-with-status": "Auf dem Server ist ein Fehler ({{statusCode}}) aufgetreten",
   "error-without-status": "Auf dem Server ist ein Fehler aufgetreten",

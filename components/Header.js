@@ -1,5 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Head from 'next/head'
 
@@ -19,9 +20,9 @@ const Header = ({ title }) => (
             next-i18next
             <hr />
         </h2>
-        <h1>
+        <Title>
             {title}
-        </h1>
+        </Title>
         <a
             className="github"
             href="//github.com/isaachinman/next-i18next"
@@ -29,10 +30,16 @@ const Header = ({ title }) => (
             <i className="typcn typcn-social-github-circular" />
         </a>
     </React.Fragment>
-)
+);
 
 Header.propTypes = {
     title: PropTypes.string.isRequired,
-}
+};
 
-export default Header
+export default Header;
+
+
+const Title = styled.h1`
+  font-size: 50px;
+  color: ${({ theme }) => theme.colors.primary};
+`;

@@ -8,12 +8,14 @@
     "start": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
     "express": "4.17.1",
     "i18next": "17.0.8",
     "next": "9.0.3",
     "next-i18next": "^0.52.1",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "cross-env": "^5.2.0"

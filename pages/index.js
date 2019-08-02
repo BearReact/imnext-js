@@ -1,22 +1,48 @@
 import React from 'react'
-import Link from 'next/link'
+import PropTypes from 'prop-types'
 
-export default () => (
-  <ul>
-    <li>
-      <Link href='/b' as='/a'>
-        <a>a</a>
-      </Link>
-    </li>
-    <li>
-      <Link href='/a' as='/b'>
-        <a>b</a>
-      </Link>
-    </li>
-    <li>
-      <Link href={{ pathname: '/posts', query: { id: '2' } }} as='/posts/2'>
-        <a>post #2</a>
-      </Link>
-    </li>
-  </ul>
+import { i18n, Link, withTranslation } from '../i18n'
+
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
+const Homepage = ({ t }) => (
+    <React.Fragment>
+        <main>
+            <Header title={t('h1')} />
+            <div>
+                <button
+                    type='button'
+                    onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'de' : 'en')}
+                >
+                    {t('change-locale')}
+                </button>
+                <br/>
+                <br/>
+                <br/>
+                {t('test')}
+                <br/>
+                <br/>
+                <br/>
+                <Link href='/second-page'>
+                    <button
+                        type='button'
+                    >
+                        {t('to-second-page')}
+                    </button>
+                </Link>
+            </div>
+        </main>
+        <Footer />
+    </React.Fragment>
 )
+
+Homepage.getInitialProps = async () => ({
+    namespacesRequired: ['common', 'footer'],
+})
+
+Homepage.propTypes = {
+    t: PropTypes.func.isRequired,
+}
+
+export default withTranslation('common')(Homepage)

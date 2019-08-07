@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import { Provider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import withReduxSaga from 'next-redux-saga'
-import createStore from '../store'
+import createStore from '../library/redux/store'
 
 
 import { appWithTranslation } from '../i18n';

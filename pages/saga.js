@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { startClock, tickClock } from '../actions'
+import { startClock, tickClock } from '../library/redux/actions'
 import Page from '../components/page'
 
 class Saga extends React.Component {

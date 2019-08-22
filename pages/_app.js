@@ -1,6 +1,7 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import { ThemeProvider } from 'styled-components'
+import {compose} from 'redux';
 import { Provider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import withReduxSaga from 'next-redux-saga'
@@ -42,4 +43,10 @@ class MyApp extends App {
     }
 }
 
-export default withRedux(createStore)(withReduxSaga(appWithTranslation(MyApp)))
+export default compose(
+    withRedux(createStore),
+    withReduxSaga,
+    appWithTranslation
+)(MyApp);
+
+// export default withRedux(createStore)(withReduxSaga(appWithTranslation(MyApp)))

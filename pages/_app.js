@@ -3,6 +3,7 @@ import App, { Container } from 'next/app';
 import { ThemeProvider } from 'styled-components'
 import {compose} from 'redux';
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react';
 import withRedux from 'next-redux-wrapper'
 import withReduxSaga from 'next-redux-saga'
 import createStore from '../library/redux/store'
@@ -20,13 +21,11 @@ const theme = {
 class MyApp extends App {
 
     static async getInitialProps ({ Component, ctx }) {
-        let pageProps = {}
+        const pageProps = Component.getInitialProps
+            ? await Component.getInitialProps(ctx)
+            : {};
 
-        if (Component.getInitialProps) {
-            pageProps = await Component.getInitialProps({ ctx })
-        }
-
-        return { pageProps }
+        return { pageProps };
     }
 
     render() {
@@ -35,9 +34,11 @@ class MyApp extends App {
         return (
             <Container>
                 <Provider store={store}>
-                    <ThemeProvider theme={theme}>
-                        <Component {...pageProps} />
-                    </ThemeProvider>
+                    <PersistGate persistor={store.__PERSISTOR} loading={null}>
+                        <ThemeProvider theme={theme}>
+                            <Component {...pageProps} />
+                        </ThemeProvider>
+                    </PersistGate>
                 </Provider>
             </Container>
         )

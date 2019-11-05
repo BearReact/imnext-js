@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
+    "cookies-js": "^1.2.3",
     "es6-promise": "^4.2.8",
     "express": "4.17.1",
     "i18next": "17.0.12",

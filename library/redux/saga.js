@@ -18,7 +18,7 @@ function * runClockSaga () {
 
 function * loadDataSaga () {
     try {
-        const res = yield fetch('https://jsonplaceholder.typicode.com/users')
+        const res = yield fetch('https://jsonplaceholder.typicode.com/users');
         const data = yield res.json()
         yield put(loadDataSuccess(data))
     } catch (err) {

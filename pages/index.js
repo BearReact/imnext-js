@@ -14,7 +14,7 @@ const Homepage = ({ t }) => (
                     type='button'
                     onClick={() => i18n.changeLanguage(i18n.language === 'en-US' ? 'zh-CN' : 'en-US')}
                 >
-                    {t('change-locale')}
+                    {t('common:change-locale')}
                 </button>
                 <br/>
                 <br/>
@@ -25,11 +25,12 @@ const Homepage = ({ t }) => (
                 <br/>
                 <Link href='/second-page'>
                     <button
-                        type='button'
+                        type="button"
                     >
-                        {t('to-second-page')}
+                        {t('common:to-second-page')}
                     </button>
                 </Link>
+                {t('common:error.msg')}
             </div>
         </main>
     </React.Fragment>
@@ -37,10 +38,12 @@ const Homepage = ({ t }) => (
 
 Homepage.getInitialProps = async () => ({
     namespacesRequired: ['common'],
-})
+});
 
 Homepage.propTypes = {
     t: PropTypes.func.isRequired,
-}
+};
 
-export default withTranslation('common')(Homepage)
+// export default Homepage;
+export default
+    withTranslation('common')(Homepage)

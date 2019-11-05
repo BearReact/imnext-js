@@ -4,5 +4,8 @@
   "to-second-page": "Zur zweiten Seite",
   "error-with-status": "Auf dem Server ist ein Fehler ({{statusCode}}) aufgetreten",
   "error-without-status": "Auf dem Server ist ein Fehler aufgetreten",
-  "test": "test123"
+  "test": "test123",
+  "error": {
+    "msg": "dsasdad"
+  }
 }

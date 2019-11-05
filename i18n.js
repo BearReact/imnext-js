@@ -5,7 +5,7 @@ module.exports = new NextI18Next({
     defaultLanguage: 'en-US',
     otherLanguages: ['zh-CN'],
     cleanCode: true,
-    localePath: 'public/locales'
+    localePath: typeof window === 'undefined' ? 'public/locales' : 'locales',
     // localeSubpaths,
     // localeSubpaths: {
     //     'zh-CN': 'cn',

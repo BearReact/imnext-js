@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {compose} from 'redux';
 
 
-import { withTranslation } from '../i18n'
+import { withTranslation } from '../../i18n'
 
 const Error = ({ statusCode, t }) => (
     <p>

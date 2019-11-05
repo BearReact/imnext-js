@@ -10,7 +10,7 @@ import createStore from '../library/redux/store'
 // import createStore from '../library/redux/configureStore'
 
 
-import { appWithTranslation } from '../i18n';
+import { appWithTranslation } from '../../i18n';
 
 const theme = {
     colors: {

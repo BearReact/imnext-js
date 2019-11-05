@@ -5,5 +5,9 @@ module.exports = new NextI18Next({
     defaultLanguage: 'en-US',
     otherLanguages: ['zh-CN'],
     cleanCode: true,
-    localeSubpaths,
+    // localeSubpaths,
+    // localeSubpaths: {
+    //     'zh-CN': 'cn',
+    //     'en-US': 'en',
+    // }
 });

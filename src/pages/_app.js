@@ -26,7 +26,8 @@ class MyApp extends App {
         };
 
         if (Component.getInitialProps) {
-            pageProps = await Component.getInitialProps({ ctx })
+            const customPageProps = await Component.getInitialProps({ ctx });
+            pageProps = Object.assign(pageProps, customPageProps);
         }
 
         return { pageProps }

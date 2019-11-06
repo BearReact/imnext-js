@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { i18n, Link, withTranslation } from '../../i18n'
 
-import Header from '../../components/Header'
+import Header from '../components/Header'
 
 const Homepage = ({ t }) => (
     <React.Fragment>

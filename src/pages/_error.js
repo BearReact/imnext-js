@@ -21,7 +21,6 @@ Error.getInitialProps = async ({ res, err }) => {
         ({ statusCode } = err)
     }
     return {
-        namespacesRequired: ['common'],
         statusCode,
     }
 }
@@ -36,6 +35,5 @@ Error.propTypes = {
 }
 
 export default compose(
-    withTranslation('common'),
     withTranslation('about')
 )(Error)

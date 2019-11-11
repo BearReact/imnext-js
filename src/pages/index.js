@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { i18n, Link, withTranslation } from '../../i18n'
 
-import Header from '../components/Header'
+import Header from '@components/Header'
 
 const Homepage = ({ t }) => (
     <React.Fragment>
@@ -14,16 +14,18 @@ const Homepage = ({ t }) => (
                     type='button'
                     onClick={() => i18n.changeLanguage(i18n.language === 'en-US' ? 'zh-CN' : 'en-US')}
                 >
-                    {t('common:change-locale')}
+                    {t('common:change-locale')}123
                 </button>
                 <br/>
                 <br/>
                 <br/>
                 {t('test')}
                 <br/>
+
+                {process.env.API_BASE_URL}
                 <br/>
                 <br/>
-                <Link href='/second-page'>
+                <Link href='/saga4'>
                     <button
                         type="button"
                     >

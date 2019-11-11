@@ -1,68 +1,137 @@
-/* eslint-disable no-underscore-dangle */
-/**
- * Create the store with dynamic reducers
- */
+import {applyMiddleware, compose, createStore} from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { persistStore } from 'redux-persist';
 
-import {createStore, applyMiddleware, compose} from 'redux';
-import {routerMiddleware} from 'connected-react-router';
-import createSagaMiddleware from 'redux-saga';
-import StartupActions from '@library/redux/store/Startup/Reducer';
-import {createApiService} from '@config/utils/configureApi';
-import appConfig from '@config/app';
-// import reduxPersist from './config/reduxPersist';
-// import createReducer from './reducers';
-// import Rehydration from './utils/rehydration';
-// import rootSaga from './store/rootSaga';
+import Immutable from 'seamless-immutable';
+// import rootReducer, { exampleInitialState } from './reducer';
+// import rootReducer from './reducer';
+import createReducer from './reducers';
+import rootSaga from './store/rootSaga';
+// import rootSaga from './saga'
+import immutablePersistenceTransform from './utils/immutablePersistenceTransform';
 
-const sagaMiddleware = createSagaMiddleware();
+// issue: https://www.robinwieruch.de/redux-persist-next-js
+// https://www.jianshu.com/p/8a2b9be974a7
 
-export default function configureStore(initialState = {}, history) {
-    // Create the store with two middlewares
-    // 1. sagaMiddleware: Makes redux-sagas work
-    // 2. routerMiddleware: Syncs the location/URL path to the state
-    const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
+// runSaga is middleware.run function
+// rootSaga is a your root saga for static saagas
+function createSagaInjector(runSaga, rootSaga) {
+    // Create a dictionary to keep track of injected sagas
+    const injectedSagas = new Map();
+
+    const isInjected = key => injectedSagas.has(key);
+
+    const injectSaga = (key, saga) => {
+        // We won't run saga if it is already injected
+        if (isInjected(key)) return;
+
+        // Sagas return task when they executed, which can be used
+        // to cancel them
+        const task = runSaga(saga);
+
+        // Save the task if we want to cancel it in the future
+        injectedSagas.set(key, task);
+    };
+
+    // Inject the root saga as it a staticlly loaded file,
+    injectSaga('root', rootSaga);
+
+    return injectSaga;
+}
+
+
+
+export default (initialState) => {
+    let store;
+    const sagaMiddleware = createSagaMiddleware();
+    const isClient = typeof window !== 'undefined';
+
+
+    const middlewares = [sagaMiddleware];
     const enhancers = [applyMiddleware(...middlewares)];
 
     // If Redux DevTools Extension is installed use it, otherwise use Redux compose
     const composeEnhancers =
         process.env.NODE_ENV !== 'production' &&
-        typeof window === 'object' &&
-        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-            ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-            : compose;
+        (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-    const store = createStore(createReducer(), initialState, composeEnhancers(...enhancers));
+    if (isClient) {
+        // redux 持久化設定
+        const { persistReducer } = require('redux-persist');
+        const storage = require('redux-persist/lib/storage').default;
+        const persistConfig = {
+            active: true,
+            key: `ezapp-mobile-v3`,
+            whitelist: ['language', 'auth', 'system', 'pwa'], // 持久化狀態白名單
+            storage,
+            transforms: [immutablePersistenceTransform]
+        };
 
-    const startup = () => store.dispatch(StartupActions.checking());
-    // configure persistStore and check reducer version number
+        store = createStore(
+            persistReducer(persistConfig, createReducer()),
+            Immutable(initialState),
+            composeEnhancers(...enhancers)
+        );
+        store.__PERSISTOR = persistStore(store);
+    } else {
+        store = createStore(
+            createReducer(),
+            Immutable(initialState),
+            composeEnhancers(...enhancers)
+        );
+    }
+
+    // Create an object for any later reducers
+    store.asyncReducers = {};
+    store.asyncSaga = {};
+
+    // Create an inject reducer function
+    // This function adds the async reducer, and creates a new combined reducer
+    store.injectReducer = (key, asyncReducer) => {
+        store.asyncReducers[key] = asyncReducer;
+        store.replaceReducer(createReducer(store.asyncReducers));
+        return store;
+    };
+
+    store.injectSaga = createSagaInjector(sagaMiddleware.run, rootSaga);
+
+    // Creates a convenient method for adding reducers later
+    // See withReducer.js for this in use.
+    // store.injectSaga = (key, saga) => {
+    //
+    //     // Updates the aysncReducers object. This ensures we don't remove any old
+    //     // reducers when adding new ones.
+    //     store.asyncSaga[key] = saga;
+    //     // This is the key part: replaceReducer updates the reducer
+    //     // See rootReducer.createReducer for more details, but it returns a function.
+    //     store.replaceReducer(createReducer(store.asyncReducers));
+    //
+    //     console.log('ooo', store);
+    //
+    //     return store;
+    // };
+
+
+    store.sagaTask = sagaMiddleware.run(rootSaga);
 
     // Extensions
-    store.runSaga = sagaMiddleware.run;
-    store.runSaga(rootSaga);
+    // store.runSaga = sagaMiddleware.run;
+    // store.runSaga(rootSaga);
 
-    /* injected (若需要開啟使用再打開) */
-    store.injectedReducers = {}; // Reducer registry
-    store.injectedSagas = {}; // Saga registry
-
+    /* injected */
+    // store.injectedReducers = {}; // Reducer registry
+    // store.injectedSagas = {}; // Saga registry
 
 
     // Make reducers hot reloadable, see http://mxs.is/googmo
     /* istanbul ignore next */
-    if (module.hot) {
-        module.hot.accept('./reducers', () => {
-            store.replaceReducer(createReducer(store.injectedReducers));
-        });
-    }
-
-    createApiService(store, appConfig.apiOption);
-    if (reduxPersist.active) {
-        Rehydration.updateReducers(store, startup);
-    }else{
-        startup();
-    }
-
+    // if (module.hot) {
+    //     module.hot.accept('./reducers', () => {
+    //         store.replaceReducer(createReducer(store.injectedReducers));
+    //     });
+    // }
 
 
     return store;
-}
+};

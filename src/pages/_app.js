@@ -6,8 +6,7 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react';
 import withRedux from 'next-redux-wrapper'
 import withReduxSaga from 'next-redux-saga'
-import createStore from '../library/redux/store'
-// import createStore from '../library/redux/configureStore'
+import createStore from '../library/redux/configureStore'
 
 
 import { appWithTranslation } from '../../i18n';
@@ -24,6 +23,7 @@ class MyApp extends App {
         let pageProps = {
             namespacesRequired: ['common'] // i18next default NS
         };
+        // let pageProps = {};
 
         if (Component.getInitialProps) {
             const customPageProps = await Component.getInitialProps({ ctx });
@@ -34,8 +34,9 @@ class MyApp extends App {
     }
 
     render() {
-        const { Component, pageProps, store } = this.props
+        const { Component, pageProps, store } = this.props;
 
+        console.log('app store', store);
         return (
             <Provider store={store}>
                 <PersistGate persistor={store.__PERSISTOR} loading={null}>

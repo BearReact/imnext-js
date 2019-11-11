@@ -8,8 +8,8 @@ import {all} from 'redux-saga/effects';
 const rootSaga = function* root() {
     yield all([
         // ...require('@library/intl/store/Saga').default,
-        // ...require('./Startup/Saga').default,
-        // ...require('./Login/Saga').default,
+        ...require('./Startup/Saga').default,
+        ...require('./Login/Saga').default,
         // ...require('./System/Saga').default,
         // ...require('./Notice/Saga').default,
         //

@@ -4,11 +4,11 @@
             Assemble The Reducers
  /** ---------------------------------------*/
 const rootReducers = {
-    // startup: require('./Startup/Reducer').reducer,
-    // auth: require('./Auth/Reducer').reducer,
-    // login: require('./Login/Reducer').reducer,
+    startup: require('./Startup/Reducer').reducer,
+    auth: require('./Auth/Reducer').reducer,
+    login: require('./Login/Reducer').reducer,
     // system: require('./System/Reducer').reducer,
-    // ui: require('./Ui/Reducer').reducer,
+    ui: require('./Ui/Reducer').reducer,
     // pwa: require('./Pwa/Reducer').reducer,
     // notice: require('./Notice/Reducer').reducer,
     //

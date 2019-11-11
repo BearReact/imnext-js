@@ -1,11 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 
-import { startClock, tickClock } from '../library/redux/actions'
-import Page from '../components/page'
 
-class Saga extends React.Component {
+class Saga2 extends React.Component {
     // static async getInitialProps (props) {
     //     const { store, isServer } = props.ctx;
     //     store.dispatch(tickClock(isServer));
@@ -18,11 +15,10 @@ class Saga extends React.Component {
 
     render () {
         return <>
-            <Page title='Other Page' linkTo='/' NavigateTo='Index Page' />
-            22343545
-        </>
+            vvvzzz
+            </>
     }
 }
 
 
-export default connect()(Saga)
+export default Saga2

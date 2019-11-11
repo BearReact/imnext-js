@@ -1,5 +1,3 @@
-// webpack設定至 next.config.js, 這裡設定只是為了輔助 webstorm 識別對應路徑
-
 const path = require('path');
 
 module.exports = {
@@ -7,14 +5,17 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             // CUSTOM PACKAGES:
-            '@components': path.resolve(__dirname, 'src/resources/components'),
+            '@public': path.resolve(__dirname, 'public'),
+            '@lang': path.resolve(__dirname, 'src/resources/lang'),
             '@assets': path.resolve(__dirname, 'src/resources/assets'),
+            '@themes': path.resolve(__dirname, 'src/resources/themes'),
+            '@pages': path.resolve(__dirname, 'src/pages'),
+            '@components': path.resolve(__dirname, 'src/resources/components'),
             '@utils': path.resolve(__dirname, 'src/utils'),
-            '@modules': path.resolve(__dirname, 'src/modules'),
-            '@stores': path.resolve(__dirname, 'src/modules/redux'),
-            '@routes': path.resolve(__dirname, 'src/routes'),
-            '@service': path.resolve(__dirname, 'src/service'),
-            '@config': path.resolve(__dirname, 'src/config')
+            '@library': path.resolve(__dirname, 'src/library'),
+            '@services': path.resolve(__dirname, 'src/services'),
+            '@config': path.resolve(__dirname, 'src/config'),
+            '@middleware': path.resolve(__dirname, 'src/middleware')
         }
     }
 };

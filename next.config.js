@@ -1,10 +1,10 @@
 require('dotenv').config();
 const path = require('path');
 const DotEnv = require('dotenv-webpack');
+const withSass = require('@zeit/next-sass');
 const webpackConfig = require('./webpack.config');
 
-
-module.exports = {
+const nextConfig = {
     publicRuntimeConfig: {
         localeSubpaths: typeof process.env.LOCALE_SUBPATHS === 'string'
             ? process.env.LOCALE_SUBPATHS
@@ -32,3 +32,6 @@ module.exports = {
         return config;
     },
 };
+
+
+module.exports = withSass(nextConfig);

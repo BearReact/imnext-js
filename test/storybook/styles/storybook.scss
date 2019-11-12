@@ -1,0 +1,10 @@
+body {
+    //background-color: #fff;
+    background-color: #1e2024;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 7px, rgba(#515357, 0.2) 1px, transparent 8px), repeating-linear-gradient(90deg, transparent, transparent 7px, rgba(#515357, 0.2) 1px, transparent 8px);
+    background-size: 8px 8px;
+    margin: 0; // 若希望有間距 將此註解(default: 8px)
+    #root{
+        height: inherit;
+    }
+}

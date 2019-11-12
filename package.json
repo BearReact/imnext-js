@@ -6,14 +6,16 @@
     "dev": "node index.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "NODE_ENV=storybook start-storybook -p 6006 -c ./test/storybook",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
     "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-macros": "^2.6.1",
     "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
     "dayjs": "^1.8.17",
     "dotenv-webpack": "^1.7.0",
     "es6-promise": "^4.2.8",

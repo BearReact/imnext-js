@@ -1,6 +1,5 @@
 import React from "react";
 import { object } from "prop-types";
-import get from "lodash/get";
 import { useStore } from 'react-redux'
 
 /**
@@ -22,8 +21,6 @@ const injectReducerSaga = (key, injectStore) => WrappedComponent => {
     const Extended = (props, context) => {
         // Here's where we add the new reducer.
         // See initilizeStore for details on how this works.
-        console.log('useStore');
-
         const store = useStore();
         if(injectStore.reducer){
             store.injectReducer(key, injectStore.reducer);

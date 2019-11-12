@@ -1,44 +1,13 @@
 import {applyMiddleware, compose, createStore} from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { persistStore } from 'redux-persist';
-
 import Immutable from 'seamless-immutable';
-// import rootReducer, { exampleInitialState } from './reducer';
-// import rootReducer from './reducer';
+
+import immutablePersistenceTransform from './utils/immutablePersistenceTransform';
 import createReducer from './reducers';
 import rootSaga from './store/rootSaga';
-// import rootSaga from './saga'
-import immutablePersistenceTransform from './utils/immutablePersistenceTransform';
-
-// issue: https://www.robinwieruch.de/redux-persist-next-js
-// https://www.jianshu.com/p/8a2b9be974a7
 
 
-// runSaga is middleware.run function
-// rootSaga is a your root saga for static saagas
-function createSagaInjector(runSaga, rootSaga) {
-    // Create a dictionary to keep track of injected sagas
-    const injectedSagas = new Map();
-
-    const isInjected = key => injectedSagas.has(key);
-
-    const injectSaga = (key, saga) => {
-        // We won't run saga if it is already injected
-        if (isInjected(key)) return;
-
-        // Sagas return task when they executed, which can be used
-        // to cancel them
-        const task = runSaga(saga);
-
-        // Save the task if we want to cancel it in the future
-        injectedSagas.set(key, task);
-    };
-
-    // Inject the root saga as it a staticlly loaded file,
-    injectSaga('root', rootSaga);
-
-    return injectSaga;
-}
 
 
 
@@ -84,7 +53,7 @@ export default (initialState) => {
 
     // Create an object for any later reducers
     store.asyncReducers = {};
-    store.asyncSaga = {};
+    store.asyncSagas = {};
 
     // Create an inject reducer function
     // This function adds the async reducer, and creates a new combined reducer
@@ -94,44 +63,29 @@ export default (initialState) => {
         return store;
     };
 
-    store.injectSaga = createSagaInjector(sagaMiddleware.run, rootSaga);
-
-    // Creates a convenient method for adding reducers later
-    // See withReducer.js for this in use.
-    // store.injectSaga = (key, saga) => {
-    //
-    //     // Updates the aysncReducers object. This ensures we don't remove any old
-    //     // reducers when adding new ones.
-    //     store.asyncSaga[key] = saga;
-    //     // This is the key part: replaceReducer updates the reducer
-    //     // See rootReducer.createReducer for more details, but it returns a function.
-    //     store.replaceReducer(createReducer(store.asyncReducers));
-    //
-    //     console.log('ooo', store);
-    //
-    //     return store;
-    // };
 
 
+
+    // install Saga
     store.sagaTask = sagaMiddleware.run(rootSaga);
 
-    // Extensions
-    // store.runSaga = sagaMiddleware.run;
-    // store.runSaga(rootSaga);
 
-    /* injected */
-    // store.injectedReducers = {}; // Reducer registry
-    // store.injectedSagas = {}; // Saga registry
+    // runSaga is middleware.run function
+    // rootSaga is a your root saga for static saagas
+    store.injectSaga = (key, saga) => {
+        // Create a dictionary to keep track of injected sagas
+        const isInjected = key => typeof store.asyncSagas[key] !== 'undefined';
 
+        // We won't run saga if it is already injected
+        if (isInjected(key)) return;
 
-    // Make reducers hot reloadable, see http://mxs.is/googmo
-    /* istanbul ignore next */
-    // if (module.hot) {
-    //     module.hot.accept('./reducers', () => {
-    //         store.replaceReducer(createReducer(store.injectedReducers));
-    //     });
-    // }
+        // Sagas return task when they executed, which can be used
+        // to cancel them
+        sagaMiddleware.run(saga);
 
+        // Save the task if we want to cancel it in the future
+        store.asyncSagas[key] = key;
+    };
 
     return store;
 };

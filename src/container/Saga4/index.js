@@ -3,15 +3,12 @@ import React from 'react'
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 
-import inject from '@library/redux/utils/inject';
 import action from '@library/redux/store/Ui/Reducer';
 import LoginAction from '@library/redux/store/Login/Reducer';
-import PageAction from './store/Reducer';
-import promotionDetailStore from './store';
-// import {action as PageAction, reducer} from './store';
-// import {withReducer, injectSaga} from "@library/redux/utils/inject/withReducer";
 import injectReducerSaga from "@library/redux/utils/injectReducerSaga";
 import Link from "next/link";
+import PageAction from './store/Reducer';
+import promotionDetailStore from './store';
 
 
 class Saga4 extends React.Component {
@@ -33,6 +30,9 @@ class Saga4 extends React.Component {
             <button onClick={()=>this.props.fetchCurrent(1)}>
                 XXXaa
             </button>
+            <button onClick={this.props.submitLogin}>
+                submitLogindds
+            </button>
 
             <Link href="/">回到首頁</Link>
             {String(this.props.isFetching)}
@@ -47,8 +47,8 @@ const mapDispatchToProps = {
     submitLogin: LoginAction.submitLogin,
     // onSubmit: PageAction.submitForm,
     fetchCurrent: PageAction.fetchCurrent
-
 };
+
 const mapStateToProps = state => ({
     isOpenPanel: state.ui.isOpenPanel,
     isFetching: state.promotionDetail.isFetching,

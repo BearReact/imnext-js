@@ -36,7 +36,6 @@ class MyApp extends App {
     render() {
         const { Component, pageProps, store } = this.props;
 
-        console.log('app store', store);
         return (
             <Provider store={store}>
                 <PersistGate persistor={store.__PERSISTOR} loading={null}>
@@ -54,5 +53,3 @@ export default compose(
     withReduxSaga,
     appWithTranslation
 )(MyApp);
-
-// export default withRedux(createStore)(withReduxSaga(appWithTranslation(MyApp)))

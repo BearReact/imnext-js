@@ -13,7 +13,7 @@ export function* fetchCurrent(payload) {
 
         yield delay(3000);
 
-        yield put(Actions.fetchCurrentSuccess());
+        // yield put(Actions.fetchCurrentSuccess());
 
     } catch (e) {
         yield put(Actions.fetchCurrentFail(e.message));

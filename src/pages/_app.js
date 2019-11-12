@@ -7,7 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import withRedux from 'next-redux-wrapper'
 import withReduxSaga from 'next-redux-saga'
 import createStore from '../library/redux/configureStore'
-
+import '@assets/scss/dist/app.scss';
 
 import { appWithTranslation } from '../../i18n';
 

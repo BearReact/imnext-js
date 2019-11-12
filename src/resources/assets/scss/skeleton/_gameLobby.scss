@@ -1,0 +1,189 @@
+//index.html 骨頭屏
+.skeleton__header-faker{
+    position: relative;
+    margin-bottom: 5px;
+    height: px2vw(90);
+
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')){
+        height: 90px;
+    }
+}
+
+.skeleton__panel{
+    position: fixed;
+    width: 270px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #2e373a;
+    z-index: 20;
+}
+
+.skeleton__content{
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')){
+        margin-left: 270px;
+        max-width: 1650px;
+    }
+}
+
+
+.skeleton__header{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 5;
+    background-color: #3c4447;
+}
+.skeleton__footer{
+    width: 100%;
+    height: px2vw(44);
+    background-color: #2d2e2f;
+    position: fixed;
+    bottom: 0;
+    box-shadow: -3px -2px 4px 0 rgba(0, 0, 0, 0.5);
+
+    .main-menu-item{
+        width: px2vw(60);
+        height: px2vw(60);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        display: flex;
+        border-radius: 999px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #8d8d8d;
+        position: absolute;
+        bottom: px2vw(-13);
+        > div{
+            background-image: linear-gradient(to right, #d0d0d0 8%, #c6c6c6 18%, #d1d1d1 33%);
+            background-color: #d0d0d0;
+        }
+    }
+
+    .menu-item-avatar{
+        width: px2vw(24);
+        height: px2vw(24);
+        border-radius: 2px;
+        background-color: #6c6d6d;
+        @extend %c-skeleton__animation;
+    }
+
+    .menu-item-text{
+        overflow: hidden;
+        border-radius: 7px;
+        background-color: #6c6d6d;
+        width: px2vw(32);
+        height: px2vw(7);
+        margin-top: 4px;
+        @extend %c-skeleton__animation;
+    }
+
+
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')){
+        height: 44px;
+
+        .main-menu-item{
+            width: 60px;
+            height: 60px;
+            bottom: -13px;
+        }
+
+        .menu-item-avatar{
+            width: 24px;
+            height: 24px;
+        }
+
+        .menu-item-text{
+            width: 32px;
+            height: 7px;
+        }
+    }
+
+
+}
+
+.absolute__broadcast{
+    height: px2vw(42);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')){
+        height: 42px;
+    }
+
+}
+
+.absolute__marquee{
+    //position: fixed;
+    //top: px2vw(40);
+    //left: 0;
+    //right: 0;
+}
+
+.skeleton__marquee{
+    height: px2vw(42);
+    border-bottom: 1px rgba(255, 255, 255, 0.08) solid;
+
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')){
+        height: 42px;
+    }
+}
+
+.absolute__lobby-category{
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+.skeleton__lobby-category{
+    height: px2vw(40);
+    border-top: 1px rgba(255, 255, 255, 0.08) solid;
+
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')){
+        height: 40px;
+    }
+}
+.skeleton__game-lobby{
+    > .row{
+        margin: 0 -4px;
+        > .col-12{
+            padding: 2px;
+        }
+    }
+
+    .lobby-item{
+        height: px2vw(130);
+        width: 100%;
+        border-radius: 4px;
+        overflow: hidden;
+        display: inline-flex;
+        background-color: var(--skeleton-primary-color, #50575a);
+        padding: 6px;
+
+        > div{
+            background-image: linear-gradient(to right, var(--skeleton-linear1-color) 8%, var(--skeleton-linear2-color) 18%, var(--skeleton-linear3-color) 33%);
+            background-color: var(--skeleton-linear1-color, #767c7e);
+        }
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')){
+
+        padding: 10px 20px 20px 20px;
+
+        > .row{
+            margin-left: -10px;
+            margin-right: -10px;
+
+            > .col-12{
+                padding: 5px;
+            }
+        }
+
+        .lobby-item {
+            height: 200px;
+        }
+    }
+}

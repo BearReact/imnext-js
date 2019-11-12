@@ -1,0 +1,39 @@
+/* ==========================================
+                 Require Setting
+   ========================================== */
+
+// Custom
+@import "../common/variable";
+@import "../common/function";
+
+// Bootstrap4
+@import "../plugins/bootstrap/require";
+@import "../common/reboot";
+
+
+/* ==========================================
+                 Option Setting
+   ========================================== */
+//
+// Bootstrap4
+@import "../plugins/bootstrap/option";
+
+// Slide Panel (react-sliding-pane)
+@import "../plugins/slide-panel/slide-panel";
+
+// Swiper ID
+@import "../plugins/swiper-id/swiper-id";
+
+// Rodal
+@import "../plugins/rodal/rodal";
+
+//// NProgress
+//@import "../plugins/nprogress/nprogress";
+//
+//// Loading
+@import "../plugins/loading/loading";
+
+
+// 客製 style
+@import "../common/utilities";
+@import "../skeleton/gameLobby";

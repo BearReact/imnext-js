@@ -1,0 +1,28 @@
+@charset "utf-8";
+//============ custom variable ===========
+$font-family-default: 'Roboto', 'Microsoft YaHei', 'Microsoft JhengHei';
+
+$color-skeleton-background: #767c7e !default;
+$color-skeleton-spinner: #94999c !default;
+
+//grid 螢幕偵測間距 (請與 src/resources/components/themes/screen.js 設定保持一致)
+$grid-breakpoints: (
+        xs: 0,     // (0~575)    map bs3 size: 320,480
+        sm: 576px, // (576~767)  map bs3 size: 無
+        md: 768px, // (768~991)  map bs3 size: 750
+        lg: 992px, // (992~1200) map bs3 size: 970
+        xl: 1200px, // (1200以上)  map bs3 size: 1170
+        xxl: 1540px // (1200以上)  map bs3 size: 1170
+);
+
+//container 容器最大寬度 (注意每個容器都有15px的間距, 左右共30px)
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1141px
+);
+
+$grid-columns: 24;
+$grid-gutter-width: 20px;

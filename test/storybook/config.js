@@ -1,6 +1,13 @@
 /* eslint-disable */
 import React from 'react';
-import {configure} from '@storybook/react';
+import {configure, addParameters} from '@storybook/react';
+import { base, viewports } from './addonConfig';
+
+// Option defaults.
+addParameters({
+    options: base,
+    viewport: viewports,
+});
 
 configure([
     require.context('../../src/resources/components/atoms', true, /\.stories\.(js|tsx?|mdx)$/),

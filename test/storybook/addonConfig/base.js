@@ -1,4 +1,4 @@
-import {themes} from '@storybook/components';
+import { themes } from '@storybook/theming';
 
 export default {
     /**

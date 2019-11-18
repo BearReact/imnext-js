@@ -5,7 +5,7 @@ import {linkTo} from "@storybook/addon-links";
 
 
 export default {
-    title: 'Atoms',
+    title: 'Atoms|BlockTitle',
 };
 
 export const default1 = () => <BlockTitle>Title</BlockTitle>;

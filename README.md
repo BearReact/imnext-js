@@ -2,6 +2,8 @@
 
 ## How to use
 
+https://nextjs.org/docs
+
 ### Using `create-next-app`
 
 Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:

@@ -1,14 +1,24 @@
 /* eslint-disable */
-import React from 'react';
-import {configure, addParameters} from '@storybook/react';
-import { base, viewports } from './addonConfig';
+import {configure, addParameters, addDecorator} from '@storybook/react';
+import {withI18n} from "storybook-addon-i18n";
+import {themes} from '@storybook/theming';
+import {viewports, i18next} from './addonConfig';
 
 // Option defaults.
 addParameters({
-    options: base,
+    options: {
+        theme: themes.dark
+    },
     viewport: viewports,
+    i18n: i18next
 });
 
+
+// Option Decorator.
+addDecorator(withI18n);
+
+
+// Load stories file
 configure([
     require.context('../../src/resources/components/atoms', true, /\.stories\.(js|tsx?|mdx)$/),
     require.context('../../src/resources/components/molecules', true, /\.stories\.(js|tsx?|mdx)$/),

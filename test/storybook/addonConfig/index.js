@@ -1,5 +1,5 @@
-import base from './base';
 import viewports from './viewports';
+import i18next from './i18next';
 
-export {base, viewports};
+export {viewports, i18next};
 

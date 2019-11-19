@@ -3,6 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import {px2vw} from '@utils/format';
 import screen from '@themes/Screen';
+import { useTranslation, withTranslation, Trans } from 'react-i18next';
 
 type Props = {
     style?: React.CSSProperties,
@@ -20,12 +21,19 @@ class BlockTitle extends React.PureComponent<Props, State> {
 
     render() {
         const {children, style, className} = this.props;
+        const { t } = this.props;
 
-        return <BlockTitleRoot style={style} className={className}>{children}</BlockTitleRoot>;
+        console.log('this.props', this.props);
+
+        return <BlockTitleRoot style={style} className={className}>
+            {children}
+            {t('common:change-locale')}
+        </BlockTitleRoot>;
     }
 }
 
-export default BlockTitle;
+export default withTranslation()(BlockTitle);
+// export default BlockTitle;
 
 const BlockTitleRoot = styled.div`
     color: ${props => props.theme.listTitleColor};

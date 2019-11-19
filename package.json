@@ -5,13 +5,17 @@
   "scripts": {
     "dev": "node index.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "storybook": "NODE_ENV=storybook start-storybook -p 6006 -c ./test/storybook",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
     "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-macros": "^2.6.1",
     "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
     "dayjs": "^1.8.17",
     "dotenv-webpack": "^1.7.0",
     "es6-promise": "^4.2.8",
@@ -39,6 +43,17 @@
     "styled-components": "4.4.1"
   },
   "devDependencies": {
-    "cross-env": "5.2.1"
+    "@babel/core": "^7.7.2",
+    "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-links": "^5.2.6",
+    "@storybook/addon-viewport": "^5.2.6",
+    "@storybook/addons": "^5.2.6",
+    "@storybook/react": "^5.2.6",
+    "babel-loader": "^8.0.6",
+    "cross-env": "5.2.1",
+    "i18next-browser-languagedetector": "^4.0.1",
+    "i18next-xhr-backend": "^3.2.2",
+    "react-i18next": "^11.2.1",
+    "storybook-addon-i18n": "^5.1.11"
   }
 }

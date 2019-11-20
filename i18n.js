@@ -1,4 +1,5 @@
-const { localeSubpaths } = require('next/config').default().publicRuntimeConfig;
+// const { localeSubpaths } = require('next/config').default().publicRuntimeConfig;
+const {initReactI18next } = require('react-i18next');
 const NextI18Next = require('next-i18next').default;
 
 module.exports = new NextI18Next({
@@ -11,4 +12,5 @@ module.exports = new NextI18Next({
     //     'zh-CN': 'cn',
     //     'en-US': 'en',
     // }
+    use: [initReactI18next],
 });

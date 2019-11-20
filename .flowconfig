@@ -33,4 +33,4 @@ module.name_mapper='^@config' ->'<PROJECT_ROOT>/src/config'
 module.name_mapper='^@middleware' ->'<PROJECT_ROOT>/src/middleware'
 
 [version]
-^0.86.0
+^0.112.0

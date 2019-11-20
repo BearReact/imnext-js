@@ -1,4 +1,3 @@
-// @flow
 import appConfig from '@config/app';
 import get from 'lodash/get';
 

@@ -1,5 +1,7 @@
-// @flow
-
+/**
+ * 判斷是否為手機裝置
+ * @returns {boolean}
+ */
 export function isMobile() {
     try{ document.createEvent('TouchEvent'); return true; }
     catch(e){ return false;}

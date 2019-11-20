@@ -3,12 +3,15 @@ import * as React from 'react';
 import styled from 'styled-components';
 import {px2vw} from '@utils/format';
 import screen from '@themes/Screen';
-import { useTranslation, withTranslation, Trans } from 'react-i18next';
+
+import { withTranslation } from 'react-i18next';
 
 type Props = {
-    style?: React.CSSProperties,
+    style?: $Shape<CSSStyleDeclaration>,
     className?: string,
-    children?: React.Node
+    children?: React.Node,
+    t: Function,
+    isCheck: boolean
 };
 type State = {};
 
@@ -23,7 +26,7 @@ class BlockTitle extends React.PureComponent<Props, State> {
         const {children, style, className} = this.props;
         const { t } = this.props;
 
-        console.log('this.props', this.props);
+        // console.log('this.props', this.props);
 
         return <BlockTitleRoot style={style} className={className}>
             {children}
@@ -32,8 +35,14 @@ class BlockTitle extends React.PureComponent<Props, State> {
     }
 }
 
+
+// export default compose(
+//     withTranslation)
+// )(BlockTitle);
+
+
 export default withTranslation()(BlockTitle);
-// export default BlockTitle;
+// export default BlockTitle;s
 
 const BlockTitleRoot = styled.div`
     color: ${props => props.theme.listTitleColor};

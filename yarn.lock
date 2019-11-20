@@ -5205,6 +5205,11 @@ flatten@^1.0.2:
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
   integrity sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==
 
+flow-bin@^0.112.0:
+  version "0.112.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.112.0.tgz#6a21c31937c4a2f23a750056a364c598a95ea216"
+  integrity sha512-vdcuKv0UU55vjv0e2EVh1ZxlU+TSNT19SkE+6gT1vYzTKtzYE6dLuAmBIiS3Rg2N9D9HOI6TKSyl53zPtqZLrA==
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -5869,10 +5874,10 @@ i18next-xhr-backend@^3.2.2:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
-i18next@19.0.0:
-  version "19.0.0"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.0.0.tgz#5418207d7286128e6cfe558e659fa8c60d89794b"
-  integrity sha512-xxNKNOqLdGP/M+/fzzBOhcc9hCAqv6gDhHq0xbYz/Vlz5PlMfr9P1LbBvmk7RkZjYoh/kyM1tnfSl+sJ2VaD0Q==
+i18next@19.0.1:
+  version "19.0.1"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.0.1.tgz#11347b9d5f2ceb4a03750a06010cc249fe065d31"
+  integrity sha512-xZjzCcInvkgx3ZzymkySZ/ULOZyAMXTmQP22Hvnf5CMRqrxe3BXhg6CBtpGSVPMiANnHOmPiNVWHLSncnffnxw==
   dependencies:
     "@babel/runtime" "^7.3.1"
 

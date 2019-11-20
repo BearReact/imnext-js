@@ -1,5 +1,3 @@
-// @flow
-
 import uniqueId from 'lodash/uniqueId';
 import {routePath} from '@utils/uri';
 

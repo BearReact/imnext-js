@@ -1,5 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
+import BlockTitle from '@components/atoms/BlockTitle';
 
 import { i18n, Link, withTranslation } from '../../i18n'
 
@@ -18,6 +19,7 @@ const Homepage = ({ t }) => (
                 <br/>
                 <br/>
                 {t('test')}
+                <BlockTitle>---</BlockTitle>
                 <br/>
 
                 {process.env.API_BASE_URL}

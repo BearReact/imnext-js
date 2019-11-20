@@ -1,4 +1,8 @@
 {
   "presets": ["next/babel"],
-  "plugins": [["styled-components", { "ssr": true }], "lodash"]
+  "plugins": [
+    "transform-flow-strip-types",
+    "lodash",
+    ["styled-components", { "ssr": true }]
+  ]
 }

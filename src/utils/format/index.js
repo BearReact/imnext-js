@@ -4,7 +4,6 @@
  * @returns {string}
  */
 export function toCapitalize(str){
-    // return str.charAt(0).toUpperCase() + str.slice(1);
     return str.replace(/\b(\w)/g, function($1){
         return $1.toUpperCase();
     });

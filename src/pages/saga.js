@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 
-import { startClock, tickClock } from '../library/redux/actions'
-import Page from '../components/page'
+// import { startClock, tickClock } from '../library/redux/actions'
+// import Page from '../components/page'
 
 class Saga extends React.Component {
     // static async getInitialProps (props) {
@@ -18,7 +18,7 @@ class Saga extends React.Component {
 
     render () {
         return <>
-            <Page title='Other Page' linkTo='/' NavigateTo='Index Page' />
+            {/*<Page title='Other Page' linkTo='/' NavigateTo='Index Page' />*/}
             22343545
         </>
     }

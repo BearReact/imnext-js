@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { i18n, Link, withTranslation } from '../../i18n'
+// import { withTranslation } from 'react-i18next';
+
+import { i18n, Link, withTranslation } from '@library/i18next/configureI18Next'
 
 
 const Homepage = ({ t }) => (

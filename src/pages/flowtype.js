@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BlockTitle from '@components/atoms/BlockTitle';
 
-import { i18n, Link, withTranslation } from '../../i18n'
+import { i18n, Link, withTranslation } from '@library/i18next/configureI18Next'
 
 
 const Homepage = ({ t }) => (

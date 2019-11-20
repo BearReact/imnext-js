@@ -6,10 +6,12 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react';
 import withRedux from 'next-redux-wrapper'
 import withReduxSaga from 'next-redux-saga'
-import createStore from '../library/redux/configureStore'
+
+import { appWithTranslation } from '@library/i18next/configureI18Next';
+import createStore from '@library/redux/configureStore'
+
 import '@assets/scss/dist/app.scss';
 
-import { appWithTranslation } from '../../i18n';
 
 const theme = {
     colors: {

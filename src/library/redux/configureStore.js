@@ -2,6 +2,8 @@ import {applyMiddleware, compose, createStore} from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { persistStore } from 'redux-persist';
 import Immutable from 'seamless-immutable';
+import { CookieStorage } from 'redux-persist-cookie-storage';
+import Cookies from 'js-cookie';
 
 import immutablePersistenceTransform from './utils/immutablePersistenceTransform';
 import createReducer from './reducers';
@@ -25,14 +27,15 @@ export default (initialState) => {
         process.env.NODE_ENV !== 'production' &&
         (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-    if (isClient) {
+    // if (isClient) {
         // redux 持久化設定
         const { persistReducer } = require('redux-persist');
-        const storage = require('redux-persist/lib/storage').default;
+        // const storage = require('redux-persist/lib/storage').default;
+        const storage = new CookieStorage(Cookies, {});
         const persistConfig = {
             active: true,
-            key: `ezapp-mobile-v3`,
-            whitelist: ['language', 'auth', 'system', 'pwa'], // 持久化狀態白名單
+            key: `ezapp-mobile-v4`,
+            // whitelist: ['language', 'auth', 'system', 'pwa', 'ui'], // 持久化狀態白名單
             storage,
             transforms: [immutablePersistenceTransform]
         };
@@ -43,13 +46,13 @@ export default (initialState) => {
             composeEnhancers(...enhancers)
         );
         store.__PERSISTOR = persistStore(store);
-    } else {
-        store = createStore(
-            createReducer(),
-            Immutable(initialState),
-            composeEnhancers(...enhancers)
-        );
-    }
+    // } else {
+    //     store = createStore(
+    //         createReducer(),
+    //         Immutable(initialState),
+    //         composeEnhancers(...enhancers)
+    //     );
+    // }
 
     // Create an object for any later reducers
     store.asyncReducers = {};

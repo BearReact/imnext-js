@@ -7,15 +7,31 @@ import { i18n, Link, withTranslation } from '@library/i18next/configureI18Next'
 
 
 const Homepage = ({ t }) => (
-    <React.Fragment>
         <main>
+            <button
+                type='button'
+                onClick={() => i18n.changeLanguage(i18n.language === 'en-US' ? 'zh-CN' : 'en-US')}
+            >
+                {t('common:change-locale')}123
+            </button>
+
             <div>
-                <button
-                    type='button'
-                    onClick={() => i18n.changeLanguage(i18n.language === 'en-US' ? 'zh-CN' : 'en-US')}
-                >
-                    {t('common:change-locale')}123
-                </button>
+                <h1>索引頁面</h1>
+                <ul>
+                    <li>
+                        <Link href='/withFlowType'>with FlowType</Link>
+                    </li>
+                    <li>
+                        <Link href='/withReactI18Next'>with React I18Next</Link>
+                    </li>
+                    <li>
+                        <Link href='/withNextI18Next'>with Nextjs I18Next</Link>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+
                 <br/>
                 <br/>
                 <br/>
@@ -35,7 +51,6 @@ const Homepage = ({ t }) => (
                 {t('common:error.msg')}
             </div>
         </main>
-    </React.Fragment>
 )
 
 Homepage.getInitialProps = async () => ({

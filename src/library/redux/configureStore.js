@@ -1,9 +1,7 @@
 import {applyMiddleware, compose, createStore} from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import { persistStore } from 'redux-persist';
 import Immutable from 'seamless-immutable';
 
-import immutablePersistenceTransform from './utils/immutablePersistenceTransform';
 import createReducer from './reducers';
 import rootSaga from './store/rootSaga';
 
@@ -14,7 +12,6 @@ import rootSaga from './store/rootSaga';
 export default (initialState) => {
     let store;
     const sagaMiddleware = createSagaMiddleware();
-    const isClient = typeof window !== 'undefined';
 
 
     const middlewares = [sagaMiddleware];
@@ -25,31 +22,14 @@ export default (initialState) => {
         process.env.NODE_ENV !== 'production' &&
         (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-    if (isClient) {
-        // redux 持久化設定
-        const { persistReducer } = require('redux-persist');
-        const storage = require('redux-persist/lib/storage').default;
-        const persistConfig = {
-            active: true,
-            key: `ezapp-mobile-v3`,
-            whitelist: ['language', 'auth', 'system', 'pwa'], // 持久化狀態白名單
-            storage,
-            transforms: [immutablePersistenceTransform]
-        };
 
-        store = createStore(
-            persistReducer(persistConfig, createReducer()),
-            Immutable(initialState),
-            composeEnhancers(...enhancers)
-        );
-        store.__PERSISTOR = persistStore(store);
-    } else {
-        store = createStore(
-            createReducer(),
-            Immutable(initialState),
-            composeEnhancers(...enhancers)
-        );
-    }
+    // Create Store
+    store = createStore(
+        createReducer(),
+        Immutable(initialState),
+        composeEnhancers(...enhancers)
+    );
+
 
     // Create an object for any later reducers
     store.asyncReducers = {};

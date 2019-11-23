@@ -28,7 +28,10 @@ class Saga4 extends React.Component {
             isOpenPanel: {this.props.isOpenPanel}
 
             <button onClick={()=>this.props.fetchCurrent(1)}>
-                XXXaa
+                fetchCurrent
+            </button>
+            <button onClick={()=>this.props.handleTogglePanel()}>
+                handleTogglePanel
             </button>
             <button onClick={this.props.submitLogin}>
                 submitLogindds
@@ -36,7 +39,7 @@ class Saga4 extends React.Component {
 
             <Link href="/">回到首頁</Link>
             {String(this.props.isFetching)}
-            </>
+        </>
     }
 }
 
@@ -62,5 +65,4 @@ export default compose(
         mapDispatchToProps
     )
 )(Saga4);
-
 

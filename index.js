@@ -2,8 +2,10 @@
 require("@babel/register")({
     presets: ["@babel/preset-env"],
     only: [
-        // File paths that **don't** match this regex are not compiled
+        // File paths that **don't** match this regex(https://www.regextester.com/88429) are not compiled
         /server.js/,
+        /configureI18Next.js/
+        // /^.+\.([j][s])$/
     ],
 });
 

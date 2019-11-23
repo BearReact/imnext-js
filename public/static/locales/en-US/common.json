@@ -1,11 +1,12 @@
 {
-  "change-locale": "語系切換-中文",
+  "title": "Nextjs I18Next",
+  "change-locale": "Change Language 英文",
   "h1": "Ein einfaches Beispiel",
   "to-second-page": "Zur zweiten Seite",
   "error-with-status": "Auf dem Server ist ein Fehler ({{statusCode}}) aufgetreten",
   "error-without-status": "Auf dem Server ist ein Fehler aufgetreten",
-  "test": "測試aaaa",
+  "test": "test123",
   "error": {
-    "msg": "aasdsd"
+    "msg": "dsasdad"
   }
 }

@@ -5,10 +5,12 @@ import {compose} from 'redux';
 import { Provider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import withReduxSaga from 'next-redux-saga'
-import createStore from '../library/redux/configureStore'
+
+import createStore from '@library/redux/configureStore'
+import { appWithTranslation } from '@library/i18next/configureI18Next';
+
 import '@assets/scss/dist/app.scss';
 
-import { appWithTranslation } from '../../i18n';
 
 const theme = {
     colors: {

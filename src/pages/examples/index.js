@@ -17,6 +17,9 @@ const Examples = () => (
             <li>
                 <Link href='/examples/withBootstrap'><a>with Bootstrap</a></Link>
             </li>
+            <li>
+                <Link href={{ pathname: '/examples/withServerHandle', query: { id: 'Zeit' } }}><a>With Server Handle</a></Link>
+            </li>
         </ul>
     </div>
 );

@@ -1,7 +1,7 @@
 import React from 'react'
+import Link from 'next/link'
 
-export default function Bootstrap(props){
-
+const WithBootstrap = () => {
     return <div className="container">
         <div className="row">
             <div className="col">
@@ -14,6 +14,10 @@ export default function Bootstrap(props){
                 test3
             </div>
         </div>
+        <div>
+            <Link href="/examples"><a>Go Back</a></Link>
+        </div>
     </div>
-}
+};
 
+export default WithBootstrap

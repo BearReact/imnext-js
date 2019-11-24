@@ -1,11 +1,12 @@
 {
-  "change-locale": "Change Language 英文",
+  "title": "下一個JS 多語系",
+  "change-locale": "語系切換-中文",
   "h1": "Ein einfaches Beispiel",
   "to-second-page": "Zur zweiten Seite",
   "error-with-status": "Auf dem Server ist ein Fehler ({{statusCode}}) aufgetreten",
   "error-without-status": "Auf dem Server ist ein Fehler aufgetreten",
-  "test": "test123",
+  "test": "測試aaaa",
   "error": {
-    "msg": "dsasdad"
+    "msg": "aasdsd"
   }
 }

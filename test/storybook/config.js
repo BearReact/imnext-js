@@ -3,7 +3,6 @@ import {configure, addParameters, addDecorator} from '@storybook/react';
 import {withI18n} from "storybook-addon-i18n";
 import {themes} from '@storybook/theming';
 import {viewports, i18next} from './addonConfig';
-import { withTranslation } from 'react-i18next';
 
 // Option defaults.
 addParameters({
@@ -17,7 +16,6 @@ addParameters({
 
 // Option Decorator.
 addDecorator(withI18n);
-addDecorator(withTranslation);
 
 
 // Load stories file

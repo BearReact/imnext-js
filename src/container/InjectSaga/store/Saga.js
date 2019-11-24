@@ -1,4 +1,5 @@
 import {call, put, takeLatest, delay} from 'redux-saga/effects';
+import dayjs from "dayjs";
 import Actions, {Types} from './Reducer';
 
 
@@ -9,11 +10,13 @@ import Actions, {Types} from './Reducer';
 export function* fetchCurrent(payload) {
     try {
         yield put(Actions.fetchCurrentBegin());
-        // const {id} = payload;
 
-        yield delay(3000);
+        // 模擬呼叫API的等待時間
+        yield delay(500);
 
-        // yield put(Actions.fetchCurrentSuccess());
+        const currentData = dayjs().toString();
+
+        yield put(Actions.fetchCurrentSuccess(currentData));
 
     } catch (e) {
         yield put(Actions.fetchCurrentFail(e.message));

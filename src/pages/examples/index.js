@@ -20,6 +20,9 @@ const Examples = () => (
             <li>
                 <Link href={{ pathname: '/examples/withServerHandle', query: { id: 'Zeit' } }}><a>With Server Handle</a></Link>
             </li>
+            <li>
+                <Link href='/examples/withInjectSaga'><a>with Inject Saga</a></Link>
+            </li>
         </ul>
     </div>
 );

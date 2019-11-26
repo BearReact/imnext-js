@@ -7,7 +7,6 @@ import withRedux from 'next-redux-wrapper'
 import withReduxSaga from 'next-redux-saga'
 
 import createStore from '@library/redux/configureStore'
-import { appWithTranslation } from '@library/i18next/configureI18Next';
 
 import '@assets/scss/dist/app.scss';
 
@@ -50,5 +49,4 @@ class MyApp extends App {
 export default compose(
     withRedux(createStore),
     withReduxSaga,
-    appWithTranslation
 )(MyApp);

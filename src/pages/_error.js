@@ -2,13 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {compose} from 'redux';
 
-import { withTranslation } from '@library/i18next/configureI18Next'
 
-const Error = ({ statusCode, t }) => (
+const Error = ({ statusCode }) => (
     <p>
-        {statusCode
-            ? t('error-with-status', { statusCode })
-            : t('error-without-status')}
+          error-with-status
     </p>
 )
 
@@ -30,9 +27,6 @@ Error.defaultProps = {
 
 Error.propTypes = {
     statusCode: PropTypes.number,
-    t: PropTypes.func.isRequired,
 }
 
-export default compose(
-    withTranslation('about')
-)(Error)
+export default Error;

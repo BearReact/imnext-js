@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {px2vw} from '@utils/format';
 import screen from '@themes/Screen';
 
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from '@library/i18next/configureI18Next'
 
 type Props = {
     style?: $Shape<CSSStyleDeclaration>,
@@ -41,7 +41,7 @@ class BlockTitle extends React.PureComponent<Props, State> {
 // )(BlockTitle);
 
 
-export default withTranslation()(BlockTitle);
+export default withTranslation('common')(BlockTitle);
 // export default BlockTitle;s
 
 const BlockTitleRoot = styled.div`

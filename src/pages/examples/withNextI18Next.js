@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { i18n, Link, withTranslation } from '@library/i18next/configureI18Next'
+import BlockTitle from "@components/atoms/BlockTitle/BlockTitle";
 
 
 const WithNextI18Next = ({ t }) => {
@@ -16,6 +17,7 @@ const WithNextI18Next = ({ t }) => {
             {t('examples:change-locale')}
         </button>
 
+        <BlockTitle/>
         <div>
             <Link href="/examples">
                 <a>Go Back</a>

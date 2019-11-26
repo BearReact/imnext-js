@@ -1,6 +1,7 @@
 import React, {Suspense} from "react";
 import {I18nextProvider} from "react-i18next";
-import i18n  from './configureI18Next';
+// import i18n  from './configureI18Next';
+import { i18n }  from '../../../../src/library/i18next/configureI18Next';
 
 
 /**

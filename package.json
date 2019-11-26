@@ -18,6 +18,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
+    "core-js": "2.6.10",
     "dayjs": "^1.8.17",
     "dotenv-webpack": "^1.7.0",
     "es6-promise": "^4.2.8",

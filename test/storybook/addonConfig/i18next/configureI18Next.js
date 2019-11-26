@@ -34,9 +34,9 @@ i18n
         lowerCaseLng: true, // 是否改成小寫 en-US
         backend: {
             // 字典檔讀取路徑
-            loadPath: join(__dirname, '../../public/locales/{{lng}}/{{ns}}.json'),
+            loadPath: join(__dirname, '../../public/static/locales/{{lng}}/{{ns}}.json'),
             // 有使用到卻位定義的字典寫入路徑
-            addPath: join(__dirname, '../../public/locales/{{lng}}/{{ns}}.missing.json')
+            addPath: join(__dirname, '../../public/static/locales/{{lng}}/{{ns}}.missing.json')
         },
         // ==================== 只有ServerSide使用, ClientSide不使用這裡的設定 ====================
         detection: {

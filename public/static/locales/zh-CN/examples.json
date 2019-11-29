@@ -1,3 +1,19 @@
 {
-  "change-locale": "切換為中文語系"
+  "language": "中文",
+  "menu": {
+    "home": "主页",
+    "contact": "联络我们"
+  },
+  "button": {
+    "download": "下载",
+    "signUp": "注册",
+    "menu": "目录"
+  },
+  "pageHome": {
+    "heroTitle": "<b>伺服器</b><span>渲染</span>",
+    "heroText": "React 开箱即用, 已整合开发网站所需的第三方套件",
+    "email": "信箱"
+  }
 }
+
+

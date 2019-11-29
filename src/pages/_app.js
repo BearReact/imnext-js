@@ -9,6 +9,7 @@ import withReduxSaga from 'next-redux-saga'
 import createStore from '@library/redux/configureStore'
 import { appWithTranslation } from '@library/i18next/configureI18Next';
 
+import '@assets/scss/dist/bootstrap.css';
 import '@assets/scss/dist/app.scss';
 
 

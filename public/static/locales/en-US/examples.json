@@ -1,3 +1,17 @@
 {
-  "change-locale": "Change Language English"
+  "language": "ENGLISH",
+  "menu": {
+    "home": "Home",
+    "contact": "Contact"
+  },
+  "button": {
+    "download": "Download",
+    "signUp": "SIGN UP",
+    "menu": "MENU"
+  },
+  "pageHome": {
+    "heroTitle": "<b>Server </b> <span>Side </span><b>Render </b>",
+    "heroText": "React Out-of-the-box, integrated third-party suites required for website development",
+    "email": "Email"
+  }
 }

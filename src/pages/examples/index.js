@@ -1,51 +1,72 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
 import styled, {css} from 'styled-components';
+import { i18n, withTranslation } from '@library/i18next/configureI18Next'
+import screen from '@themes/Screen';
 
 
-const Examples = () => {
+const Examples = ({t}) => {
     const [isVisibleNavbar, setVisibleNavbar] = useState(false);
 
+    const changeLocale = () => {
+        switch (i18n.language) {
+            case 'en-US':
+                i18n.changeLanguage('zh-CN');
+                break;
+            case 'zh-CN':
+                i18n.changeLanguage('vi-VN');
+
+                break;
+            case 'vi-VN':
+                i18n.changeLanguage('th-TH');
+
+                break;
+            case 'th-TH':
+                i18n.changeLanguage('en-US');
+                break;
+        }
+    };
+
+
     return (
-        <>
-            <header className="header-area">
+        <div className="d-flex flex-column" style={{height: 'inherit'}}>
+            <header className="col">
                 <NavbarArea>
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-24">
                                 <Navbar className="navbar navbar-expand-lg">
-                                    <a className="navbar-brand" href="index.html">
-                                        <img src="/static/images/examples/logo.png" alt="Logo"/>
-                                    </a>
+                                    <Link href="/examples">
+                                        <a className="navbar-brand">
+                                            INNEXT.js
+                                        </a>
+                                    </Link>
+
+
                                     <button className="navbar-toggler" type="button" onClick={()=>setVisibleNavbar(!isVisibleNavbar)}>
-                                        MENU
+                                        {t('examples:button.menu')}
                                     </button>
 
                                     <NavbarCollapse className="navbar-collapse sub-menu-bar collapse" isVisible={isVisibleNavbar}>
-                                        <ul id="nav" className="navbar-nav m-auto">
+                                        <ul className="navbar-nav m-auto">
                                             <NavItem className="active">
-                                                <a href="#home">Home</a>
+                                                <Link href="/examples">
+                                                    <a>{t('examples:menu.home')}</a>
+                                                </Link>
                                             </NavItem>
+
                                             <NavItem>
-                                                <a href="#about">About </a>
-                                            </NavItem>
-                                            <NavItem>
-                                                <a href="#services">Services</a>
-                                            </NavItem>
-                                            <NavItem>
-                                                <a href="#portfolio">Portfolio</a>
-                                            </NavItem>
-                                            <NavItem>
-                                                <a href="#blog">Blog</a>
-                                            </NavItem>
-                                            <NavItem>
-                                                <a href="#contact">Contact</a>
+                                                <Link href="/examples/contact">
+                                                    <a>{t('examples:menu.contact')}</a>
+                                                </Link>
                                             </NavItem>
                                         </ul>
                                     </NavbarCollapse>
 
-                                    <div className="navbar-btn d-none d-sm-inline-block">
-                                        <MainBtn data-scroll-nav="0" href="#pricing">Download</MainBtn>
+
+                                    <div className="navbar-btn d-none d-flex">
+                                        <LanguageButton type="button" className="btn col-auto mr-2" onClick={changeLocale}>{t('examples:language')}</LanguageButton>
+                                        <MainBtn target="_blank" href="https://github.com/imagine10255/nextjs9-start-kit">{t('examples:button.download')}</MainBtn>
                                     </div>
                                 </Navbar>
                             </div>
@@ -59,30 +80,23 @@ const Examples = () => {
                         <div className="row">
                             <div className="col-lg-14">
                                 <HeaderHeroContent>
-                                    <HeroTitle className="fadeInUp">
-                                        <b>Your</b> <span>Consultancy</span> Partner for <b>Growth.</b></HeroTitle>
-                                    <HeroText className="text fadeInUp">Phasellus
-                                        vel elit efficitur, gravida libero sit amet, scelerisque tortor arcu, commodo sit
-                                        amet nulla sed.</HeroText>
-                                    <HeroSignup className="header-singup fadeInUp">
-                                        <input type="text" placeholder="username@yourdomain.com"/>
-                                        <HeroSignupMainBtn as="button">Sign Up</HeroSignupMainBtn>
+                                    <HeroTitle dangerouslySetInnerHTML={{__html: t('examples:pageHome.heroTitle')}}>
+                                    </HeroTitle>
+                                    <HeroText className="text">{t('examples:pageHome.heroText')}</HeroText>
+                                    <HeroSignup>
+                                        <input type="text" placeholder={t('examples:pageHome.email')}/>
+                                        <HeroSignupMainBtn as="button">{t('examples:button.signUp')}</HeroSignupMainBtn>
                                     </HeroSignup>
                                 </HeaderHeroContent>
                             </div>
                         </div>
                     </div>
-                    <HeaderHeroImage className="header-hero-image d-flex align-items-center fadeInRightBig">
-                        <div className="image">
-                            <img src="/static/images/examples/hero-image.png" alt="Hero Image"/>
-                        </div>
-                    </HeaderHeroImage>
                 </HeaderHero>
 
             </header>
 
 
-            <Footer>
+            <Footer className="col-auto">
                 <div className="container">
                     <FooterCopyRight className="footer-copyright text-center">
                         <p className="text">© 2022 Crafted by <a href="https://uideck.com" rel="nofollow">UIdeck</a> All
@@ -116,11 +130,17 @@ const Examples = () => {
             {/*    </ul>*/}
             {/*</Header>*/}
 
-        </>
+        </div>
     )
 };
 
-export default Examples;
+
+Examples.getInitialProps = async () => ({
+    namespacesRequired: ['examples'],
+});
+
+
+export default withTranslation()(Examples)
 
 
 const HeaderHero = styled.div`
@@ -130,12 +150,12 @@ const HeaderHero = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 800px;
+    height: 100%;
+    padding-top: 130px;
     
-    @media only screen and (min-width: 1400px){
-      height: 990px;
+    @media ${screen.lg} {
+        padding-top: 0;
     }
-      
 `;
 
 const NavbarArea = styled.div`
@@ -158,7 +178,11 @@ const Navbar = styled.nav`
 
 
 const NavItem = styled.li`
-      margin-left: 40px;
+
+    
+    
+    
+      margin-left: 00;
       position: relative;
     
       :first-child {
@@ -174,32 +198,31 @@ const NavItem = styled.li`
         font-weight: 900;
         color: #222;
         transition: all 0.3s ease-out 0s;
-        padding: 10px 0;
+        
         position: relative;
         font-family: "Nunito", sans-serif;
         
-       
+        display: block;
+        padding: 4px 0;
      }
      
      
-     
-      @media (max-width: 767px){
-          margin: 0;
-          
-          a{
-            display: block;
-            padding: 4px 0;
-          }
-    }
-    
-    @media only screen and (max-width: 991px) and (min-width: 768px){
-        margin: 0;
+     @media ${screen.md} {
         
         a{
-            display: block;
-            padding: 4px 0;
-          }
+          padding: 10px 0;
+        }
     }
+     
+     @media ${screen.lg} {
+        margin-left: 40px;
+        
+        a{
+          padding: 4px 0;
+        }
+    }
+    
+
 `;
 
 
@@ -226,142 +249,120 @@ const MainBtn = styled.a`
 `
 
 
-const HeaderHeroImage = styled.div`
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 47%;
-    height: 100%;
-`;
-
 const HeaderHeroContent = styled.div`
-  @media (max-width: 767px){
-    padding-top: 150px;
-  }
-  
-  @media only screen and (max-width: 991px) and (min-width: 768px){
-    padding-top: 150px;
- }
-
 `;
 
 const HeroTitle = styled.h1`
-    font-size: 60px;
+    font-size: 28px;
+
     font-weight: 400;
     color: #000;
     
     b {
       font-weight: 700;
     }
-    f
+    
     span {
         color: #f14836;
         display: contents;
     }
     
-    @media (max-width: 767px){
-        font-size: 28px;
+    @media ${screen.lg} {
+        font-size: 60px;
     }
 `;
 
 const HeroText = styled.p`
+    font-family: "Nunito", sans-serif;
     max-width: 490px;
     font-size: 16px;
-    padding-top: 40px;
     
     font-weight: 400;
     line-height: 24px;
     color: #798795;
-    margin: 0px;
-    font-family: "Nunito", sans-serif;
+    margin-bottom: 50px;
 `;
 
 const HeroSignup = styled.div`
     position: relative;
-    margin-top: 120px;
     z-index: 9;
-    
+
     input{
-        width: 100%;
-        height: 70px;
-        font-size: 24px;
-        border: 0;
-        border-radius: 50px;
-        padding: 0 30px;
-        background-color: #fff;
-        box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      height: 56px;
+      border: 0;
+      border-radius: 50px;
+      padding: 0 30px;
+      background-color: #fff;
+      box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
+      margin-bottom: 10px;
     }
     
-    @media (max-width: 767px){
-        margin-top: 60px;
+    @media ${screen.lg} {
         
         input{
-          height: 56px;
+            height: 70px;
+            font-size: 24px;
+            
         }
     }
 `;
 
 
 const HeroSignupMainBtn = styled(MainBtn)`
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    height: 64px;
-    line-height: 60px;
-    padding: 0 40px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 56px;
+    line-height: 52px;
+      
     
-    @media (max-width: 767px){
-        position: relative;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 56px;
-        line-height: 52px;
-        margin-top: 10px;
-    }
+     @media ${screen.lg} {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        height: 64px;
+        line-height: 60px;
+        padding: 0 40px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        width: auto;
+        height: auto;
+     }
 
 `;
 
 
 const NavbarCollapse = styled.div`
-    flex-basis: 100%;
-    flex-grow: 1;
-    align-items: center;
     
-    
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 9;
+    box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
+    padding: 5px 12px;
+       
+    ${props => !props.isVisible && css`
+        display: none;  
+    `}
+
+
+
+
+    @media ${screen.lg} {
+        flex-basis: 100%;
+        flex-grow: 1;
+        align-items: center;
+        display: block;
         
-    @media only screen and (max-width: 991px) and (min-width: 768px){
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: #fff;
-            z-index: 9;
-            box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
-            padding: 5px 12px;
-            
-             
-        ${props => !props.isVisible && css`
-            display: none;  
-        `}
-    
-    }
-    @media (max-width: 767px){
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        z-index: 9;
-        box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
-        padding: 5px 12px;
-        
-            
-        ${props => !props.isVisible && css`
-            display: none;  
-        `}
+        position: static;
+        box-shadow: none;
+        background-color: transparent;
+        top: auto;
+        left: auto;
     }
 `;
 
@@ -372,13 +373,17 @@ const Footer = styled.footer`
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
-
 `;
 
 
 const FooterCopyRight = styled.div`
     padding: 25px;
     border-top: 1px solid #dedede4f;
+`;
+
+
+const LanguageButton = styled.button`
+    line-height: 100%;
+    padding: 0;
 `;
 

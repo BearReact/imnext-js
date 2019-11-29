@@ -2,6 +2,7 @@ require('dotenv').config();
 const path = require('path');
 const DotEnv = require('dotenv-webpack');
 const withSass = require('@zeit/next-sass');
+const withCss = require('@zeit/next-css');
 const webpackConfig = require('./webpack.config');
 
 const nextConfig = {
@@ -34,4 +35,4 @@ const nextConfig = {
 };
 
 
-module.exports = withSass(nextConfig);
+module.exports = withSass(withCss(nextConfig));

@@ -65,8 +65,8 @@ const Examples = ({t}) => {
 
 
                                     <div className="navbar-btn d-none d-flex">
-                                        <LanguageButton type="button" className="btn col-auto mr-2" onClick={changeLocale}>{t('examples:language')}</LanguageButton>
-                                        <MainBtn target="_blank" href="https://github.com/imagine10255/nextjs9-start-kit">{t('examples:button.download')}</MainBtn>
+                                        <MainBtn type="button" className="btn col-auto mr-2" onClick={changeLocale}>{t('examples:language')}</MainBtn>
+                                        {/*<MainBtn target="_blank" href="https://github.com/imagine10255/nextjs9-start-kit">{t('examples:button.download')}</MainBtn>*/}
                                     </div>
                                 </Navbar>
                             </div>
@@ -226,7 +226,7 @@ const NavItem = styled.li`
 `;
 
 
-const MainBtn = styled.a`
+const MainBtn = styled.button`
     display: inline-block;
     font-weight: 700;
     font-family: "Nunito", sans-serif;

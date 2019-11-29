@@ -23,19 +23,18 @@
     "dotenv-webpack": "^1.7.0",
     "es6-promise": "^4.2.8",
     "express": "4.17.1",
-    "i18next": "19.0.1",
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "next": "9.1.4",
-    "next-i18next": "2.0.0",
+    "next-i18next": "2.1.1",
     "next-redux-saga": "^4.0.2",
     "next-redux-wrapper": "^3.0.0",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
-    "react": "16.11.0",
-    "react-dom": "16.11.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
     "react-redux": "7.1.1",
     "redux": "^4.0.4",
     "redux-saga": "1.1.1",
@@ -51,16 +50,10 @@
     "@storybook/addon-viewport": "^5.2.6",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
+    "storybook-addon-i18n": "git+https://github.com/iFantasyReactNext/storybook-addon-i18n.git#master",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "cross-env": "5.2.1",
-    "flow-bin": "^0.112.0",
-    "i18next-browser-languagedetector": "^4.0.1",
-    "i18next-xhr-backend": "^3.2.2",
-    "react-i18next": "^11.2.1",
-    "storybook-addon-i18n": "^5.1.11"
-  },
-  "sideEffects": [
-    "./i18n.js"
-  ]
+    "flow-bin": "^0.112.0"
+  }
 }

@@ -24,13 +24,13 @@ class BlockTitle extends React.PureComponent<Props, State> {
 
     render() {
         const {children, style, className} = this.props;
-        const { t } = this.props;
+        const { t, i18n } = this.props;
 
-        // console.log('this.props', this.props);
 
         return <BlockTitleRoot style={style} className={className}>
-            {children}
-            {t('common:change-locale')}
+            {children}<br/>
+            {t('common:change-locale')}<br/>
+            {t('change-locale')}
         </BlockTitleRoot>;
     }
 }
@@ -41,7 +41,7 @@ class BlockTitle extends React.PureComponent<Props, State> {
 // )(BlockTitle);
 
 
-export default withTranslation('common')(BlockTitle);
+export default withTranslation(['common'])(BlockTitle);
 // export default BlockTitle;s
 
 const BlockTitleRoot = styled.div`

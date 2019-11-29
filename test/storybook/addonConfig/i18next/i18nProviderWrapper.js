@@ -1,7 +1,6 @@
 import React, {Suspense} from "react";
 import {I18nextProvider} from "react-i18next";
-// import i18n  from './configureI18Next';
-import { i18n }  from '../../../../src/library/i18next/configureI18Next';
+import { i18n }  from '@library/i18next/configureI18Next';
 
 
 /**
@@ -28,6 +27,6 @@ function I18nProviderWrapper({ children, i18n, locale }) {
 export default {
     provider: I18nProviderWrapper,
     providerProps: {i18n},
-    supportedLocales: ["en-us", "zh-cn"],
+    supportedLocales: ["en-US", "zh-CN", "th-TH", "vi-VN",],
     providerLocaleKey: "locale"
 }

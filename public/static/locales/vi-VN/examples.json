@@ -5,14 +5,13 @@
     "contact": "ติดต่"
   },
   "button": {
-    "download": "ดาวน",
     "signUp": "ลงชื่อ",
     "menu": "เมนู"
   },
   "pageHome": {
     "heroTitle": "<b> Máy chủ </ b> <span> Bên </ span> <b> Kết xuất </ b>",
     "heroText": "React Out-of-the-box, bộ bên thứ ba tích hợp cần thiết để phát triển trang web",
-    "email": "e-mail"
+    "email": "Email"
   }
 }
 

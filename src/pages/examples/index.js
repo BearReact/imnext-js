@@ -38,7 +38,7 @@ const Examples = ({t}) => {
                                 <Navbar className="navbar navbar-expand-lg">
                                     <Link href="/examples">
                                         <a className="navbar-brand">
-                                            INNEXT.js
+                                            IMNEXT.js
                                         </a>
                                     </Link>
 
@@ -66,7 +66,6 @@ const Examples = ({t}) => {
 
                                     <div className="navbar-btn d-none d-flex">
                                         <MainBtn type="button" className="btn col-auto mr-2" onClick={changeLocale}>{t('examples:language')}</MainBtn>
-                                        {/*<MainBtn target="_blank" href="https://github.com/imagine10255/nextjs9-start-kit">{t('examples:button.download')}</MainBtn>*/}
                                     </div>
                                 </Navbar>
                             </div>
@@ -80,8 +79,7 @@ const Examples = ({t}) => {
                         <div className="row">
                             <div className="col-lg-14">
                                 <HeaderHeroContent>
-                                    <HeroTitle dangerouslySetInnerHTML={{__html: t('examples:pageHome.heroTitle')}}>
-                                    </HeroTitle>
+                                    <HeroTitle dangerouslySetInnerHTML={{__html: t('examples:pageHome.heroTitle')}}/>
                                     <HeroText className="text">{t('examples:pageHome.heroText')}</HeroText>
                                     <HeroSignup>
                                         <input type="text" placeholder={t('examples:pageHome.email')}/>
@@ -99,7 +97,9 @@ const Examples = ({t}) => {
             <Footer className="col-auto">
                 <div className="container">
                     <FooterCopyRight className="footer-copyright text-center">
-                        <p className="text">© 2022 Crafted by <a href="https://uideck.com" rel="nofollow">UIdeck</a> All
+                        <p className="text">
+                            © 2020 Crafted by
+                            <a href="https://github.com/imagine10255/imnext" target="_blank" rel="nofollow">imagine</a> All
                             Rights Reserved.</p>
                     </FooterCopyRight>
                 </div>
@@ -178,10 +178,6 @@ const Navbar = styled.nav`
 
 
 const NavItem = styled.li`
-
-    
-    
-    
       margin-left: 00;
       position: relative;
     

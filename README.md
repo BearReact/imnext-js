@@ -21,7 +21,7 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 Imnext has the most extensive and thorough [documentation](https://nextjs.org/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
 
-## Using `WebStorm`
+## Using WebStorm
 
 1. `.next` folder search file index is slow,
 so you can set `.next` folder `mark directory as` / `excluded`
@@ -37,7 +37,7 @@ so you can set `src/pages` folder `mark directory as` / `Resource Root`
    > Preferences / Plugins
 
 
-## About use next-i18next
+## Using next-i18next
 
 * Version mapping (`Don't install and upgrade react-i18next`)
   - "react": "16.12.0",
@@ -53,4 +53,14 @@ so you can set `src/pages` folder `mark directory as` / `Resource Root`
     > new NextI18Next(options)
   - in src/pages/_app.js
     > add appWithTranslation provider
-  - in public/static/locales
+  - in p
+  
+  
+## Using bootstrap4
+
+If you need to change settings like `grid-columns`, `grid-breakpoints`, `container-max-widths`
+> src/resources/assets/scss/common/_variable.scss
+>
+```
+$ yarn bootstrap:build
+```

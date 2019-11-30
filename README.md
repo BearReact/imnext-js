@@ -8,6 +8,8 @@ Imnext is a web application framework with nextjs, elegant syntax. We believe de
 - [Powerful dependency injection redux and redux-saga](https://redux.js.org).
 - [Internationalization-framework i18Next Language](https://www.i18next.com).
 - [Expressive, intuitive Storybook](https://storybook.js.org).
+- [Form controller Formlk](https://jaredpalmer.com/formik/docs/overview).
+- [Form validation Yup](https://github.com/jquense/yup).
 - [Quickly build your entire app with our Sass variables and mixins bootstrap](https://getbootstrap.com).
 - [Immutable JS data structures which are backwards-compatible with normal Arrays and Objects.](https://github.com/rtfeldman/seamless-immutable).
 

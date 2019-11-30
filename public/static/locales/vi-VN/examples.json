@@ -1,12 +1,12 @@
 {
   "language": "Tiếng việt nam",
   "menu": {
-    "home": "บ้าน",
-    "contact": "ติดต่"
+    "home": "Nhà",
+    "contact": "tiếp xúc"
   },
   "button": {
-    "signUp": "ลงชื่อ",
-    "menu": "เมนู"
+    "signUp": "ĐĂNG KÝ",
+    "menu": "THỰC ĐƠN"
   },
   "pageHome": {
     "heroTitle": "<b> Máy chủ </ b> <span> Bên </ span> <b> Kết xuất </ b>",

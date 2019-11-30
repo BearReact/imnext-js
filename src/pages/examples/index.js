@@ -1,33 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import Link from 'next/link'
-import styled, {css} from 'styled-components';
-import { i18n, withTranslation } from '@library/i18next/configureI18Next'
+import React from 'react'
+import styled from 'styled-components';
+import { withTranslation } from '@library/i18next/configureI18Next'
 import screen from '@themes/Screen';
 import Layout from '../../layouts/main';
 
 
 const Examples = ({t}) => {
-    const [isVisibleNavbar, setVisibleNavbar] = useState(false);
-
-    const changeLocale = () => {
-        switch (i18n.language) {
-            case 'en-US':
-                i18n.changeLanguage('zh-CN');
-                break;
-            case 'zh-CN':
-                i18n.changeLanguage('vi-VN');
-
-                break;
-            case 'vi-VN':
-                i18n.changeLanguage('th-TH');
-
-                break;
-            case 'th-TH':
-                i18n.changeLanguage('en-US');
-                break;
-        }
-    };
-
 
     return (
         <HeaderHero className="d-lg-flex align-items-center">

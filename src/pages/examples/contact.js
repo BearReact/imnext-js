@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import Link from 'next/link'
-import styled, {css} from 'styled-components';
+import React from 'react'
+import styled from 'styled-components';
 import get from 'lodash/get';
-import {i18n, withTranslation} from '@library/i18next/configureI18Next'
-import screen from '@themes/Screen';
+import {withTranslation} from '@library/i18next/configureI18Next'
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import Layout from "../../layouts/main";

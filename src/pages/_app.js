@@ -19,13 +19,13 @@ const theme = {
     }
 }
 
+const Noop = ({ children }) => children;
+
+
 class MyApp extends App {
 
     static async getInitialProps ({ Component, ctx }) {
-        let pageProps = {
-            namespacesRequired: ['common'] // i18next default NS
-        };
-        // let pageProps = {};
+        let pageProps = {};
 
         if (Component.getInitialProps) {
             const customPageProps = await Component.getInitialProps({ ctx });
@@ -37,11 +37,14 @@ class MyApp extends App {
 
     render() {
         const { Component, pageProps, store } = this.props;
+        const Layout = Component.Layout || Noop;
 
         return (
             <Provider store={store}>
                 <ThemeProvider theme={theme}>
-                    <Component {...pageProps} />
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
                 </ThemeProvider>
             </Provider>
         )

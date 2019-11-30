@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled, {css} from 'styled-components';
 import { i18n, withTranslation } from '@library/i18next/configureI18Next'
 import screen from '@themes/Screen';
+import Layout from '../../layouts/main';
 
 
 const Examples = ({t}) => {
@@ -29,112 +30,26 @@ const Examples = ({t}) => {
 
 
     return (
-        <div className="d-flex flex-column" style={{height: 'inherit'}}>
-            <header className="col">
-                <NavbarArea>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-24">
-                                <Navbar className="navbar navbar-expand-lg">
-                                    <Link href="/examples">
-                                        <a className="navbar-brand">
-                                            IMNEXT.js
-                                        </a>
-                                    </Link>
-
-
-                                    <button className="navbar-toggler" type="button" onClick={()=>setVisibleNavbar(!isVisibleNavbar)}>
-                                        {t('examples:button.menu')}
-                                    </button>
-
-                                    <NavbarCollapse className="navbar-collapse sub-menu-bar collapse" isVisible={isVisibleNavbar}>
-                                        <ul className="navbar-nav m-auto">
-                                            <NavItem className="active">
-                                                <Link href="/examples">
-                                                    <a>{t('examples:menu.home')}</a>
-                                                </Link>
-                                            </NavItem>
-
-                                            <NavItem>
-                                                <Link href="/examples/contact">
-                                                    <a>{t('examples:menu.contact')}</a>
-                                                </Link>
-                                            </NavItem>
-                                        </ul>
-                                    </NavbarCollapse>
-
-
-                                    <div className="navbar-btn d-none d-flex">
-                                        <MainBtn type="button" className="btn col-auto mr-2" onClick={changeLocale}>{t('examples:language')}</MainBtn>
-                                    </div>
-                                </Navbar>
-                            </div>
-                        </div>
+        <HeaderHero className="d-lg-flex align-items-center">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-14">
+                        <HeaderHeroContent>
+                            <HeroTitle dangerouslySetInnerHTML={{__html: t('examples:pageHome.heroTitle')}}/>
+                            <HeroText className="text">{t('examples:pageHome.heroText')}</HeroText>
+                            <HeroSignup>
+                                <input type="text" placeholder={t('examples:pageHome.email')}/>
+                                <HeroSignupMainBtn as="button">{t('examples:button.signUp')}</HeroSignupMainBtn>
+                            </HeroSignup>
+                        </HeaderHeroContent>
                     </div>
-                </NavbarArea>
-
-
-                <HeaderHero className="d-lg-flex align-items-center">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-14">
-                                <HeaderHeroContent>
-                                    <HeroTitle dangerouslySetInnerHTML={{__html: t('examples:pageHome.heroTitle')}}/>
-                                    <HeroText className="text">{t('examples:pageHome.heroText')}</HeroText>
-                                    <HeroSignup>
-                                        <input type="text" placeholder={t('examples:pageHome.email')}/>
-                                        <HeroSignupMainBtn as="button">{t('examples:button.signUp')}</HeroSignupMainBtn>
-                                    </HeroSignup>
-                                </HeaderHeroContent>
-                            </div>
-                        </div>
-                    </div>
-                </HeaderHero>
-
-            </header>
-
-
-            <Footer className="col-auto">
-                <div className="container">
-                    <FooterCopyRight className="footer-copyright text-center">
-                        <p className="text">
-                            © 2020 Crafted by
-                            <a href="https://github.com/imagine10255/imnext" target="_blank" rel="nofollow">imagine</a> All
-                            Rights Reserved.</p>
-                    </FooterCopyRight>
                 </div>
-            </Footer>
-
-
-            {/*<Header className="header-hero bg_cover d-lg-flex align-items-center">*/}
-            {/*    <h1>索引頁面</h1>*/}
-            {/*    <ul>*/}
-            {/*        <li>*/}
-            {/*            <Link href='/examples/withFlowType'><a>with FlowType</a></Link>*/}
-            {/*        </li>*/}
-            {/*        <li>*/}
-            {/*            <Link href='/examples/withReactI18Next'><a>with React I18Next</a></Link>*/}
-            {/*        </li>*/}
-            {/*        <li>*/}
-            {/*            <Link href='/examples/withNextI18Next'><a>with Nextjs I18Next</a></Link>*/}
-            {/*        </li>*/}
-            {/*        <li>*/}
-            {/*            <Link href='/examples/withBootstrap'><a>with Bootstrap</a></Link>*/}
-            {/*        </li>*/}
-            {/*        <li>*/}
-            {/*            <Link href={{ pathname: '/examples/withServerHandle', query: { id: 'Zeit' } }}><a>With Server Handle</a></Link>*/}
-            {/*        </li>*/}
-            {/*        <li>*/}
-            {/*            <Link href='/examples/withInjectSaga'><a>with Inject Saga</a></Link>*/}
-            {/*        </li>*/}
-            {/*    </ul>*/}
-            {/*</Header>*/}
-
-        </div>
+            </div>
+        </HeaderHero>
     )
 };
 
-
+Examples.Layout = Layout;
 Examples.getInitialProps = async () => ({
     namespacesRequired: ['examples'],
 });
@@ -152,74 +67,13 @@ const HeaderHero = styled.div`
     width: 100%;
     height: 100%;
     padding-top: 130px;
+    margin-top: -120px;
     
     @media ${screen.lg} {
         padding-top: 0;
     }
 `;
 
-const NavbarArea = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 99;
-    transition: all 0.3s ease-out 0s;
-    
-    will-change: transform;
-`;
-
-const Navbar = styled.nav`
-    padding: 25px 0;
-    border-radius: 5px;
-    position: relative;
-    transition: all 0.3s ease-out 0s;
-`;
-
-
-const NavItem = styled.li`
-      margin-left: 00;
-      position: relative;
-    
-      :first-child {
-        margin-left: 0;
-      }
-      
-      &.active > a, :hover > a{
-        color: #f14836;
-      }
-      
-      a{
-        font-size: 16px;
-        font-weight: 900;
-        color: #222;
-        transition: all 0.3s ease-out 0s;
-        
-        position: relative;
-        font-family: "Nunito", sans-serif;
-        
-        display: block;
-        padding: 4px 0;
-     }
-     
-     
-     @media ${screen.md} {
-        
-        a{
-          padding: 10px 0;
-        }
-    }
-     
-     @media ${screen.lg} {
-        margin-left: 40px;
-        
-        a{
-          padding: 4px 0;
-        }
-    }
-    
-
-`;
 
 
 const MainBtn = styled.button`
@@ -329,57 +183,4 @@ const HeroSignupMainBtn = styled(MainBtn)`
 
 `;
 
-
-const NavbarCollapse = styled.div`
-    
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    z-index: 9;
-    box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
-    padding: 5px 12px;
-       
-    ${props => !props.isVisible && css`
-        display: none;  
-    `}
-
-
-
-
-    @media ${screen.lg} {
-        flex-basis: 100%;
-        flex-grow: 1;
-        align-items: center;
-        display: block;
-        
-        position: static;
-        box-shadow: none;
-        background-color: transparent;
-        top: auto;
-        left: auto;
-    }
-`;
-
-
-const Footer = styled.footer`
-    background-image: url("/static/images/examples/footer-bg.jpg");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-`;
-
-
-const FooterCopyRight = styled.div`
-    padding: 25px;
-    border-top: 1px solid #dedede4f;
-`;
-
-
-const LanguageButton = styled.button`
-    line-height: 100%;
-    padding: 0;
-`;
 

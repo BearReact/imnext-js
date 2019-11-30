@@ -53,8 +53,7 @@ so you can set `src/pages` folder `mark directory as` / `Resource Root`
     > new NextI18Next(options)
   - in src/pages/_app.js
     > add appWithTranslation provider
-  - in p
-  
+  - in public/static/locales  
   
 ## Using bootstrap4
 

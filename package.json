@@ -9,7 +9,7 @@
     "start": "cross-env NODE_ENV=production node server.js",
     "storybook": "NODE_ENV=storybook start-storybook -p 6006 -c ./test/storybook",
     "storybook:build": "build-storybook",
-    "bootstrap:build": "node-sass ./src/resources/assets/scss/dist/bootstrap.scss ./src/resources/assets/scss/dist/bootstrap.css",
+    "bootstrap:build": "node-sass ./src/resources/assets/styles/dist/bootstrap.scss ./src/resources/assets/styles/dist/bootstrap.css",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

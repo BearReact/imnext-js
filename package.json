@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node index.js",
     "build": "next build",
+    "export": "next export",
     "start": "cross-env NODE_ENV=production node server.js",
     "storybook": "NODE_ENV=storybook start-storybook -p 6006 -c ./test/storybook",
     "storybook:build": "build-storybook",

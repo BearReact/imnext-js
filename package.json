@@ -6,7 +6,7 @@
     "dev": "node index.js",
     "build": "next build",
     "export": "next export",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "cross-env NODE_ENV=production node src/server",
     "storybook": "NODE_ENV=storybook start-storybook -p 6006 -c ./test/storybook",
     "storybook:build": "build-storybook",
     "bootstrap:build": "node-sass ./src/resources/assets/styles/dist/bootstrap.scss ./src/resources/assets/styles/dist/bootstrap.css",

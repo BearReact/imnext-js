@@ -21,3 +21,20 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 
 - Nextjs [documentation](https://nextjs.org/docs)
 - Imnext [documentation](https://github.com/imagine10255/imnext/tree/master/docs)
+
+## How to use
+
+#### Quick Start
+
+```
+# clone project
+$ clone git@github.com:imagine10255/imnext.git my-imnext-project
+
+# enter folder
+$ cd my-imnext-project && yarn && cp .env.dev .env
+
+# start develop
+$ yarn dev
+```
+
+good luck!

@@ -19,5 +19,5 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 
 ## Learning Imnext
 
-- Nextjs documentation [documentation](https://nextjs.org/docs)
-- Imnext documentation [documentation](https://github.com/imagine10255/imnext/docs)
+- Nextjs [documentation](https://nextjs.org/docs)
+- Imnext [documentation](https://github.com/imagine10255/imnext/docs)

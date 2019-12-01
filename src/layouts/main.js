@@ -1,13 +1,19 @@
-import React, {useState, useEffect} from 'react'
-import Link from "next/link";
+// @flow
+
+import React, {useState, useEffect} from 'react';
+import Link from 'next/link';
 import styled, {css} from 'styled-components';
 import get from 'lodash/get';
-import {i18n, withTranslation} from '@library/i18next/configureI18Next'
+import {i18n, withTranslation} from '@library/i18next/configureI18Next';
 import screen from '@themes/Screen';
 
+type Props = {
+    children?: React.Node,
+    t: boolean,
+};
 
-
-const Layout = ({ children, t }) => {
+const Layout = (props: Props) => {
+    const {children, t} = props;
     const [isVisibleNavbar, setVisibleNavbar] = useState(false);
 
     const changeLocale = () => {
@@ -17,18 +23,17 @@ const Layout = ({ children, t }) => {
                 break;
             case 'zh-CN':
                 i18n.changeLanguage('vi-VN');
-
                 break;
             case 'vi-VN':
                 i18n.changeLanguage('th-TH');
-
                 break;
             case 'th-TH':
                 i18n.changeLanguage('en-US');
                 break;
+            default:
+                i18n.changeLanguage('en-US');
         }
     };
-
 
     return (
         <div className="d-flex flex-column" style={{height: 'inherit'}}>
@@ -39,19 +44,21 @@ const Layout = ({ children, t }) => {
                             <div className="col-lg-24">
                                 <Navbar className="navbar navbar-expand-lg">
                                     <Link href="/examples">
-                                        <a className="navbar-brand">
-                                            IMNEXT.js
-                                        </a>
+                                        <a className="navbar-brand">IMNEXT.js</a>
                                     </Link>
 
-
-                                    <button className="navbar-toggler" type="button"
-                                            onClick={() => setVisibleNavbar(!isVisibleNavbar)}>
+                                    <button
+                                        className="navbar-toggler"
+                                        type="button"
+                                        onClick={() => setVisibleNavbar(!isVisibleNavbar)}
+                                    >
                                         {t('examples:button.menu')}
                                     </button>
 
-                                    <NavbarCollapse className="navbar-collapse sub-menu-bar collapse"
-                                                    isVisible={isVisibleNavbar}>
+                                    <NavbarCollapse
+                                        className="navbar-collapse sub-menu-bar collapse"
+                                        isVisible={isVisibleNavbar}
+                                    >
                                         <ul className="navbar-nav m-auto">
                                             <NavItem className="active">
                                                 <Link href="/examples">
@@ -67,10 +74,10 @@ const Layout = ({ children, t }) => {
                                         </ul>
                                     </NavbarCollapse>
 
-
                                     <div className="navbar-btn d-none d-flex">
-                                        <MainBtn type="button" className="btn col-auto mr-2"
-                                                 onClick={changeLocale}>{t('examples:language')}</MainBtn>
+                                        <MainBtn type="button" className="btn col-auto mr-2" onClick={changeLocale}>
+                                            {t('examples:language')}
+                                        </MainBtn>
                                     </div>
                                 </Navbar>
                             </div>
@@ -86,31 +93,31 @@ const Layout = ({ children, t }) => {
                     <FooterCopyRight className="footer-copyright text-center">
                         <p className="text">
                             © 2020 Crafted by
-                            <a href="https://github.com/imagine10255/imnext" target="_blank"
-                               rel="nofollow">imagine</a> All
-                            Rights Reserved.</p>
+                            <a href="https://github.com/imagine10255/imnext" target="_blank" rel="noopener noreferrer">
+                                imagine
+                            </a>
+                            {' '}
+                            All All Rights Reserved.
+                        </p>
                     </FooterCopyRight>
                 </div>
             </Footer>
-
-
         </div>
-    )
-}
+    );
+};
 
+Layout.defaultProps = {
+    children: null,
+};
 
 Layout.getInitialProps = async () => ({
     namespacesRequired: ['examples'],
 });
 
-export default withTranslation()(Layout)
-
-
-
-
+export default withTranslation()(Layout);
 
 const HeaderHero = styled.div`
-    background-image: url("/static/images/examples/header-bg.jpg");
+    background-image: url('/static/images/examples/header-bg.jpg');
     position: relative;
     background-position: center center;
     background-size: cover;
@@ -118,7 +125,7 @@ const HeaderHero = styled.div`
     width: 100%;
     height: 100%;
     padding-top: 130px;
-    
+
     @media ${screen.lg} {
         padding-top: 0;
     }
@@ -131,7 +138,7 @@ const NavbarArea = styled.div`
     width: 100%;
     z-index: 99;
     transition: all 0.3s ease-out 0s;
-    
+
     will-change: transform;
 `;
 
@@ -142,60 +149,55 @@ const Navbar = styled.nav`
     transition: all 0.3s ease-out 0s;
 `;
 
-
 const NavItem = styled.li`
-      margin-left: 00;
-      position: relative;
-    
-      :first-child {
+    margin-left: 0;
+    position: relative;
+
+    :first-child {
         margin-left: 0;
-      }
-      
-      &.active > a, :hover > a{
+    }
+
+    &.active > a,
+    :hover > a {
         color: #f14836;
-      }
-      
-      a{
+    }
+
+    a {
         font-size: 16px;
         font-weight: 900;
         color: #222;
         transition: all 0.3s ease-out 0s;
-        
+
         position: relative;
-        font-family: "Nunito", sans-serif;
-        
+        font-family: 'Nunito', sans-serif;
+
         display: block;
         padding: 4px 0;
-     }
-     
-     
-     @media ${screen.md} {
-        
-        a{
-          padding: 10px 0;
+    }
+
+    @media ${screen.md} {
+        a {
+            padding: 10px 0;
         }
     }
-     
-     @media ${screen.lg} {
+
+    @media ${screen.lg} {
         margin-left: 40px;
-        
-        a{
-          padding: 4px 0;
+
+        a {
+            padding: 4px 0;
         }
     }
-    
-
 `;
-
 
 const MainBtn = styled.button`
     display: inline-block;
     font-weight: 700;
-    font-family: "Nunito", sans-serif;
+    font-family: 'Nunito', sans-serif;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    
+
     user-select: none;
     border: 2px solid #f14836;
     padding: 0 30px;
@@ -208,38 +210,35 @@ const MainBtn = styled.button`
     z-index: 5;
     transition: all 0.4s ease-out 0s;
     background-color: #f14836;
-    
-`
-
-
-const HeaderHeroContent = styled.div`
 `;
+
+const HeaderHeroContent = styled.div``;
 
 const HeroTitle = styled.h1`
     font-size: 28px;
 
     font-weight: 400;
     color: #000;
-    
+
     b {
-      font-weight: 700;
+        font-weight: 700;
     }
-    
+
     span {
         color: #f14836;
         display: contents;
     }
-    
+
     @media ${screen.lg} {
         font-size: 60px;
     }
 `;
 
 const HeroText = styled.p`
-    font-family: "Nunito", sans-serif;
+    font-family: 'Nunito', sans-serif;
     max-width: 490px;
     font-size: 16px;
-    
+
     font-weight: 400;
     line-height: 24px;
     color: #798795;
@@ -250,27 +249,24 @@ const HeroSignup = styled.div`
     position: relative;
     z-index: 9;
 
-    input{
-      width: 100%;
-      height: 56px;
-      border: 0;
-      border-radius: 50px;
-      padding: 0 30px;
-      background-color: #fff;
-      box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
-      margin-bottom: 10px;
+    input {
+        width: 100%;
+        height: 56px;
+        border: 0;
+        border-radius: 50px;
+        padding: 0 30px;
+        background-color: #fff;
+        box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
+        margin-bottom: 10px;
     }
-    
+
     @media ${screen.lg} {
-        
-        input{
+        input {
             height: 70px;
             font-size: 24px;
-            
         }
     }
 `;
-
 
 const HeroSignupMainBtn = styled(MainBtn)`
     position: relative;
@@ -279,9 +275,8 @@ const HeroSignupMainBtn = styled(MainBtn)`
     width: 100%;
     height: 56px;
     line-height: 52px;
-      
-    
-     @media ${screen.lg} {
+
+    @media ${screen.lg} {
         position: absolute;
         top: 3px;
         right: 3px;
@@ -292,10 +287,8 @@ const HeroSignupMainBtn = styled(MainBtn)`
         letter-spacing: 1px;
         width: auto;
         height: auto;
-     }
-
+    }
 `;
-
 
 const NavbarCollapse = styled.div`
     
@@ -308,9 +301,10 @@ const NavbarCollapse = styled.div`
     box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
     padding: 5px 12px;
        
-    ${props => !props.isVisible && css`
-        display: none;  
-    `}
+    ${(props) => !props.isVisible
+        && css`
+            display: none;
+        `}
 
 
 
@@ -329,30 +323,26 @@ const NavbarCollapse = styled.div`
     }
 `;
 
-
 const Footer = styled.footer`
-    background-image: url("/static/images/examples/footer-bg.jpg");
+    background-image: url('/static/images/examples/footer-bg.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
 `;
 
-
 const FooterCopyRight = styled.div`
     padding: 25px;
     border-top: 1px solid #dedede4f;
 `;
-
 
 const LanguageButton = styled.button`
     line-height: 100%;
     padding: 0;
 `;
 
-
 const Input = styled.input`
-  width: 100%;
+    width: 100%;
     border-radius: 7px;
     background-color: #fff;
     padding: 0 30px;
@@ -380,8 +370,8 @@ const Label = styled.label`
     display: block;
     font-size: 18px;
     color: #222;
-`
+`;
 
 const Message = styled.div`
-  color: #f14836;
+    color: #f14836;
 `;

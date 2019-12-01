@@ -1,35 +1,25 @@
-import {applyMiddleware, compose, createStore} from 'redux'
-import createSagaMiddleware from 'redux-saga'
+import {applyMiddleware, compose, createStore} from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import Immutable from 'seamless-immutable';
 
 import createReducer from './reducers';
 import rootSaga from './store/rootSaga';
 
-
-
-
-
 export default (initialState) => {
-    let store;
     const sagaMiddleware = createSagaMiddleware();
-
 
     const middlewares = [sagaMiddleware];
     const enhancers = [applyMiddleware(...middlewares)];
 
     // If Redux DevTools Extension is installed use it, otherwise use Redux compose
-    const composeEnhancers =
-        process.env.NODE_ENV !== 'production' &&
-        (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-
+    const composeEnhancers = (process.env.NODE_ENV !== 'production'
+            && typeof window !== 'undefined'
+    // eslint-disable-next-line no-underscore-dangle
+            && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
+        || compose;
 
     // Create Store
-    store = createStore(
-        createReducer(),
-        Immutable(initialState),
-        composeEnhancers(...enhancers)
-    );
-
+    const store = createStore(createReducer(), Immutable(initialState), composeEnhancers(...enhancers));
 
     // Create an object for any later reducers
     store.asyncReducers = {};
@@ -43,18 +33,14 @@ export default (initialState) => {
         return store;
     };
 
-
-
-
     // install Saga
     store.sagaTask = sagaMiddleware.run(rootSaga);
-
 
     // runSaga is middleware.run function
     // rootSaga is a your root saga for static saagas
     store.injectSaga = (key, saga) => {
         // Create a dictionary to keep track of injected sagas
-        const isInjected = key => typeof store.asyncSagas[key] !== 'undefined';
+        const isInjected = (checkKey) => typeof store.asyncSagas[checkKey] !== 'undefined';
 
         // We won't run saga if it is already injected
         if (isInjected(key)) return;

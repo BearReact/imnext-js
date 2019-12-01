@@ -9,14 +9,14 @@ const PREFIX = 'examples';
 export const INITIAL_STATE = Immutable({
     isFetching: false,
     message: '',
-    currentData: undefined
+    currentData: undefined,
 });
 
 /** -----------------------------------------
  Selectors
  /** --------------------------------------*/
 export const Selectors = {
-    queryParam: state => state[PREFIX].queryParam
+    queryParam: (state) => state[PREFIX].queryParam,
 };
 
 /** -----------------------------------------
@@ -28,7 +28,7 @@ export const {Types, Creators} = createActions(
         fetchCurrent: ['id'],
         fetchCurrentBegin: null,
         fetchCurrentSuccess: ['data'],
-        fetchCurrentFail: ['message']
+        fetchCurrentFail: ['message'],
     },
     {prefix: `${PREFIX}/`}
 );
@@ -44,23 +44,23 @@ const Reducers = {
     FetchCurrent: {
         begin(state) {
             return state.merge({
-                isFetching: true
+                isFetching: true,
             });
         },
         success(state, action) {
             return state.merge({
                 isFetching: false,
                 currentData: action.data,
-                message: null
+                message: null,
             });
         },
         fail(state, action) {
             return state.merge({
                 isFetching: false,
-                message: action.message
+                message: action.message,
             });
-        }
-    }
+        },
+    },
 };
 
 /** ---------------------------------------------------------------
@@ -69,5 +69,5 @@ const Reducers = {
 export const reducer = createReducer(INITIAL_STATE, {
     [Types.FETCH_CURRENT_BEGIN]: Reducers.FetchCurrent.begin,
     [Types.FETCH_CURRENT_SUCCESS]: Reducers.FetchCurrent.success,
-    [Types.FETCH_CURRENT_FAIL]: Reducers.FetchCurrent.fail
+    [Types.FETCH_CURRENT_FAIL]: Reducers.FetchCurrent.fail,
 });

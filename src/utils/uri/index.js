@@ -1,4 +1,4 @@
-import appConfig from '@config/app';
+// @flow
 import get from 'lodash/get';
 
 /**
@@ -7,7 +7,7 @@ import get from 'lodash/get';
  * @param prefix 前綴路徑
  * @returns {*}
  */
-export function uploadUrl(path: string = '', prefix: string = appConfig.uploadBaseUrl) {
+export function uploadUrl(path: string = '', prefix: string) {
     let fixPath = '';
 
     if (path) {
@@ -23,8 +23,8 @@ export function uploadUrl(path: string = '', prefix: string = appConfig.uploadBa
  * @param prefix 前綴路徑
  * @returns {string}
  */
-export function asset(path, prefix: string = appConfig.staticBaseUrl) {
-    return `${prefix}/${path}?v=${appConfig.assetVersion}`;
+export function asset(path, prefix: string) {
+    return `${prefix}/${path}`;
 }
 
 /**
@@ -33,8 +33,8 @@ export function asset(path, prefix: string = appConfig.staticBaseUrl) {
  * @param prefix 前綴路徑
  * @returns {string}
  */
-export function routePath(path, prefix: string = appConfig.routePrefixPath) {
-    return (`${prefix}/${path}`).replace('//','/');
+export function routePath(path, prefix: string) {
+    return `${prefix}/${path}`.replace('//', '/');
 }
 
 /**
@@ -62,7 +62,7 @@ export function parseQueryString(val: string = '') {
     const obj = {};
 
     if (pairs[0] !== '') {
-        pairs.map(o => {
+        pairs.map((o) => {
             const p = o.split('=');
             obj[p[0]] = p[1];
             return true;
@@ -72,7 +72,6 @@ export function parseQueryString(val: string = '') {
     return undefined;
 }
 
-
 /**
  * 取得主網域(二級域名)
  * 若非正確網址, 例如是IP位置就會回傳空白
@@ -80,15 +79,13 @@ export function parseQueryString(val: string = '') {
  */
 export function getMainDomain(hostName: string): string {
     // eslint-disable-next-line no-useless-escape
-    const regexParse = new RegExp('[a-z\-0-9]{2,63}\.[a-z\.]{2,5}$');
+    const regexParse = new RegExp('[a-z-0-9]{2,63}.[a-z.]{2,5}$');
     const urlParts = regexParse.exec(hostName);
-    if(urlParts){
+    if (urlParts) {
         return get(urlParts, 0, null);
-    }else{
-        return null;
     }
+    return null;
 }
-
 
 /**
  * 取得子網域(最後一段)
@@ -97,13 +94,12 @@ export function getMainDomain(hostName: string): string {
  */
 export function getSubDomain(hostName: string): string {
     // eslint-disable-next-line no-useless-escape
-    const regexParse = new RegExp('[a-z\-0-9]{2,63}\.[a-z\.]{2,5}$');
+    const regexParse = new RegExp('[a-z-0-9]{2,63}.[a-z.]{2,5}$');
     const urlParts = regexParse.exec(hostName);
-    if(urlParts){
+    if (urlParts) {
         // eslint-disable-next-line no-useless-escape
-        const regexFilter = new RegExp('[a-z\-0-9]{2,63}').exec(hostName.replace(urlParts[0],'').slice(0, -1));
+        const regexFilter = new RegExp('[a-z-0-9]{2,63}').exec(hostName.replace(urlParts[0], '').slice(0, -1));
         return get(regexFilter, 0, null);
-    }else{
-        return null;
     }
+    return null;
 }

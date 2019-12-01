@@ -8,13 +8,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loaders: ['style-loader', 'css-loader', 'sass-loader'],
-                include: path.resolve(__dirname, '../../')
-            }
-        ]
+                include: path.resolve(__dirname, '../../'),
+            },
+        ],
     },
     resolve: {
         alias: {
-            ...webpackBase.resolve.alias
-        }
-    }
+            ...webpackBase.resolve.alias,
+        },
+    },
 };

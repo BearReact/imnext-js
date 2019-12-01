@@ -1,8 +1,8 @@
-import React from 'react'
+// @flow
+
+import React from 'react';
 import Container from '@container/InjectSaga';
 
-const WithInjectSaga = (props) => {
-    return <Container {...props}/>
-};
+const WithInjectSaga = (props) => <Container {...props} />;
 
 export default WithInjectSaga;

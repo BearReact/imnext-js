@@ -13,14 +13,14 @@ export const INITIAL_STATE = Immutable({
     isMaintain: false,
     maintainMessage: null,
     maintainEndTime: null,
-    clientIP: null
+    clientIP: null,
 });
 
 /** -----------------------------------------
  Selectors
  /** --------------------------------------*/
 export const Selectors = {
-    isReady: state => state[PREFIX].isReady
+    isReady: (state) => state[PREFIX].isReady,
 };
 
 /** -----------------------------------------
@@ -34,10 +34,10 @@ export const {Types, Creators} = createActions(
         checkingFail: null,
 
         resetApp: null,
-        setMaintain: ['maintainMessage', 'maintainEndTime']
+        setMaintain: ['maintainMessage', 'maintainEndTime'],
     },
     {
-        prefix: `${PREFIX}/`
+        prefix: `${PREFIX}/`,
     }
 );
 
@@ -50,22 +50,22 @@ export default Creators;
 const Reducers = {
     checkingBegin(state) {
         return state.merge({
-            isChecking: true
+            isChecking: true,
         });
     },
     checkingSuccess(state) {
         return state.merge({
             isReady: true,
-            isChecking: false
+            isChecking: false,
         });
     },
     setMaintain(state, action) {
         return state.merge({
             isMaintain: true,
             maintainMessage: action.maintainMessage,
-            maintainEndTime: action.maintainEndTime
+            maintainEndTime: action.maintainEndTime,
         });
-    }
+    },
 };
 
 /** ---------------------------------------------------------------
@@ -76,5 +76,5 @@ export const reducer = createReducer(INITIAL_STATE, {
 
     [Types.CHECKING_SUCCESS]: Reducers.checkingSuccess,
 
-    [Types.SET_MAINTAIN]: Reducers.setMaintain
+    [Types.SET_MAINTAIN]: Reducers.setMaintain,
 });

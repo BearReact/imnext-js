@@ -1,3 +1,5 @@
+// @flow
+const React = require('react');
 // const { localeSubpaths } = require('next/config').default().publicRuntimeConfig;
 // const {initReactI18next} = require('react-i18next');
 const NextI18Next = require('next-i18next').default;
@@ -14,6 +16,5 @@ const I18Next = new NextI18Next({
     // }
     // use: [initReactI18next],
 });
-
 
 module.exports = I18Next;

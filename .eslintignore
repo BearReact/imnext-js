@@ -1,0 +1,7 @@
+internals/scripts
+static
+coverage
+build
+node_modules
+.cache
+plugins/

@@ -14,7 +14,7 @@ export const INITIAL_STATE = Immutable({
     modalProps: {},
 
     isBlockVisible: false,
-    blockMessage: ''
+    blockMessage: '',
 });
 
 /** -----------------------------------------
@@ -38,7 +38,7 @@ export const {Types, Creators} = createActions(
         modalClose: null,
 
         blockOpen: ['message'],
-        blockClose: null
+        blockClose: null,
     },
     {prefix: `${PREFIX}/`}
 );
@@ -51,29 +51,23 @@ export default Creators;
 
 const Reducers = {
     handleTogglePanel(state) {
-        console.log('INITIAL_STATE', INITIAL_STATE);
-        console.log('state', state);
-        // return {
-        //     ...state,
-        //     isOpenPanel: state.isOpenPanel === 'yes' ? 'no' : 'yes'
-        // }
         return state.merge({
-            isOpenPanel: state.isOpenPanel === 'yes' ? 'no' : 'yes'
+            isOpenPanel: state.isOpenPanel === 'yes' ? 'no' : 'yes',
         });
     },
     Block: {
         open(state, action) {
             return state.merge({
                 isBlockVisible: true,
-                blockMessage: action.message
+                blockMessage: action.message,
             });
         },
         close(state) {
             return state.merge({
                 isBlockVisible: false,
-                blockMessage: ''
+                blockMessage: '',
             });
-        }
+        },
     },
     Modal: {
         openSuccess(state, action) {
@@ -83,23 +77,27 @@ const Reducers = {
                 modalProps: {
                     type: 'success',
                     title: '成功',
-                    buttons: [{text: '确定', type: 'primary', onClick: onClickOk, effectType: 'MODAL_CLICK_OK'}],
-                    children: action.message
-                }
+                    buttons: [{
+                        text: '确定', type: 'primary', onClick: onClickOk, effectType: 'MODAL_CLICK_OK',
+                    }],
+                    children: action.message,
+                },
             });
         },
         openError(state, action) {
             const {onClickOk} = action;
-            if(!state.isModalVisible){
+            if (!state.isModalVisible) {
                 return state.merge({
                     isModalVisible: true,
                     modalProps: {
                         type: 'error',
                         title: '失败',
-                        buttons: [{text: '确定', type: 'danger', onClick: onClickOk, effectType: 'MODAL_CLICK_OK'}],
+                        buttons: [{
+                            text: '确定', type: 'danger', onClick: onClickOk, effectType: 'MODAL_CLICK_OK',
+                        }],
                         children: action.message,
-                        statusCode: action.statusCode
-                    }
+                        statusCode: action.statusCode,
+                    },
                 });
             }
             return state;
@@ -113,26 +111,27 @@ const Reducers = {
                     title: '确认',
                     buttons: [
                         {text: '取消', type: 'danger', effectType: 'MODAL_CLICK_CANCEL'},
-                        {text: '确定', type: 'primary', onClick: onClickOk, effectType: 'MODAL_CLICK_OK'}
+                        {
+                            text: '确定', type: 'primary', onClick: onClickOk, effectType: 'MODAL_CLICK_OK',
+                        },
                     ],
-                    children: action.message
-                }
+                    children: action.message,
+                },
             });
         },
         open(state, action) {
             return state.merge({
                 isModalVisible: true,
-                modalProps: action.modalProps
+                modalProps: action.modalProps,
             });
         },
         close(state) {
             return state.merge({
                 isModalVisible: false,
-                props: {}
+                props: {},
             });
-        }
-    }
-
+        },
+    },
 };
 
 /** ---------------------------------------------------------------
@@ -148,5 +147,5 @@ export const reducer = createReducer(INITIAL_STATE, {
     [Types.MODAL_CLOSE]: Reducers.Modal.close,
 
     [Types.BLOCK_OPEN]: Reducers.Block.open,
-    [Types.BLOCK_CLOSE]: Reducers.Block.close
+    [Types.BLOCK_CLOSE]: Reducers.Block.close,
 });

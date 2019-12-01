@@ -1,5 +1,7 @@
-/* eslint-disable no-console */
-import {put, fork, take, select} from 'redux-saga/effects';
+/* eslint-disable */
+import {
+    put, fork, take, select,
+} from 'redux-saga/effects';
 
 import jwtDecode from 'jwt-decode';
 import get from 'lodash/get';
@@ -30,10 +32,10 @@ export function* initializeFlow() {
         let isAuth = yield select(AuthSelectors.isAuth);
 
         // 檢查 Token 是否過期, 若判定過期 則清除登入狀態
-        if(isAuth){
+        if (isAuth) {
             const token = yield select(AuthSelectors.token);
             const expiredTime = get(jwtDecode(token), 'exp', new Date());
-            if(expiredTime && dayjs(expiredTime).diff(dayjs()) >= 0){
+            if (expiredTime && dayjs(expiredTime).diff(dayjs()) >= 0) {
                 yield put(AuthAction.handleClearAuth());
                 isAuth = false;
             }

@@ -1,8 +1,9 @@
+/* eslint-disable */
+
 import config from '@config/app';
 import {uploadUrl, asset, routePath, serialize, parseQueryString, getMainDomain, getSubDomain} from '../index';
 
 describe('test utils uri', () => {
-
     it('串後端檔案上傳檔案的基礎網址', () => {
         expect(uploadUrl('promotion/test.jpg', '/upload')).toBe('/upload/promotion/test.jpg');
     });
@@ -20,10 +21,12 @@ describe('test utils uri', () => {
     });
 
     it('解析 Search QueryString 轉成 物件', () => {
-        expect(parseQueryString('id=12&isHidden=false')).toEqual(expect.objectContaining({
-            id: '12',
-            isHidden: 'false'
-        }));
+        expect(parseQueryString('id=12&isHidden=false')).toEqual(
+            expect.objectContaining({
+                id: '12',
+                isHidden: 'false'
+            })
+        );
     });
 
     it('取得主網域(二級域名)', () => {

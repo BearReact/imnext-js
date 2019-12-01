@@ -24,7 +24,7 @@ export default class OpenWindow {
     /**
      * 準備開啟視窗的前置作業
      */
-    ready(){
+    ready() {
         const url = routePath('static/modules/loading-window/index.html');
         this.targetWindow = window.open(url, this.openTargetId);
     }
@@ -33,11 +33,11 @@ export default class OpenWindow {
      * 開啟視窗
      * @param url 開啟目標的Url
      */
-    open(url){
+    open(url) {
         // 單一顯示模式中, 如果子視窗未關閉, 則使用子視窗導頁
-        if(!this.isMultipleOpen && this.targetWindow){
+        if (!this.isMultipleOpen && this.targetWindow) {
             this.targetWindow.location.href = url;
-        }else{
+        } else {
             window.open(url, this.openTargetId);
         }
     }
@@ -48,5 +48,4 @@ export default class OpenWindow {
     close() {
         this.targetWindow.close();
     }
-
 }

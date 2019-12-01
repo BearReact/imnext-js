@@ -1,8 +1,9 @@
-import {toCapitalize, toLocaleUpCase, RGBToHex, HEXToRGB, HEXToRGBA, paddingLeft, autoMapper, px2vw} from '../index';
+import {
+    toCapitalize, toLocaleUpCase, RGBToHex, HEXToRGB, HEXToRGBA, paddingLeft, autoMapper, px2vw,
+} from '../index';
 
 describe('test format function', () => {
-
-    const expected = ['pineapple','apple','pen'];
+    const expected = ['pineapple', 'apple', 'pen'];
 
     it('format string toCapitalize', () => {
         expect(toCapitalize('goodApple')).toBe('GoodApple');
@@ -17,15 +18,11 @@ describe('test format function', () => {
     });
 
     it('format hex to rgb', () => {
-        expect(HEXToRGB('#000000')).toEqual(
-            expect.arrayContaining([0, 0, 0]),
-        );
+        expect(HEXToRGB('#000000')).toEqual(expect.arrayContaining([0, 0, 0]));
     });
 
     it('format hex to rgba', () => {
-        expect(HEXToRGBA('#000000', .5)).toEqual(
-            expect.arrayContaining([0, 0, 0, 0.5]),
-        );
+        expect(HEXToRGBA('#000000', 0.5)).toEqual(expect.arrayContaining([0, 0, 0, 0.5]));
     });
 
     it('format number padding 0', () => {
@@ -33,20 +30,26 @@ describe('test format function', () => {
     });
 
     it('format object auto Mapper', () => {
-        expect(autoMapper({
-            firstName: 'sam',
-            lastName: 'chiu'
-        }, {
-            firstName: 'realName',
-            lastName: 'niceName'
-        }
-        )).toEqual(expect.objectContaining({
-            realName: 'sam',
-            niceName: 'chiu'
-        }));
+        expect(
+            autoMapper(
+                {
+                    firstName: 'sam',
+                    lastName: 'chiu',
+                },
+                {
+                    firstName: 'realName',
+                    lastName: 'niceName',
+                }
+            )
+        ).toEqual(
+            expect.objectContaining({
+                realName: 'sam',
+                niceName: 'chiu',
+            })
+        );
     });
 
     it('format px2vw', () => {
-        expect( px2vw(12)).toBe('3.75vw');
+        expect(px2vw(12)).toBe('3.75vw');
     });
 });

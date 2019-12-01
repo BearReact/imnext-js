@@ -15,7 +15,7 @@ module.exports = {
             '@library': path.resolve(__dirname, 'src/library'),
             '@services': path.resolve(__dirname, 'src/services'),
             '@config': path.resolve(__dirname, 'src/config'),
-            '@middleware': path.resolve(__dirname, 'src/middleware')
-        }
-    }
+            '@middleware': path.resolve(__dirname, 'src/middleware'),
+        },
+    },
 };

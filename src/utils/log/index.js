@@ -1,11 +1,6 @@
 /* eslint-disable no-console */
 
-const baseStyles = [
-    'color: #fff',
-    'display: block',
-    'line-height: 20px',
-    'padding-right: 8px'
-];
+const baseStyles = ['color: #fff', 'display: block', 'line-height: 20px', 'padding-right: 8px'];
 
 /**
  * 輸出訊息
@@ -23,9 +18,7 @@ function messageConsole(title, styles, watchData = '') {
  * @param watchData
  */
 function primary(title, watchData = '') {
-    const styles = baseStyles.concat([
-        'background-color: #007bff'
-    ]).join(';');
+    const styles = baseStyles.concat(['background-color: #007bff']).join(';');
 
     messageConsole(title, styles, watchData);
 }
@@ -36,13 +29,10 @@ function primary(title, watchData = '') {
  * @param watchData
  */
 function success(title, watchData = '') {
-    const styles = baseStyles.concat([
-        'background-color: #28a745'
-    ]).join(';');
+    const styles = baseStyles.concat(['background-color: #28a745']).join(';');
 
     messageConsole(title, styles, watchData);
 }
-
 
 /**
  * Info (天藍)
@@ -50,13 +40,10 @@ function success(title, watchData = '') {
  * @param watchData
  */
 function info(title, watchData = '') {
-    const styles = baseStyles.concat([
-        'background-color: #17a2b8'
-    ]).join(';');
+    const styles = baseStyles.concat(['background-color: #17a2b8']).join(';');
 
     messageConsole(title, styles, watchData);
 }
-
 
 /**
  * Warning (黃色)
@@ -64,13 +51,10 @@ function info(title, watchData = '') {
  * @param watchData
  */
 function warning(title, watchData = '') {
-    const styles = baseStyles.concat([
-        'background-color: #ffc107'
-    ]).join(';');
+    const styles = baseStyles.concat(['background-color: #ffc107']).join(';');
 
     messageConsole(title, styles, watchData);
 }
-
 
 /**
  * Danger (紅色)
@@ -78,20 +62,17 @@ function warning(title, watchData = '') {
  * @param watchData
  */
 function danger(title, watchData = '') {
-    const styles = baseStyles.concat([
-        'background-color: #ec2127'
-    ]).join(';');
+    const styles = baseStyles.concat(['background-color: #ec2127']).join(';');
 
     messageConsole(title, styles, watchData);
 }
-
 
 const log = {
     primary,
     success,
     info,
     warning,
-    danger
+    danger,
 };
 
 export default log;

@@ -20,7 +20,6 @@ const rootReducers = {
     // profile: require('./Profile/Reducer').reducer,
     // wallet: require('./Wallet/Reducer').reducer,
     // history: require('./History/Reducer').reducer
-
 };
 
 export default rootReducers;

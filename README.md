@@ -36,7 +36,6 @@ $ cd my-imnext-project && yarn && cp .env.dev .env
 # Start develop
 $ yarn dev
 
-
 > 🚀 Ready on http://localhost:3000
 ```
-Good luck!
+Good Luck!

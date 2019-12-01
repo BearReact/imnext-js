@@ -97,12 +97,12 @@ const Contact = (props: Props) => {
                                     <MainBtn
                                         type="submit"
                                         onClick={() => {
-                                            // validateForm().then((errors) => {
-                                            const field = get(Object.keys(errors), 0, false);
-                                            if (field) {
-                                                alert(errors[field]);
-                                            }
-                                            // });
+                                            validateForm().then((validateErrors) => {
+                                                const field = get(Object.keys(validateErrors), 0, false);
+                                                if (field) {
+                                                    alert(validateErrors[field]);
+                                                }
+                                            });
                                         }}
                                     >
                                         Send Now

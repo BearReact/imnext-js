@@ -25,14 +25,14 @@
 ## Namespaces and withTranslation example
 - Page Level use:
 ```js
-  const PageName = ({t}) => <div>{t('example:title')}</div>;
-  PageName.getInitialProps = async () => ({
-      namespacesRequired: ['example'],
-  });
-  export default withTranslation()(PageName);
+const PageName = ({t}) => <div>{t('example:title')}</div>;
+PageName.getInitialProps = async () => ({
+    namespacesRequired: ['example'],
+});
+export default withTranslation()(PageName);
 ```  
 - Component Level use:
 ```js
-    const ComponentName = ({t}) => <div>{t('example:title')}</div>;
-    export default withTranslation(['example'])(ComponentName);
+const ComponentName = ({t}) => <div>{t('example:title')}</div>;
+export default withTranslation(['example'])(ComponentName);
 ``` 

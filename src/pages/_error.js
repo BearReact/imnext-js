@@ -1,38 +1,36 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import React from 'react';
 import {compose} from 'redux';
+import {withTranslation} from '@library/i18next/configureI18Next';
 
-import { withTranslation } from '@library/i18next/configureI18Next'
 
-const Error = ({ statusCode, t }) => (
-    <p>
-        {statusCode
-            ? t('error-with-status', { statusCode })
-            : t('error-without-status')}
-    </p>
-)
+type Props = {
+    t: Function,
+    statusCode?: string,
+};
 
-Error.getInitialProps = async ({ res, err }) => {
-    let statusCode = null
+const Error = (props: Props) => {
+    const {statusCode, t} = props;
+    return (
+        <p>{statusCode ? t('error-with-status', {statusCode}) : t('error-without-status')}</p>
+    );
+};
+
+Error.getInitialProps = async ({res, err}) => {
+    let statusCode = null;
     if (res) {
-        ({ statusCode } = res)
+        ({statusCode} = res);
     } else if (err) {
-        ({ statusCode } = err)
+        ({statusCode} = err);
     }
     return {
         statusCode,
-    }
-}
+    };
+};
 
 Error.defaultProps = {
     statusCode: null,
-}
+};
 
-Error.propTypes = {
-    statusCode: PropTypes.number,
-    t: PropTypes.func.isRequired,
-}
 
-export default compose(
-    withTranslation('about')
-)(Error)
+export default compose(withTranslation('about'))(Error);

@@ -11,15 +11,19 @@ import rootReducers from './store/rootReducers';
 export default function createReducer(asyncReducers = {}) {
     const appReducer = combineReducers({
         ...rootReducers,
-        ...asyncReducers
+        ...asyncReducers,
     });
 
     // 重設APP Redux Store
     const rootReducer = (state, action) => {
         if (action.type === 'startup/RESET_APP') {
             // 白名單設定(不做清除)
-            const {system, auth, startup, ui} = state;
-            state = {system, auth, startup, ui};
+            const {
+                system, auth, startup, ui,
+            } = state;
+            state = {
+                system, auth, startup, ui,
+            };
         }
         return appReducer(state, action);
     };

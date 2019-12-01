@@ -9,7 +9,9 @@
     "start": "cross-env NODE_ENV=production node server.js",
     "storybook": "NODE_ENV=storybook start-storybook -p 6006 -c ./test/storybook",
     "storybook:build": "build-storybook",
-    "bootstrap:build": "node-sass ./src/resources/assets/scss/dist/bootstrap.scss ./src/resources/assets/scss/dist/bootstrap.css"
+    "bootstrap:build": "node-sass ./src/resources/assets/scss/dist/bootstrap.scss ./src/resources/assets/scss/dist/bootstrap.css",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@babel/preset-env": "^7.7.1",
@@ -35,7 +37,6 @@
     "next-redux-saga": "^4.0.2",
     "next-redux-wrapper": "^3.0.0",
     "node-sass": "^4.13.0",
-    "prop-types": "^15.7.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-redux": "7.1.1",
@@ -59,6 +60,18 @@
     "bootstrap": "^4.3.1",
     "cross-env": "5.2.1",
     "flow-bin": "^0.112.0",
-    "storybook-addon-i18n": "git+https://github.com/iFantasyReactNext/storybook-addon-i18n.git#master"
+    "storybook-addon-i18n": "git+https://github.com/iFantasyReactNext/storybook-addon-i18n.git#master",
+    "babel-eslint": "10.0.3",
+    "eslint": "6.7.2",
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.7.0",
+    "eslint-import-resolver-webpack": "0.11.1",
+    "eslint-plugin-flowtype": "4.5.2",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "3.1.1",
+    "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-redux-saga": "1.1.1"
   }
 }

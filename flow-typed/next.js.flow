@@ -1,6 +1,6 @@
 // @flow
 
-declare module "next" {
+declare module 'next' {
     declare type NextApp = {
         prepare(): Promise<void>;
         getRequestHandler(): any;
@@ -12,19 +12,19 @@ declare module "next" {
     declare module.exports: (...opts: any) => NextApp
 }
 
-declare module "next/head" {
+declare module 'next/head' {
     declare module.exports: Class<React$Component<any, any>>;
 }
 
-declare module "next/link" {
-    declare module.exports: Class<React$Component<{href: string, prefetch?: bool}, any>>;
+declare module 'next/link' {
+    declare module.exports: Class<React$Component<{href: string, prefetch?: boolean}, any>>;
 }
 
-declare module "next/error" {
+declare module 'next/error' {
     declare module.exports: Class<React$Component<{statusCode: number}, any>>;
 }
 
-declare module "next/document" {
+declare module 'next/document' {
     declare export var Head: Class<React$Component<any, any>>;
     declare export var Main: Class<React$Component<any, any>>;
     declare export var NextScript: Class<React$Component<any, any>>;

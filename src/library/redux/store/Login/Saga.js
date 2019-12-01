@@ -1,5 +1,6 @@
-
-import {call, put, takeLatest, select, take, delay} from 'redux-saga/effects';
+import {
+    call, put, takeLatest, select, take, delay,
+} from 'redux-saga/effects';
 // import {replace} from 'connected-react-router';
 
 import jwtDecode from 'jwt-decode';
@@ -33,17 +34,14 @@ export function* submitLogin(payload) {
     try {
         yield put(Actions.submitLoginBegin());
         const {
-            formParam: {account, password, isRemember}
+            formParam: {account, password, isRemember},
         } = payload;
 
         yield put(Actions.submitLoginSuccess());
-
     } catch (e) {
         yield put(Actions.submitLoginFail(e.message));
         yield put(UiActions.modalOpenError(e.message, e.statusCode));
     }
 }
 
-export default [
-    takeLatest(Types.SUBMIT_LOGIN, submitLogin),
-];
+export default [takeLatest(Types.SUBMIT_LOGIN, submitLogin)];

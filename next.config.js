@@ -7,14 +7,12 @@ const webpackConfig = require('./webpack.config');
 
 const nextConfig = {
     publicRuntimeConfig: {
-        localeSubpaths: typeof process.env.LOCALE_SUBPATHS === 'string'
-            ? process.env.LOCALE_SUBPATHS
-            : 'none',
+        localeSubpaths: typeof process.env.LOCALE_SUBPATHS === 'string' ? process.env.LOCALE_SUBPATHS : 'none',
     },
 
-    webpack: config => {
+    webpack: (config) => {
         config.node = {
-            fs: "empty"
+            fs: 'empty',
         };
 
         config.plugins = [
@@ -23,7 +21,7 @@ const nextConfig = {
             // Read the .env file
             new DotEnv({
                 path: path.join(__dirname, '.env'),
-                systemvars: true
+                systemvars: true,
             }),
         ];
 
@@ -33,6 +31,5 @@ const nextConfig = {
         return config;
     },
 };
-
 
 module.exports = withSass(withCss(nextConfig));

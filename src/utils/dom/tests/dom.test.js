@@ -1,7 +1,6 @@
 import {hasClass, addClass, removeClass} from '../index';
 
 describe('test utils dom', () => {
-
     const doc = document.implementation.createDocument('', '', null);
     const peopleElem = doc.createElement('people');
 
@@ -12,5 +11,4 @@ describe('test utils dom', () => {
         removeClass(peopleElem, 'active');
         expect(hasClass(peopleElem, 'active')).toBe(false);
     });
-
 });

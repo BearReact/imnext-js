@@ -9,14 +9,13 @@ const PREFIX = 'login';
  /** ---------------------------------------*/
 export const INITIAL_STATE = Immutable({
     isFetching: false,
-    message: null
+    message: null,
 });
 
 /** -----------------------------------------
  Selectors
  /** --------------------------------------*/
-export const Selectors = {
-};
+export const Selectors = {};
 
 /** -----------------------------------------
  Types and Action Creators
@@ -47,10 +46,10 @@ export const {Types, Creators} = createActions(
         kickSetGuestSuccess: null,
         kickSetGuestFail: ['message'],
 
-        handleSetToken: ['token']
+        handleSetToken: ['token'],
     },
     {
-        prefix: `${PREFIX}/`
+        prefix: `${PREFIX}/`,
     }
 );
 
@@ -65,82 +64,82 @@ const Reducers = {
     SubmitLogin: {
         begin(state) {
             return state.merge({
-                isFetching: true
+                isFetching: true,
             });
         },
         success(state) {
             return state.merge({
                 isFetching: false,
-                message: null
+                message: null,
             });
         },
         fail(state, action) {
             return state.merge({
                 isFetching: false,
-                message: action.message
+                message: action.message,
             });
-        }
+        },
     },
     // 登出系統
     SubmitLogout: {
         begin(state) {
             return state.merge({
-                isFetching: true
+                isFetching: true,
             });
         },
         success(state) {
             return state.merge({
                 isFetching: false,
-                message: undefined
+                message: undefined,
             });
         },
         fail(state, action) {
             return state.merge({
                 isFetching: false,
-                message: action.message
+                message: action.message,
             });
-        }
+        },
     },
     // 自動登入
     CheckIn: {
         begin(state) {
             return state.merge({
-                isFetching: true
+                isFetching: true,
             });
         },
         success(state) {
             return state.merge({
                 isFetching: false,
-                message: null
+                message: null,
             });
         },
         fail(state, action) {
             return state.merge({
                 isFetching: false,
-                message: action.message
+                message: action.message,
             });
-        }
+        },
     },
     // 未登入跳轉到登入頁系統
     KickSetGuest: {
         begin(state) {
             return state.merge({
-                isFetching: true
+                isFetching: true,
             });
         },
         success(state) {
             return state.merge({
                 isFetching: false,
-                message: null
+                message: null,
             });
         },
         fail(state, action) {
             return state.merge({
                 isFetching: false,
-                message: action.message
+                message: action.message,
             });
-        }
-    }
+        },
+    },
 };
 
 /** ---------------------------------------------------------------
@@ -161,5 +160,5 @@ export const reducer = createReducer(INITIAL_STATE, {
 
     [Types.KICK_SET_GUEST_BEGIN]: Reducers.KickSetGuest.begin,
     [Types.KICK_SET_GUEST_SUCCESS]: Reducers.KickSetGuest.success,
-    [Types.KICK_SET_GUEST_FAIL]: Reducers.KickSetGuest.fail
+    [Types.KICK_SET_GUEST_FAIL]: Reducers.KickSetGuest.fail,
 });

@@ -22,7 +22,6 @@ const rootSaga = function* root() {
         // ...require('./Profile/Saga').default,
         // ...require('./Wallet/Saga').default,
         // ...require('./History/Saga').default
-
     ]);
 };
 

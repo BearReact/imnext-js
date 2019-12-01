@@ -1,7 +1,8 @@
-import {call, put, takeLatest, delay} from 'redux-saga/effects';
-import dayjs from "dayjs";
+import {
+    call, put, takeLatest, delay,
+} from 'redux-saga/effects';
+import dayjs from 'dayjs';
 import Actions, {Types} from './Reducer';
-
 
 /**
  * 取明細資料
@@ -17,12 +18,10 @@ export function* fetchCurrent(payload) {
         const currentData = dayjs().toString();
 
         yield put(Actions.fetchCurrentSuccess(currentData));
-
     } catch (e) {
         yield put(Actions.fetchCurrentFail(e.message));
     }
 }
-
 
 export default function* injectSagaRoot() {
     yield takeLatest(Types.FETCH_CURRENT, fetchCurrent);

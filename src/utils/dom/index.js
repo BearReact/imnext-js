@@ -4,32 +4,29 @@
  * @param className css class
  * @returns {boolean}
  */
-export function hasClass(dom, className){
-    return !!dom.className.match( new RegExp( '(\\s|^)' + className + '(\\s|$)') );
+export function hasClass(dom, className) {
+    return !!dom.className.match(new RegExp(`(\\s|^)${className}(\\s|$)`));
 }
-
 
 /**
  * 在 elements 中新增 css class
  * @param dom elements
  * @param className
  */
-export function addClass(dom, className){
-    if( !hasClass(dom, className) ){
+export function addClass(dom, className) {
+    if (!hasClass(dom, className)) {
         dom.classList.add(className);
     }
 }
-
 
 /**
  * 刪除 elements 中的 css class
  * @param dom elements
  * @param className
  */
-export function removeClass(dom, className){
+export function removeClass(dom, className) {
     dom.classList.remove(className);
 }
-
 
 /**
  * 插入IFrame
@@ -40,7 +37,7 @@ export function removeClass(dom, className){
  */
 export function insertIFrame(frameId, url, callBack) {
     // 插入測速工具
-    if(document.getElementById(frameId) === null){
+    if (document.getElementById(frameId) === null) {
         const i = document.createElement('iframe');
         i.id = frameId;
         i.src = url;
@@ -48,9 +45,9 @@ export function insertIFrame(frameId, url, callBack) {
         i.frameborder = '0';
         i.width = 0;
         i.height = 0;
-        i.onload = function(){
+        i.onload = () => {
             // callBack
-            if(callBack){
+            if (callBack) {
                 callBack(i);
             }
         };

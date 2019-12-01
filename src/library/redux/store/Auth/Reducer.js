@@ -21,17 +21,17 @@ export const INITIAL_STATE = Immutable({
     updatePhoneTime: null,
     updateEmailTime: null,
     agentFinanceLivechatUrl: null,
-    agentCustomerLivechatUrl: null
+    agentCustomerLivechatUrl: null,
 });
 
 /** -----------------------------------------
  Selectors
  /** --------------------------------------*/
 export const Selectors = {
-    token: state => state[PREFIX].token,
-    isAuth: state => state[PREFIX].isAuth,
-    agentFinanceLivechatUrl: state => state[PREFIX].agentFinanceLivechatUrl,
-    agentCustomerLivechatUrl: state => state[PREFIX].agentCustomerLivechatUrl
+    token: (state) => state[PREFIX].token,
+    isAuth: (state) => state[PREFIX].isAuth,
+    agentFinanceLivechatUrl: (state) => state[PREFIX].agentFinanceLivechatUrl,
+    agentCustomerLivechatUrl: (state) => state[PREFIX].agentCustomerLivechatUrl,
 };
 
 /** -----------------------------------------
@@ -48,7 +48,7 @@ export const {Types, Creators} = createActions(
             'memberLevelName',
             'isRemember',
             'agentFinanceLivechatUrl',
-            'agentCustomerLivechatUrl'
+            'agentCustomerLivechatUrl',
         ],
 
         // 登出系統
@@ -61,10 +61,10 @@ export const {Types, Creators} = createActions(
         handleSetUpdatePhoneTime: null,
 
         // 設定更新信箱時間
-        handleSetUpdateEmailTime: null
+        handleSetUpdateEmailTime: null,
     },
     {
-        prefix: `${PREFIX}/`
+        prefix: `${PREFIX}/`,
     }
 );
 
@@ -86,7 +86,7 @@ const Reducers = {
             memberLevelName: action.memberLevelName,
             isRemember: action.isRemember,
             agentFinanceLivechatUrl: action.agentFinanceLivechatUrl,
-            agentCustomerLivechatUrl: action.agentCustomerLivechatUrl
+            agentCustomerLivechatUrl: action.agentCustomerLivechatUrl,
         });
     },
     // 清除登入資訊
@@ -102,28 +102,28 @@ const Reducers = {
             updatePhoneTime: undefined,
             updateEmailTime: undefined,
             agentFinanceLivechatUrl: undefined,
-            agentCustomerLivechatUrl: undefined
+            agentCustomerLivechatUrl: undefined,
         });
     },
     // 設定Token
     handleSetToken(state, action) {
         // const my = action.token ? jwtDecode(action.token).custom : null;
         return state.merge({
-            token: action.token
+            token: action.token,
         });
     },
     // 設定更新電話時間
     handleSetUpdatePhoneTime(state) {
         return state.merge({
-            updatePhoneTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
+            updatePhoneTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         });
     },
     // 設定更新信箱時間
     handleSetUpdateEmailTime(state) {
         return state.merge({
-            updateEmailTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
+            updateEmailTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         });
-    }
+    },
 };
 
 /** ---------------------------------------------------------------
@@ -134,5 +134,5 @@ export const reducer = createReducer(INITIAL_STATE, {
     [Types.HANDLE_CLEAR_AUTH]: Reducers.handleClearAuth,
     [Types.HANDLE_SET_TOKEN]: Reducers.handleSetToken,
     [Types.HANDLE_SET_UPDATE_PHONE_TIME]: Reducers.handleSetUpdatePhoneTime,
-    [Types.HANDLE_SET_UPDATE_EMAIL_TIME]: Reducers.handleSetUpdateEmailTime
+    [Types.HANDLE_SET_UPDATE_EMAIL_TIME]: Reducers.handleSetUpdateEmailTime,
 });

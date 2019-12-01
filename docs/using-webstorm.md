@@ -13,3 +13,9 @@ so you can set `src/pages` folder `mark directory as` / `Resource Root`
 3. Install plugin [Styled Components & Styled JSX](https://plugins.jetbrains.com/plugin/9997-styled-components--styled-jsx/)
    > Preferences / Plugins
 
+4. Find and fix problems in your JavaScript code ESLint
+   > Preferences / Languages & Frameworks / javascript / Code Quality Tools / ESLint
+   - Manual ESLint configuration
+     - Node Interpreter: Project
+     - ESLint package: {your node_modules/eslint path}
+   - Configuration file: Automation search

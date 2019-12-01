@@ -3,10 +3,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import get from 'lodash/get';
-import {withTranslation} from '@library/i18next/configureI18Next';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import Layout from '../../layouts/main';
+import {withTranslation} from '@library/i18next/configureI18Next';
+import Layout from '@layouts/example';
 
 const SignupSchema = Yup.object().shape({
     name: Yup.string()
@@ -119,7 +119,7 @@ const Contact = (props: Props) => {
 
 Contact.Layout = Layout;
 Contact.getInitialProps = async () => ({
-    namespacesRequired: ['examples'],
+    namespacesRequired: ['example'],
 });
 
 export default withTranslation()(Contact);

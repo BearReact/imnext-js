@@ -38,4 +38,10 @@ $ yarn dev
 
 > 🚀 Ready on http://localhost:3000
 ```
-Good Luck!
+open browser example in http://localhost:3000/example
+
+#### Remove example
+
+```zsh
+$ rm -rf ./src/pages/example ./public/static/images/example ./src/container/example ./public/static/locales/*/example.json
+```

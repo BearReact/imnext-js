@@ -1,7 +1,7 @@
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 
-const PREFIX = 'examples';
+const PREFIX = 'example';
 
 /** -----------------------------------------
  Initial State

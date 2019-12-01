@@ -3,14 +3,14 @@ import React from 'react';
 import styled from 'styled-components';
 import {withTranslation} from '@library/i18next/configureI18Next';
 import screen from '@themes/Screen';
-import Layout from '../../layouts/main';
+import Layout from '@layouts/example';
 
 
 type Props = {
     t: (localeKey: string) => string,
 };
 
-const Examples = (props: Props) => {
+const Example = (props: Props) => {
     const {t} = props;
     return (
         <HeaderHero className="d-lg-flex align-items-center">
@@ -18,11 +18,11 @@ const Examples = (props: Props) => {
                 <div className="row">
                     <div className="col-lg-14">
                         <HeaderHeroContent>
-                            <HeroTitle dangerouslySetInnerHTML={{__html: t('examples:pageHome.heroTitle')}} />
-                            <HeroText className="text">{t('examples:pageHome.heroText')}</HeroText>
+                            <HeroTitle dangerouslySetInnerHTML={{__html: t('example:pageHome.heroTitle')}} />
+                            <HeroText className="text">{t('example:pageHome.heroText')}</HeroText>
                             <HeroSignup>
-                                <input type="text" placeholder={t('examples:pageHome.email')} />
-                                <HeroSignupMainBtn as="button">{t('examples:button.signUp')}</HeroSignupMainBtn>
+                                <input type="text" placeholder={t('example:pageHome.email')} />
+                                <HeroSignupMainBtn as="button">{t('example:button.signUp')}</HeroSignupMainBtn>
                             </HeroSignup>
                         </HeaderHeroContent>
                     </div>
@@ -32,15 +32,15 @@ const Examples = (props: Props) => {
     );
 };
 
-Examples.Layout = Layout;
-Examples.getInitialProps = async () => ({
-    namespacesRequired: ['examples'],
+Example.Layout = Layout;
+Example.getInitialProps = async () => ({
+    namespacesRequired: ['example'],
 });
 
-export default withTranslation()(Examples);
+export default withTranslation()(Example);
 
 const HeaderHero = styled.div`
-    background-image: url('/static/images/examples/header-bg.jpg');
+    background-image: url('/static/images/example/header-bg.jpg');
     position: relative;
     background-position: center center;
     background-size: cover;

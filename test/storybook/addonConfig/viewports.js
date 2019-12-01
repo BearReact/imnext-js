@@ -10,5 +10,5 @@ const {
 export default {
     viewports: {
         iphone5, iphone6, iphone6p, iphonex, iphonexr, iphonexsmax,
-    }, // newViewports would be an ViewportMap. (see below for examples)
+    }, // newViewports would be an ViewportMap. (see below for example)
 };

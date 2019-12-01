@@ -32,5 +32,4 @@ Error.defaultProps = {
     statusCode: null,
 };
 
-
-export default compose(withTranslation('about'))(Error);
+export default withTranslation()(Error);

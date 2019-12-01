@@ -52,7 +52,7 @@ const WithInjectSaga = (props: Props) => {
             </li>
 
             <div>
-                <Link href="/examples">
+                <Link href="/example">
                     <a>Go Back</a>
                 </Link>
             </div>
@@ -71,11 +71,11 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({
     isOpenPanel: state.ui.isOpenPanel,
-    isFetching: state.examples.isFetching,
-    currentData: state.examples.currentData,
+    isFetching: state.example.isFetching,
+    currentData: state.example.currentData,
 });
 
 export default compose(
-    injectReducerSaga('examples', {reducer, saga}),
+    injectReducerSaga('example', {reducer, saga}),
     connect(mapStateToProps, mapDispatchToProps)
 )(WithInjectSaga);

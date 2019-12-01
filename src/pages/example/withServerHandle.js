@@ -15,7 +15,7 @@ const WithServerHandle = (props: Props) => {
                 {postId}
             </div>
             <div>
-                <Link href="/examples">
+                <Link href="/example">
                     <a>Go Back</a>
                 </Link>
             </div>

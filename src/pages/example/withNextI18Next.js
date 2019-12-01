@@ -15,12 +15,12 @@ const WithNextI18Next = (props: Props) => {
             <div>{t('common:title')}</div>
 
             <button type="button" onClick={() => i18n.changeLanguage(i18n.language === 'en-US' ? 'zh-CN' : 'en-US')}>
-                {t('examples:change-locale')}
+                {t('example:change-locale')}
             </button>
 
             <BlockTitle />
             <div>
-                <Link href="/examples">
+                <Link href="/example">
                     <a>Go Back</a>
                 </Link>
             </div>
@@ -29,7 +29,7 @@ const WithNextI18Next = (props: Props) => {
 };
 
 WithNextI18Next.getInitialProps = async () => ({
-    namespacesRequired: ['examples'],
+    namespacesRequired: ['example'],
 });
 
 

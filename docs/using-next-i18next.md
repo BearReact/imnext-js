@@ -16,11 +16,14 @@
   > add appWithTranslation provider
 - in public/static/locales  
   
-## Warning `You have not declared a namespacesRequired array on your page-level component: withI18nextTranslation(Error). This will cause all namespaces to be sent down to the client, possibly negatively impacting the performance of your app. For more info, see: https://github.com/isaachinman/next-i18next#4-declaring-namespace-dependencies`
-  > check `withTranslation(namespace)` namespace has in public/static/locales/{namespace}` 
+## Warning Namespace not find in page-level
+
+`You have not declared a namespacesRequired array on your page level component: withI18nextTranslation(Error). This will cause all namespaces to be sent down to the client, possibly negatively impacting the performance of your app. For more info, see: https://github.com/isaachinman/next-i18next#4-declaring-namespace-dependencies`
+
+> check `withTranslation([namespace])` namespace has in public/static/locales/{namespace}` 
   
 ## Namespaces and withTranslation example
-- page level use:
+- Page Level use:
 ```js
   const PageName = ({t}) => <div>{t('example:title')}</div>;
   PageName.getInitialProps = async () => ({
@@ -28,7 +31,7 @@
   });
   export default withTranslation()(PageName);
 ```  
-- component level use:
+- Component Level use:
 ```js
     const ComponentName = ({t}) => <div>{t('example:title')}</div>;
     export default withTranslation(['example'])(ComponentName);

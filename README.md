@@ -26,7 +26,7 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 
 #### Quick Start
 
-```
+```zsh
 # Clone project
 $ clone git@github.com:imagine10255/imnext.git my-imnext-project
 
@@ -36,8 +36,7 @@ $ cd my-imnext-project && yarn && cp .env.dev .env
 # Start develop
 $ yarn dev
 
-----
-> 🚀 Ready on http://localhost:3000
 
+> 🚀 Ready on http://localhost:3000
 ```
 Good luck!

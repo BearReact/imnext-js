@@ -1,0 +1,15 @@
+.DS_Store/
+.idea/
+internals/scripts/
+internals/generators/
+node_modules/
+static/
+coverage/
+build/
+.cache/
+plugins/
+package-lock.json
+package.json
+yarn.lock
+npm-debug.log
+yarn-error.log

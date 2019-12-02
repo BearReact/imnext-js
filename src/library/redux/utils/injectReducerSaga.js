@@ -30,7 +30,7 @@ const injectReducerSaga = (key, injectStore) => (WrappedComponent) => {
             store.injectSaga(key, injectStore.saga);
         }
 
-        return <WrappedComponent {...props} />;
+        return <WrappedComponent {...props}/>;
     };
 
     // To use context, you must define contextTypes

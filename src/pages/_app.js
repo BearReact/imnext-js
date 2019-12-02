@@ -40,7 +40,7 @@ class MyApp extends App {
             <Provider store={store}>
                 <ThemeProvider theme={theme}>
                     <Layout>
-                        <Component {...pageProps} />
+                        <Component {...pageProps}/>
                     </Layout>
                 </ThemeProvider>
             </Provider>

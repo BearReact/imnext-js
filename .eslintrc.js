@@ -1,6 +1,3 @@
-const fs = require('fs');
-const path = require('path');
-
 module.exports = {
     parser: 'babel-eslint',
     extends: [
@@ -41,7 +38,7 @@ module.exports = {
         semi: 'error',
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
-        'react/jsx-tag-spacing': 'off',
+        'react/jsx-tag-spacing': ['error', {closingSlash: 'never', beforeSelfClosing: 'never', afterOpening: 'never', beforeClosing: 'never'}],
         'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx']}],
         'react/no-danger': 'off',
         'react/prefer-stateless-function': 'off',

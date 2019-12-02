@@ -92,7 +92,7 @@ const Contact = (props: Props) => {
                                     />
                                     <Message>{errors.message && touched.message && errors.message}</Message>
                                 </div>
-                                <p className="form-message" />
+                                <p className="form-message"/>
                                 <div className="col-md-24">
                                     <MainBtn
                                         type="submit"

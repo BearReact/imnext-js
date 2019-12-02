@@ -18,10 +18,10 @@ const Example = (props: Props) => {
                 <div className="row">
                     <div className="col-lg-14">
                         <HeaderHeroContent>
-                            <HeroTitle dangerouslySetInnerHTML={{__html: t('example:pageHome.heroTitle')}} />
+                            <HeroTitle dangerouslySetInnerHTML={{__html: t('example:pageHome.heroTitle')}}/>
                             <HeroText className="text">{t('example:pageHome.heroText')}</HeroText>
                             <HeroSignup>
-                                <input type="text" placeholder={t('example:pageHome.email')} />
+                                <input type="text" placeholder={t('example:pageHome.email')}/>
                                 <HeroSignupMainBtn as="button">{t('example:button.signUp')}</HeroSignupMainBtn>
                             </HeroSignup>
                         </HeaderHeroContent>

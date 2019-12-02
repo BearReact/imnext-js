@@ -1,24 +1,40 @@
-# Using WebStorm
+# Using Pre-Commit
 
-## `.next` folder search file index is slow,
-so you can set `.next` folder `mark directory as` / `excluded`
+## setting files
+- .cz-config.js
+- .czrc
 
-## `src/pages` folder is Link Root Path
-so you can set `src/pages` folder `mark directory as` / `Resource Root`
+## package.json
 
-## `public` folder is Link Root Path
-so you can set `public` folder `mark directory as` / `Resource Root`
+```json
+{
+    "validate-commit-msg": "2.14.0",
+    "husky": "1.3.1",
+    "pre-commit": "1.2.2",
+    "lint-staged": "7.3.0",
+    "cz-conventional-changelog": "3.0.2",
+    "cz-customizable": "6.2.0"
+}
+```
 
-## Javascript language version set `Flow`
-> [Preferences / Languages & Frameworks / javascript language version](https://blog.jetbrains.com/webstorm/2016/11/using-flow-in-webstorm/)
-Flow package or exectable set {your path}/node_modules/flow-bin
+## package.json script
 
-## Install plugin [Styled Components & Styled JSX](https://plugins.jetbrains.com/plugin/9997-styled-components--styled-jsx/)
-> Preferences / Plugins
-
-## Find and fix problems in your JavaScript code ESLint
-> Preferences / Languages & Frameworks / javascript / Code Quality Tools / ESLint
-- Manual ESLint configuration
-  - Node Interpreter: Project
-  - ESLint package: {your node_modules/eslint path}
-- Configuration file: Automation search
+``json
+{
+    "scripts": {
+        "cz": "git cz"
+    }
+    "lint-staged": {
+        "*.js": [
+            "yarn lint:js-fix",
+            "git add --force"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "validate-commit-msg",
+            "pre-commit": "yarn lint:staged"
+        }
+    },
+}
+```

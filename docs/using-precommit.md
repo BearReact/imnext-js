@@ -19,11 +19,11 @@
 
 ## package.json script
 
-``json
+```json
 {
     "scripts": {
         "cz": "git cz"
-    }
+    },
     "lint-staged": {
         "*.js": [
             "yarn lint:js-fix",
@@ -35,6 +35,6 @@
             "commit-msg": "validate-commit-msg",
             "pre-commit": "yarn lint:staged"
         }
-    },
+    }
 }
 ```

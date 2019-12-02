@@ -11,7 +11,22 @@
         "storybook:build": "build-storybook",
         "bootstrap:build": "node-sass ./src/resources/assets/styles/dist/bootstrap.scss ./src/resources/assets/styles/dist/bootstrap.css",
         "lint:js": "eslint .",
-        "lint:js-fix": "eslint . --fix"
+        "lint:js-fix": "eslint . --fix",
+        "lint:staged": "lint-staged",
+        "log": "git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblueby %an %Cgreen(%cr)%Creset'",
+        "cz": "git cz"
+    },
+    "lint-staged": {
+        "*.js": [
+            "yarn lint:js-fix",
+            "git add --force"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "validate-commit-msg",
+            "pre-commit": "yarn lint:staged"
+        }
     },
     "dependencies": {
         "@babel/preset-env": "^7.7.1",
@@ -73,6 +88,12 @@
         "eslint-plugin-jsx-a11y": "6.2.3",
         "eslint-plugin-prettier": "3.1.1",
         "eslint-plugin-react": "7.17.0",
-        "eslint-plugin-redux-saga": "1.1.1"
+        "eslint-plugin-redux-saga": "1.1.1",
+        "validate-commit-msg": "2.14.0",
+        "husky": "1.3.1",
+        "pre-commit": "1.2.2",
+        "lint-staged": "7.3.0",
+        "cz-conventional-changelog": "3.0.2",
+        "cz-customizable": "6.2.0"
     }
 }

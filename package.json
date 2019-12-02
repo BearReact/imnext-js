@@ -61,6 +61,7 @@
     "cross-env": "5.2.1",
     "flow-bin": "^0.112.0",
     "storybook-addon-i18n": "git+https://github.com/iFantasyReactNext/storybook-addon-i18n.git#master",
+    "prettier": "1.19.1",
     "babel-eslint": "10.0.3",
     "eslint": "6.7.2",
     "eslint-config-airbnb": "18.0.1",

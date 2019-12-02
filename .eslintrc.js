@@ -5,11 +5,13 @@ module.exports = {
     parser: 'babel-eslint',
     extends: [
         'airbnb',
+        'prettier',
+        'prettier/react',
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:flowtype/recommended'
     ],
-    plugins: ['redux-saga', 'react', 'jsx-a11y', 'flowtype'],
+    plugins: ['prettier', 'redux-saga', 'react', 'jsx-a11y', 'flowtype'],
     env: {
         jest: true,
         browser: true,
@@ -43,7 +45,6 @@ module.exports = {
         'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx']}],
         'react/no-danger': 'off',
         'react/prefer-stateless-function': 'off',
-        'react/jsx-props-no-spreading': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/anchor-is-valid': 'off',
         'jsx-a11y/label-has-for': 'off',
@@ -55,8 +56,18 @@ module.exports = {
         'import/no-named-as-default': 'off',
         'import/no-named-as-default-member': 'off',
         'react/jsx-key': 'error',
+        'react/state-in-constructor': 'off',
+        'react/static-property-placement': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'react/prop-types': 'off',
         'quotes': ['error', 'single'],
-        "flowtype/delimiter-dangle": ['error', 'always-multiline'],
+        'global-require': 'off',
+        'space-in-brackets': 'off',
+        'no-plusplus': 'off',
+        'flowtype/delimiter-dangle': ['error', 'always-multiline'],
+        'no-use-before-define': 'off',
+        'func-names': 'off',
+        'radix': ["error", "as-needed"]
     },
     settings: {
         'import/resolver': {
@@ -81,8 +92,5 @@ module.exports = {
         document: true,
         api: true,
         appVersion: true,
-        siteConfig: true,
-        envConfig: true,
-        iMoneyCode: true
     }
 };

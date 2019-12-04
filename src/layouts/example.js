@@ -4,11 +4,9 @@ import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import styled, {css} from 'styled-components';
-import get from 'lodash/get';
 import cx from 'classnames';
 import {i18n, withTranslation} from '@library/i18next/configureI18Next';
 import screen from '@themes/Screen';
-import ActiveLink from '@components/atoms/ActiveLink';
 
 type Props = {
     children?: React.Node,
@@ -72,8 +70,11 @@ const Layout = (props: Props) => {
                                     >
 
                                         <ul className="navbar-nav m-auto">
-                                            {menu.map(row => (
-                                                <NavItem className={cx({'active': pathname === row.href})} key={row.href}>
+                                            {menu.map((row) => (
+                                                <NavItem
+                                                    className={cx({active: pathname === row.href})}
+                                                    key={row.href}
+                                                >
                                                     <Link href={row.href}>
                                                         <a>{row.text}</a>
                                                     </Link>
@@ -126,20 +127,6 @@ Layout.getInitialProps = async () => ({
 
 export default withTranslation()(Layout);
 
-const HeaderHero = styled.div`
-    background-image: url('/static/images/example/header-bg.jpg');
-    position: relative;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    padding-top: 130px;
-
-    @media ${screen.lg} {
-        padding-top: 0;
-    }
-`;
 
 const NavbarArea = styled.div`
     position: absolute;
@@ -224,83 +211,6 @@ const MainBtn = styled.button`
     background-color: #f14836;
 `;
 
-const HeaderHeroContent = styled.div``;
-
-const HeroTitle = styled.h1`
-    font-size: 28px;
-
-    font-weight: 400;
-    color: #000;
-
-    b {
-        font-weight: 700;
-    }
-
-    span {
-        color: #f14836;
-        display: contents;
-    }
-
-    @media ${screen.lg} {
-        font-size: 60px;
-    }
-`;
-
-const HeroText = styled.p`
-    font-family: 'Nunito', sans-serif;
-    max-width: 490px;
-    font-size: 16px;
-
-    font-weight: 400;
-    line-height: 24px;
-    color: #798795;
-    margin-bottom: 50px;
-`;
-
-const HeroSignup = styled.div`
-    position: relative;
-    z-index: 9;
-
-    input {
-        width: 100%;
-        height: 56px;
-        border: 0;
-        border-radius: 50px;
-        padding: 0 30px;
-        background-color: #fff;
-        box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
-        margin-bottom: 10px;
-    }
-
-    @media ${screen.lg} {
-        input {
-            height: 70px;
-            font-size: 24px;
-        }
-    }
-`;
-
-const HeroSignupMainBtn = styled(MainBtn)`
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 56px;
-    line-height: 52px;
-
-    @media ${screen.lg} {
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        height: 64px;
-        line-height: 60px;
-        padding: 0 40px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        width: auto;
-        height: auto;
-    }
-`;
 
 const NavbarCollapse = styled.div`
     
@@ -314,7 +224,7 @@ const NavbarCollapse = styled.div`
     padding: 5px 12px;
        
     ${(props) => !props.isVisible
-        && css`
+    && css`
             display: none;
         `}
 
@@ -346,44 +256,4 @@ const Footer = styled.footer`
 const FooterCopyRight = styled.div`
     padding: 25px;
     border-top: 1px solid #dedede4f;
-`;
-
-const LanguageButton = styled.button`
-    line-height: 100%;
-    padding: 0;
-`;
-
-const Input = styled.input`
-    width: 100%;
-    border-radius: 7px;
-    background-color: #fff;
-    padding: 0 30px;
-    height: 65px;
-    border: 1px solid #dedede4f;
-    color: #222;
-    font-size: 18px;
-`;
-
-const Textarea = styled.textarea`
-    padding: 0 30px;
-    padding-top: 10px;
-    height: 270px;
-    resize: none;
-    width: 100%;
-    border-radius: 7px;
-    background-color: #fff;
-    border: 1px solid #dedede4f;
-    color: #222;
-    font-size: 18px;
-`;
-
-const Label = styled.label`
-    margin-bottom: 10px;
-    display: block;
-    font-size: 18px;
-    color: #222;
-`;
-
-const Message = styled.div`
-    color: #f14836;
 `;

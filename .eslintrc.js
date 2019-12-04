@@ -2,13 +2,11 @@ module.exports = {
     parser: 'babel-eslint',
     extends: [
         'airbnb',
-        'prettier',
-        'prettier/react',
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:flowtype/recommended'
     ],
-    plugins: ['prettier', 'redux-saga', 'react', 'jsx-a11y', 'flowtype'],
+    plugins: ['redux-saga', 'react', 'jsx-a11y', 'flowtype'],
     env: {
         jest: true,
         browser: true,
@@ -37,7 +35,7 @@ module.exports = {
         indent: ['error', 4, {SwitchCase: 1}],
         semi: 'error',
         'react/jsx-indent': [2, 4],
-        'react/jsx-indent-props': [2, 4],
+        'react/jsx-indent-props': ['error', 'first'],
         'react/jsx-tag-spacing': ['error', {closingSlash: 'never', beforeSelfClosing: 'never', afterOpening: 'never', beforeClosing: 'never'}],
         'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx']}],
         'react/no-danger': 'off',

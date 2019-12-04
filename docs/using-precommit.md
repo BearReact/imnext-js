@@ -38,3 +38,24 @@
     }
 }
 ```
+
+## ISSUE
+
+```zsh
+pre-commit: 
+pre-commit: We have nothing pre-commit hooks to run. Either you're missing the `scripts`
+pre-commit: in your `package.json` or have configured pre-commit to run nothing.
+pre-commit: Skipping the pre-commit hook.
+pre-commit: 
+```
+
+run
+
+```
+# clear
+$ git clean -xdf
+$ rm -rf .git/hooks/*
+
+# reinstall
+$ yarn
+```

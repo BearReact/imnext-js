@@ -1,37 +1,5 @@
 // @flow
 
-/*
-type i18n = {
-    changeLanguage: (lng: string, callback?: (error: any, t: {}) => void) => void,
-    t: (localeKey: string) => string,
-};
-type TransProps = {
-    children?: React.ReactNode,
-    components?: React.ReactNode[],
-    count?: number,
-    defaults?: string,
-    i18n?: i18n,
-    i18nKey?: string,
-    ns?: string | string[],
-    parent?: React.ReactNode,
-    tOptions?: {},
-    values?: {},
-    t?: i18n.t,
-};
-
-type I18NextInstance = {
-    Trans: (props: TransProps) => any,
-    // Link: Link
-    // Router: Router
-    // config: Config
-    i18n: i18n,
-    useTranslation: (ns?: string | string[], options?: { i18n: i18n }) => { i18n: i18n, t: i18n.t},
-    withTranslation: (ns?: string | string[], options?: { withRef?: boolean }) => void,
-    appWithTranslation: any,
-};
-
-*/
-
 declare module '@library/i18next/configureI18Next' {
     declare type TProps = (localeKey: string) => string;
     declare type I18nProps = {

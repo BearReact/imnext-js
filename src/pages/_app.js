@@ -48,4 +48,8 @@ class MyApp extends App {
     }
 }
 
-export default compose(withRedux(createStore), withReduxSaga, appWithTranslation)(MyApp);
+export default compose(
+    withRedux(createStore),
+    withReduxSaga,
+    appWithTranslation
+)(MyApp);

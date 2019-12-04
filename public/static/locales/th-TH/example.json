@@ -2,7 +2,8 @@
   "language": "ไทย",
   "menu": {
     "home": "บ้าน",
-    "contact": "ติดต่อ"
+    "contact": "ติดต่อ",
+    "news": "ข่าว"
   },
   "button": {
     "signUp": "ลงชื่อ",

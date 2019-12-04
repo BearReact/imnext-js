@@ -1,35 +1,36 @@
 // @flow
 import React from 'react';
-import {compose} from 'redux';
+import ErrorComponent from 'next/error';
 import {withTranslation} from '@library/i18next/configureI18Next';
 
 
 type Props = {
-    t: Function,
     statusCode?: string,
 };
 
 const Error = (props: Props) => {
-    const {statusCode, t} = props;
-    return (
-        <p>{statusCode ? t('error-with-status', {statusCode}) : t('error-without-status')}</p>
-    );
+    const {statusCode} = props;
+    if (statusCode) {
+        return <ErrorComponent statusCode={statusCode}/>;
+    }
+
+    return <div>Has error with status</div>;
 };
 
-Error.getInitialProps = async ({res, err}) => {
-    let statusCode = null;
-    if (res) {
-        ({statusCode} = res);
-    } else if (err) {
-        ({statusCode} = err);
-    }
-    return {
-        statusCode,
-    };
-};
 
 Error.defaultProps = {
     statusCode: null,
+};
+
+Error.getInitialProps = async ({res, err}) => {
+
+    // eslint-disable-next-line no-nested-ternary
+    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+
+    return {
+        namespacesRequired: ['common'],
+        statusCode,
+    };
 };
 
 export default withTranslation()(Error);

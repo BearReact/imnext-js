@@ -2,10 +2,13 @@
 
 import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 import styled, {css} from 'styled-components';
 import get from 'lodash/get';
+import cx from 'classnames';
 import {i18n, withTranslation} from '@library/i18next/configureI18Next';
 import screen from '@themes/Screen';
+import ActiveLink from '@components/atoms/ActiveLink';
 
 type Props = {
     children?: React.Node,
@@ -35,6 +38,14 @@ const Layout = (props: Props) => {
         }
     };
 
+    const {pathname} = useRouter();
+
+    const menu = [
+        {text: t('example:menu.home'), href: '/example'},
+        {text: t('example:menu.news'), href: '/example/news'},
+        {text: t('example:menu.contact'), href: '/example/contact'},
+    ];
+
     return (
         <div className="d-flex flex-column" style={{height: 'inherit'}}>
             <header className="col-auto" style={{height: 120}}>
@@ -59,18 +70,17 @@ const Layout = (props: Props) => {
                                         className="navbar-collapse sub-menu-bar collapse"
                                         isVisible={isVisibleNavbar}
                                     >
-                                        <ul className="navbar-nav m-auto">
-                                            <NavItem className="active">
-                                                <Link href="/example">
-                                                    <a>{t('example:menu.home')}</a>
-                                                </Link>
-                                            </NavItem>
 
-                                            <NavItem>
-                                                <Link href="/example/contact">
-                                                    <a>{t('example:menu.contact')}</a>
-                                                </Link>
-                                            </NavItem>
+                                        <ul className="navbar-nav m-auto">
+                                            {menu.map(row => (
+                                                <NavItem className={cx({'active': pathname === row.href})} key={row.href}>
+                                                    <Link href={row.href}>
+                                                        <a>{row.text}</a>
+                                                    </Link>
+                                                </NavItem>
+                                            ))}
+
+
                                         </ul>
                                     </NavbarCollapse>
 
@@ -157,11 +167,6 @@ const NavItem = styled.li`
         margin-left: 0;
     }
 
-    &.active > a,
-    :hover > a {
-        color: #f14836;
-    }
-
     a {
         font-size: 16px;
         font-weight: 900;
@@ -174,6 +179,13 @@ const NavItem = styled.li`
         display: block;
         padding: 4px 0;
     }
+    
+    &.active > a,
+    :hover > a {
+        color: #f14836;
+    }
+
+   
 
     @media ${screen.md} {
         a {

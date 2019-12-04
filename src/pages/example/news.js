@@ -44,16 +44,19 @@ const News = (props: Props) => {
                         <SectionTitle className="text-center">
                             <h6 className="sub-title">Our Blog</h6>
                             <h4 className="title">
-                                Letest <span>News.</span>
+                                Letest
+                                {' '}
+                                <span>News.</span>
                             </h4>
                         </SectionTitle>
                     </div>
                 </div>
                 <div className="row justify-content-center">
-                    {sourceData.map(row => (
+                    {sourceData.map((row) => (
                         <div
                             className="col-lg-8 col-md-12 col-sm-16"
-                            key={row.id}>
+                            key={row.id}
+                        >
                             <div className="single-blog mt-30">
                                 <div className="mb-2">
                                     <a href="blog-details.html">
@@ -98,7 +101,7 @@ News.getInitialProps = async () => ({
 export default withTranslation()(News);
 
 
-const Section =styled.div`
+const Section = styled.div`
     flex: 1 1 auto;
 `;
 
@@ -139,7 +142,7 @@ const AuthorPosted = styled.div`
 `;
 
 
-const  AuthorText = styled.div`
+const AuthorText = styled.div`
     font-size: 16px;
     font-weight: 600;
     margin-top: 5px;

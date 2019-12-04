@@ -16,10 +16,9 @@ const ActiveLink = (props) => {
     const child = Children.only(children);
     const childClassName = child.props.className || '';
 
-    const className =
-        pathname === otherProps.href
-            ? `${childClassName} ${activeClassName}`.trim()
-            : childClassName;
+    const className = pathname === otherProps.href
+        ? `${childClassName} ${activeClassName}`.trim()
+        : childClassName;
 
     return (
         <Link {...otherProps}>

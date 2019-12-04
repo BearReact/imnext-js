@@ -11,14 +11,13 @@
         "storybook:build": "build-storybook",
         "bootstrap:build": "node-sass ./src/resources/assets/styles/dist/bootstrap.scss ./src/resources/assets/styles/dist/bootstrap.css",
         "lint:js": "eslint .",
-        "lint:js-fix": "eslint . --fix",
         "lint:staged": "lint-staged",
         "log": "git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblueby %an %Cgreen(%cr)%Creset'",
         "cz": "git cz"
     },
     "lint-staged": {
         "*.js": [
-            "yarn lint:js-fix",
+            "yarn lint:js --fix",
             "git add --force"
         ]
     },

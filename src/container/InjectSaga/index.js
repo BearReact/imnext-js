@@ -69,7 +69,7 @@ const mapDispatchToProps = {
     fetchCurrent: pageAction.fetchCurrent,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     isOpenPanel: state.ui.isOpenPanel,
     isFetching: state.example.isFetching,
     currentData: state.example.currentData,

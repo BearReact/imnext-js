@@ -34,6 +34,6 @@ I18nProviderWrapper.defaultProps = {
 export default {
     provider: I18nProviderWrapper,
     providerProps: {providerProps},
-    supportedLocales: ['en-US', 'zh-CN', 'th-TH', 'vi-VN'],
+    supportedLocales: ['en-US', 'zh-CN'],
     providerLocaleKey: 'locale',
 };

@@ -53,7 +53,7 @@ export function intersectionMin(...obj) {
     let min = 0;
     let max = null;
 
-    obj.map((o) => {
+    obj.map(o => {
         min = !isEmpty(o[0], true) && o[0] > min ? o[0] : min;
         max = !isEmpty(o[1], true) && (o[1] < max || max === null) ? o[1] : max;
         return true;

@@ -44,7 +44,7 @@ export function routePath(path, prefix: string) {
  */
 export function serialize(obj: {} = {}) {
     const str = [];
-    Object.keys(obj).map((key) => {
+    Object.keys(obj).map(key => {
         const value = obj[key];
         str.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
         return true;
@@ -62,7 +62,7 @@ export function parseQueryString(val: string = '') {
     const obj = {};
 
     if (pairs[0] !== '') {
-        pairs.map((o) => {
+        pairs.map(o => {
             const p = o.split('=');
             obj[p[0]] = p[1];
             return true;

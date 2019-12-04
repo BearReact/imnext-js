@@ -17,7 +17,7 @@ import {useStore} from 'react-redux';
  *   access to store, you have access to injectReducer. That's the
  *   main goal, get access to the store object.
  */
-const injectReducerSaga = (key, injectStore) => (WrappedComponent) => {
+const injectReducerSaga = (key, injectStore) => WrappedComponent => {
     const Extended = (props, context) => {
         // Here's where we add the new reducer.
         // See initilizeStore for details on how this works.

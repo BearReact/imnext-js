@@ -6,7 +6,7 @@
  * @returns {string}
  */
 export function toCapitalize(str) {
-    return str.replace(/\b(\w)/g, ($1) => $1.toUpperCase());
+    return str.replace(/\b(\w)/g, $1 => $1.toUpperCase());
 }
 
 /**
@@ -16,10 +16,10 @@ export function toCapitalize(str) {
  */
 export function toLocaleUpCase(str) {
     // eslint-disable-next-line no-useless-escape
-    const result = str.replace(/\-(.*)/g, ($1) => $1.toUpperCase());
+    const result = str.replace(/\-(.*)/g, $1 => $1.toUpperCase());
 
     // eslint-disable-next-line no-useless-escape
-    return result.replace(/(.*)+\-/g, ($1) => $1.toLowerCase());
+    return result.replace(/(.*)+\-/g, $1 => $1.toLowerCase());
 }
 
 /**
@@ -29,7 +29,7 @@ export function toLocaleUpCase(str) {
  */
 export function RGBToHex(rgb) {
     const hexDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
-    const hex = (x) => (Number.isNaN(x) ? '00' : hexDigits[(x - (x % 16)) / 16] + hexDigits[x % 16]);
+    const hex = x => (Number.isNaN(x) ? '00' : hexDigits[(x - (x % 16)) / 16] + hexDigits[x % 16]);
     const tmp = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     return hex(tmp[1]) + hex(tmp[2]) + hex(tmp[3]);
 }

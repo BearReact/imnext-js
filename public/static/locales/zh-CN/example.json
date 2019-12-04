@@ -13,6 +13,11 @@
     "heroTitle": "<b>伺服器</b><span>渲染</span>",
     "heroText": "React 开箱即用, 已整合开发网站所需的第三方套件",
     "email": "信箱"
+  },
+  "pageNews": {
+    "title": "最新 <span>消息</span>",
+    "subTitle": "我们的博客",
+    "postedBy": "发表者"
   }
 }
 

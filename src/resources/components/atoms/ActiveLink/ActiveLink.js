@@ -10,7 +10,7 @@ type Props = {
     href: string,
 };
 
-const ActiveLink = (props) => {
+const ActiveLink = props => {
     const {children, activeClassName, ...otherProps} = props;
     const {pathname} = useRouter();
     const child = Children.only(children);

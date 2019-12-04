@@ -10,7 +10,7 @@ const nextConfig = {
         localeSubpaths: typeof process.env.LOCALE_SUBPATHS === 'string' ? process.env.LOCALE_SUBPATHS : 'none',
     },
 
-    webpack: (config) => {
+    webpack: config => {
         config.node = {
             fs: 'empty',
         };

@@ -28,10 +28,10 @@ export const INITIAL_STATE = Immutable({
  Selectors
  /** --------------------------------------*/
 export const Selectors = {
-    token: (state) => state[PREFIX].token,
-    isAuth: (state) => state[PREFIX].isAuth,
-    agentFinanceLivechatUrl: (state) => state[PREFIX].agentFinanceLivechatUrl,
-    agentCustomerLivechatUrl: (state) => state[PREFIX].agentCustomerLivechatUrl,
+    token: state => state[PREFIX].token,
+    isAuth: state => state[PREFIX].isAuth,
+    agentFinanceLivechatUrl: state => state[PREFIX].agentFinanceLivechatUrl,
+    agentCustomerLivechatUrl: state => state[PREFIX].agentCustomerLivechatUrl,
 };
 
 /** -----------------------------------------

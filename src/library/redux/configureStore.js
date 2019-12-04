@@ -5,7 +5,7 @@ import Immutable from 'seamless-immutable';
 import createReducer from './reducers';
 import rootSaga from './store/rootSaga';
 
-export default (initialState) => {
+export default initialState => {
     const sagaMiddleware = createSagaMiddleware();
 
     const middlewares = [sagaMiddleware];
@@ -40,7 +40,7 @@ export default (initialState) => {
     // rootSaga is a your root saga for static saagas
     store.injectSaga = (key, saga) => {
         // Create a dictionary to keep track of injected sagas
-        const isInjected = (checkKey) => typeof store.asyncSagas[checkKey] !== 'undefined';
+        const isInjected = checkKey => typeof store.asyncSagas[checkKey] !== 'undefined';
 
         // We won't run saga if it is already injected
         if (isInjected(key)) return;

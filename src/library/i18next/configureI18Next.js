@@ -6,7 +6,7 @@ const NextI18Next = require('next-i18next').default;
 
 const I18Next = new NextI18Next({
     defaultLanguage: 'en-US',
-    otherLanguages: ['en-US', 'zh-CN', 'th-TH', 'vi-VN'],
+    otherLanguages: ['en-US', 'zh-CN'],
     cleanCode: true,
     localePath: typeof window === 'undefined' ? 'public/static/locales' : 'static/locales',
     // localeSubpaths,

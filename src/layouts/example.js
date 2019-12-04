@@ -15,7 +15,7 @@ type Props = {
 
 const Layout = (props: Props) => {
     const {children, t} = props;
-    const [isVisibleNavbar, setVisibleNavbar] = useState(false);
+    const [isVisibleNavBar, setVisibleNavbar] = useState(false);
 
     const changeLocale = () => {
         switch (i18n.language) {
@@ -23,12 +23,6 @@ const Layout = (props: Props) => {
                 i18n.changeLanguage('zh-CN');
                 break;
             case 'zh-CN':
-                i18n.changeLanguage('vi-VN');
-                break;
-            case 'vi-VN':
-                i18n.changeLanguage('th-TH');
-                break;
-            case 'th-TH':
                 i18n.changeLanguage('en-US');
                 break;
             default:
@@ -57,9 +51,9 @@ const Layout = (props: Props) => {
                         </div>
 
                         {/* MENU */}
-                        <NavCol className="col-md" isVisible={isVisibleNavbar}>
+                        <NavCol className="col-md" isVisible={isVisibleNavBar}>
                             <nav className="navbar navbar-expand-md p-0">
-                                <NavbarCollapse className="navbar-collapse sub-menu-bar collapse">
+                                <NavBarCollapse className="navbar-collapse sub-menu-bar collapse">
                                     <ul className="navbar-nav m-auto row">
                                         {menu.map(row => (
                                             <NavItem
@@ -72,7 +66,7 @@ const Layout = (props: Props) => {
                                             </NavItem>
                                         ))}
                                     </ul>
-                                </NavbarCollapse>
+                                </NavBarCollapse>
                             </nav>
                         </NavCol>
 
@@ -88,7 +82,7 @@ const Layout = (props: Props) => {
                             <button
                                 className="navbar-toggler"
                                 type="button"
-                                onClick={() => setVisibleNavbar(!isVisibleNavbar)}
+                                onClick={() => setVisibleNavbar(!isVisibleNavBar)}
                             >
                                 {t('example:button.menu')}
                             </button>
@@ -142,8 +136,13 @@ const Footer = styled.footer`
 `;
 
 const FooterCopyRight = styled.div`
-    padding: 25px;
+    padding: 20px 0 10px 0;
     border-top: 1px solid #dedede4f;
+    color: #798795;
+    
+    a{
+        color: #f14836;
+    }
 `;
 
 const NavItem = styled.li`
@@ -169,7 +168,7 @@ const NavItem = styled.li`
 `;
 
 
-const NavbarCollapse = styled.div`
+const NavBarCollapse = styled.div`
     display: none;
    
     width: 100%;
@@ -192,7 +191,7 @@ const NavCol = styled.div`
     top: 45px;
 
     ${props => props.isVisible && css`
-        ${NavbarCollapse}{
+        ${NavBarCollapse}{
             display: block;
         }
     `}

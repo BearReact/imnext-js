@@ -16,7 +16,7 @@ export const INITIAL_STATE = Immutable({
  Selectors
  /** --------------------------------------*/
 export const Selectors = {
-    queryParam: (state) => state[PREFIX].queryParam,
+    queryParam: state => state[PREFIX].queryParam,
 };
 
 /** -----------------------------------------

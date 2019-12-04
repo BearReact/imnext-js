@@ -20,7 +20,7 @@ export const INITIAL_STATE = Immutable({
  Selectors
  /** --------------------------------------*/
 export const Selectors = {
-    isReady: (state) => state[PREFIX].isReady,
+    isReady: state => state[PREFIX].isReady,
 };
 
 /** -----------------------------------------

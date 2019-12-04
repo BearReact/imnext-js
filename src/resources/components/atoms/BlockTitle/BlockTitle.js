@@ -37,7 +37,7 @@ BlockTitle.defaultProps = {
 export default withTranslation(['common'])(BlockTitle);
 
 const BlockTitleRoot = styled.div`
-    color: ${(props) => props.theme.listTitleColor};
+    color: ${props => props.theme.listTitleColor};
     padding: ${px2vw(20)} ${px2vw(10)} ${px2vw(10)};
     line-height: ${px2vw(17)};
 

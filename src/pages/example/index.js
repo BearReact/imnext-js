@@ -13,18 +13,16 @@ type Props = {
 const Example = (props: Props) => {
     const {t} = props;
     return (
-        <HeaderHero className="d-lg-flex align-items-center">
+        <HeaderHero className="d-lg-flex">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-14">
-                        <HeaderHeroContent>
-                            <HeroTitle dangerouslySetInnerHTML={{__html: t('example:pageHome.heroTitle')}}/>
-                            <HeroText className="text">{t('example:pageHome.heroText')}</HeroText>
-                            <HeroSignup>
-                                <input type="text" placeholder={t('example:pageHome.email')}/>
-                                <HeroSignupMainBtn as="button">{t('example:button.signUp')}</HeroSignupMainBtn>
-                            </HeroSignup>
-                        </HeaderHeroContent>
+                        <HeroTitle dangerouslySetInnerHTML={{__html: t('example:pageHome.heroTitle')}}/>
+                        <HeroText className="text">{t('example:pageHome.heroText')}</HeroText>
+                        <HeroSignUp>
+                            <input type="text" placeholder={t('example:pageHome.email')}/>
+                            <Button as="button" className="btn btn-block">{t('example:button.signUp')}</Button>
+                        </HeroSignUp>
                     </div>
                 </div>
             </div>
@@ -41,43 +39,46 @@ export default withTranslation()(Example);
 
 const HeaderHero = styled.div`
     background-image: url('/static/images/example/header-bg.jpg');
-    position: relative;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
-    padding-top: 130px;
-    margin-top: -120px;
+    padding-top: 50px;
 
     @media ${screen.lg} {
-        padding-top: 0;
+        padding-top: 150px;
     }
 `;
 
-const MainBtn = styled.button`
-    display: inline-block;
+const Button = styled.button`
     font-weight: 700;
-    font-family: 'Nunito', sans-serif;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-
-    user-select: none;
     border: 2px solid #f14836;
-    padding: 0 30px;
-    font-size: 16px;
-    height: 55px;
-    line-height: 51px;
     border-radius: 50px;
     color: #fff;
-    cursor: pointer;
-    z-index: 5;
-    transition: all 0.4s ease-out 0s;
     background-color: #f14836;
+    font-size: 14px;
+    padding: 10px 25px;
+    
+    :hover{
+        color: #f14836;
+        background-color: #e7e7e7;
+    }
+
+    @media ${screen.lg} {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        height: 64px;
+        line-height: 60px;
+        padding: 0 40px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        width: auto;
+        height: auto;
+    }
 `;
 
-const HeaderHeroContent = styled.div``;
 
 const HeroTitle = styled.h1`
     font-size: 28px;
@@ -110,7 +111,7 @@ const HeroText = styled.p`
     margin-bottom: 50px;
 `;
 
-const HeroSignup = styled.div`
+const HeroSignUp = styled.div`
     position: relative;
     z-index: 9;
 
@@ -121,7 +122,7 @@ const HeroSignup = styled.div`
         border-radius: 50px;
         padding: 0 30px;
         background-color: #fff;
-        box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.05);
         margin-bottom: 10px;
     }
 
@@ -130,27 +131,5 @@ const HeroSignup = styled.div`
             height: 70px;
             font-size: 24px;
         }
-    }
-`;
-
-const HeroSignupMainBtn = styled(MainBtn)`
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 56px;
-    line-height: 52px;
-
-    @media ${screen.lg} {
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        height: 64px;
-        line-height: 60px;
-        padding: 0 40px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        width: auto;
-        height: auto;
     }
 `;

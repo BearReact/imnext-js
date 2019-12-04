@@ -62,7 +62,8 @@ module.exports = {
         'flowtype/delimiter-dangle': ['error', 'always-multiline'],
         'no-use-before-define': 'off',
         'func-names': 'off',
-        'radix': ["error", "as-needed"]
+        'radix': ['error', 'as-needed'],
+        'arrow-parens': ['error', 'as-needed'],
     },
     settings: {
         'import/resolver': {

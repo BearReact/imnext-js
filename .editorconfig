@@ -12,3 +12,12 @@ trim_trailing_whitespace = true
 
 [*.md]
 trim_trailing_whitespace = false
+
+[*.less]
+indent_size = 4
+
+[*.scss]
+indent_size = 4
+
+[*.css]
+indent_size = 4

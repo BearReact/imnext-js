@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import {object} from 'prop-types';
 import {useStore} from 'react-redux';
 
 /**
@@ -36,7 +37,8 @@ const injectReducerSaga = (key, injectStore) => WrappedComponent => {
     // To use context, you must define contextTypes
     // https://reactjs.org/docs/context.html
     Extended.contextTypes = {
-        store: {},
+        // eslint-disable-next-line react/forbid-prop-types
+        store: object,
     };
 
     return Extended;

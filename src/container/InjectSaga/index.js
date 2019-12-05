@@ -1,14 +1,8 @@
 // @flow
 
 import * as React from 'react';
-
-import {connect} from 'react-redux';
-import {compose} from 'redux';
 import Link from 'next/link';
 
-import uiAction from '@library/redux/store/Ui/Reducer';
-import injectReducerSaga from '@library/redux/utils/injectReducerSaga';
-import pageAction, {reducer, saga} from './store';
 
 type Props = {
     isFetching?: boolean,
@@ -64,18 +58,5 @@ WithInjectSaga.defaultProps = {
     isFetching: false,
 };
 
-const mapDispatchToProps = {
-    handleTogglePanel: uiAction.handleTogglePanel,
-    fetchCurrent: pageAction.fetchCurrent,
-};
 
-const mapStateToProps = state => ({
-    isOpenPanel: state.ui.isOpenPanel,
-    isFetching: state.example.isFetching,
-    currentData: state.example.currentData,
-});
-
-export default compose(
-    injectReducerSaga('example', {reducer, saga}),
-    connect(mapStateToProps, mapDispatchToProps)
-)(WithInjectSaga);
+export default WithInjectSaga;

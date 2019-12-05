@@ -2,8 +2,12 @@ import {applyMiddleware, compose, createStore} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import Immutable from 'seamless-immutable';
 
+import {isEmpty} from '@utils/equal';
+import {i18n} from '@library/i18next/configureI18Next';
+import apiService from '@services';
 import createReducer from './reducers';
 import rootSaga from './store/rootSaga';
+import {Selectors} from './store/Auth/Reducer';
 
 export default initialState => {
     const sagaMiddleware = createSagaMiddleware();
@@ -52,6 +56,49 @@ export default initialState => {
         // Save the task if we want to cancel it in the future
         store.asyncSagas[key] = key;
     };
+
+
+    // =========== API Setting ================
+    // 回應攔截處理
+    apiService.addResponseTransform(response => {
+        if (response.ok) {
+            const {headers} = response;
+
+            /** 請求成功, 額外處理區塊 */
+            if (headers.Authentication) {
+                // 設定認證
+                // store.dispatch(AuthAction.setToken(response.data.token));
+            }
+        } else {
+            /** 請求失敗, 額外處理區塊 */
+            const {status, problem, config} = response;
+
+            if (!isEmpty(status)) {
+                throw new Error(i18n.t(`common:httpError.${status}`));
+
+            } else if (problem === 'NETWORK_ERROR') {
+                throw new Error(i18n.t('common:httpError.networkError'));
+
+            } else if (problem === 'TIMEOUT_ERROR') {
+                throw new Error(i18n.t('common:httpError.timeoutError', {sec: (config.timeout / 1000)}));
+
+            }
+        }
+        return response;
+    });
+
+    // 請求攔截處理
+    apiService.addRequestTransform(request => {
+        const token = Selectors.token(store.getState());
+
+        // 語系設定
+        request.headers['Accept-Language'] = i18n.language;
+
+        if (token) {
+            // 設定授權
+            request.headers.Authorization = `Bearer ${token}`;
+        }
+    });
 
     return store;
 };

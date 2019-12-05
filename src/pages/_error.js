@@ -3,7 +3,6 @@ import React from 'react';
 import ErrorComponent from 'next/error';
 import {withTranslation} from '@library/i18next/configureI18Next';
 
-
 type Props = {
     statusCode?: string,
 };
@@ -16,7 +15,6 @@ const Error = (props: Props) => {
 
     return <div>Has error with status</div>;
 };
-
 
 Error.defaultProps = {
     statusCode: null,

@@ -3,6 +3,7 @@ const next = require('next');
 const nextI18NextMiddleware = require('next-i18next/middleware').default;
 
 const nextI18next = require('../library/i18next/configureI18Next');
+const route = require('./router');
 
 const port = process.env.PORT || 3000;
 const app = next({dev: process.env.NODE_ENV !== 'production'});
@@ -13,6 +14,9 @@ const handle = app.getRequestHandler();
     const server = express();
 
     server.use(nextI18NextMiddleware(nextI18next));
+
+    // Routes
+    server.use(route);
 
     server.get('*', (req, res) => handle(req, res));
 

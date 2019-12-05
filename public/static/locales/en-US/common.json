@@ -8,5 +8,12 @@
   "test": "test123",
   "message": {
     "404": "dsasdad"
+  },
+  "httpError": {
+    "401": "Please login before continuing",
+    "404": "Request Not Found/Route",
+    "504": "Please check your network and try again",
+    "networkError": "Your mobile network connection is unstable. Please check your network connection status and try again.",
+    "timeoutError": "The server has not responded for more than {{sec}} seconds. Please confirm your network connection status or contact customer service."
   }
 }

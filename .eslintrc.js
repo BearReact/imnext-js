@@ -6,7 +6,7 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:flowtype/recommended'
     ],
-    plugins: ['redux-saga', 'react', 'jsx-a11y', 'flowtype'],
+    plugins: ['redux-saga', 'react', 'react-hooks', 'jsx-a11y', 'flowtype'],
     env: {
         jest: true,
         browser: true,
@@ -55,6 +55,8 @@ module.exports = {
         'react/static-property-placement': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/prop-types': 'off',
+        "react-hooks/rules-of-hooks": 'error',
+        "react-hooks/exhaustive-deps": 'off',
         'quotes': ['error', 'single'],
         'global-require': 'off',
         'space-in-brackets': 'off',
@@ -64,6 +66,9 @@ module.exports = {
         'func-names': 'off',
         'radix': ['error', 'as-needed'],
         'arrow-parens': ['error', 'as-needed'],
+        'no-trailing-spaces': ['error', { 'ignoreComments': true, 'skipBlankLines': true }],
+        'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 1 }],
+        'padded-blocks': 'off',
     },
     settings: {
         'import/resolver': {

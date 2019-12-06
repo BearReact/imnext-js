@@ -8,6 +8,10 @@ const exampleResponseData = {
     data: {},
 };
 
+function wait(ms) {
+    return new Promise(r => setTimeout(r, ms));
+}
+
 /**
  * 取得最新消息明細
  */
@@ -36,6 +40,7 @@ router.get('/api/news', async (req, res) => {
  * 送出聯絡我們表單
  */
 router.post('/api/contact', async (req, res) => {
+    await wait(2000);
     const responseData = Object.assign(exampleResponseData, {
         message: 'We have received your message and will contact you as soon as possible',
     });

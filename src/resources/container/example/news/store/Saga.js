@@ -1,7 +1,6 @@
 import {
-    call, put, takeLatest, delay,
+    call, put, takeLatest, delay, race, all,
 } from 'redux-saga/effects';
-import dayjs from 'dayjs';
 import ApiService from '@services/News';
 import Actions, {Types} from './Reducer';
 
@@ -13,10 +12,13 @@ export function* fetchPaginate(payload) {
     try {
         yield put(Actions.fetchPaginateBegin());
 
-        const response = yield call(ApiService.getNewsList);
+        // 避免 API回傳時間過短, 會讓Loading畫面快速閃過
+        // 故將時間設定回傳時間至少2秒
+        const [response, nonTime] = yield all([
+            call(ApiService.getNewsList),
+            delay(1200),
+        ]);
         const {data: responseData} = response;
-
-        yield delay(2000);
 
         yield put(Actions.fetchPaginateSuccess(responseData.data.rows));
 
@@ -37,7 +39,7 @@ export function* fetchCurrent(payload) {
         const response = yield call(ApiService.getNewsDetail, id);
         const {data: responseData} = response;
 
-        yield delay(2000);
+        yield delay(1000);
 
         yield put(Actions.fetchCurrentSuccess(responseData.data));
 

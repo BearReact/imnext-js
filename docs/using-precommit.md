@@ -58,4 +58,5 @@ $ rm -rf .git/hooks/*
 
 # reinstall
 $ yarn
+$ cp .env.develop .env
 ```

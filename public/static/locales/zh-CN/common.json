@@ -1,19 +1,18 @@
 {
-  "title": "下一個JS 多語系",
-  "change-locale": "語系切換-中文",
-  "h1": "Ein einfaches Beispiel",
-  "to-second-page": "Zur zweiten Seite",
-  "error-with-status": "Auf dem Server ist ein Fehler ({{statusCode}}) aufgetreten",
-  "error-without-status": "Auf dem Server ist ein Fehler aufgetreten",
-  "test": "測試aaaa",
-  "error": {
-    "msg": "aasdsd"
+  "errorForm": {
+    "require": "{{name}}必须填写",
+    "tooShortString": "不可小于{{length}}个字元",
+    "tooLongString": "不可大于{{length}}个字元",
+    "tooShortNumber": "不可小于{{length}}",
+    "tooLongNumber": "不可大于{{length}}",
+    "tooRange": "{{name}}须介于{{min}}-{{max}}",
+    "invalid": "请符合{{name}}的正确格式"
   },
-  "httpError": {
+  "errorHttp": {
     "401": "请进行登入后再继续操作",
     "404": "請求找不到路徑/路由",
     "504": "请检查您的网路，并再尝试一次",
     "networkError": "您的行动网路连线不稳定，请检查您的网路连线状态后再尝试一次",
-    "timeoutError": "伺服器逾时超出{sec}秒无回应，请确认您的网路连线状态或与客服联系"
+    "timeoutError": "伺服器逾时超出{{sec}}秒无回应，请确认您的网路连线状态或与客服联系"
   }
 }

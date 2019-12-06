@@ -1,15 +1,14 @@
 {
-  "title": "Nextjs I18Next",
-  "change-locale": "Change Language 英文",
-  "h1": "Ein einfaches Beispiel",
-  "to-second-page": "Zur zweiten Seite",
-  "error-with-status": "Auf dem Server ist ein Fehler ({{statusCode}}) aufgetreten",
-  "error-without-status": "Auf dem Server ist ein Fehler aufgetreten",
-  "test": "test123",
-  "message": {
-    "404": "dsasdad"
+  "errorForm": {
+    "tooShortString": "Not less than {{length}}",
+    "tooLongString": "Not greater than {{length}}",
+    "tooShortNumber": "Not less than {{length}}",
+    "tooLongNumber": "Not greater than {{length}}",
+    "tooRange": "The {{name}} must be between {{min}}-{{max}}",
+    "require": "The {{name}} not be between required",
+    "invalid": "Please match the correct format of the {{name}}"
   },
-  "httpError": {
+  "errorHttp": {
     "401": "Please login before continuing",
     "404": "Request Not Found/Route",
     "504": "Please check your network and try again",

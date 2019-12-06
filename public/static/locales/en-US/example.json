@@ -20,5 +20,20 @@
     "subTitle": "OUR BLOG",
     "postedBy": "Posted By",
     "categories": "categories"
+  },
+  "pageContact": {
+    "title": "Get In <span>Touch.</span>",
+    "subTitle": "OUR CONTACT",
+    "placeholder": {
+      "name": "Enter Your Name",
+      "email": "Enter Your Email",
+      "message": "Enter Your Message..."
+    },
+    "label" : {
+      "name": "Full Name",
+      "email": "Email",
+      "message": "Message"
+    },
+    "sendNow": "Send Now"
   }
 }

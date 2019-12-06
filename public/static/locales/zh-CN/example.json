@@ -20,6 +20,21 @@
     "subTitle": "我们的博客",
     "postedBy": "发表者",
     "categories": "分类"
+  },
+  "pageContact": {
+    "title": "进来 <span>告诉我们.</span>",
+    "subTitle": "我们的联系方式",
+    "placeholder": {
+      "name": "输入你的名字",
+      "email": "输入你的电子邮箱",
+      "message": "输入您的留言..."
+    },
+    "label" : {
+      "name": "全名",
+      "email": "电子邮件",
+      "message": "信息"
+    },
+    "sendNow": "现在发送"
   }
 }
 

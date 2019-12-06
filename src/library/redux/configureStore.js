@@ -73,13 +73,13 @@ export default initialState => {
             const {status, problem, config} = response;
 
             if (!isEmpty(status)) {
-                throw new Error(i18n.t(`common:httpError.${status}`));
+                throw new Error(i18n.t(`common:errorHttp.${status}`));
 
             } else if (problem === 'NETWORK_ERROR') {
-                throw new Error(i18n.t('common:httpError.networkError'));
+                throw new Error(i18n.t('common:errorHttp.networkError'));
 
             } else if (problem === 'TIMEOUT_ERROR') {
-                throw new Error(i18n.t('common:httpError.timeoutError', {sec: (config.timeout / 1000)}));
+                throw new Error(i18n.t('common:errorHttp.timeoutError', {sec: (config.timeout / 1000)}));
 
             }
         }

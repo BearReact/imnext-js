@@ -34,6 +34,7 @@
       "email": "Email",
       "message": "Message"
     },
-    "sendNow": "Send Now"
+    "sendNow": "Send Now",
+    "successMessage": "We have received your message and will contact you as soon as possible"
   }
 }

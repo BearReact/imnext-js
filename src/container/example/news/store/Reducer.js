@@ -10,7 +10,7 @@ export const INITIAL_STATE = Immutable({
     isFetching: false,
     message: '',
     paginateData: [],
-    currentData: undefined,
+    currentData: null,
 });
 
 /** -----------------------------------------
@@ -73,6 +73,7 @@ const Reducers = {
         begin(state) {
             return state.merge({
                 isFetching: true,
+                currentData: null,
             });
         },
         success(state, action) {

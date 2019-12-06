@@ -32,4 +32,15 @@ router.get('/api/news', async (req, res) => {
     res.status(200).json(responseData);
 });
 
+/**
+ * 送出聯絡我們表單
+ */
+router.post('/api/contact', async (req, res) => {
+    const responseData = Object.assign(exampleResponseData, {
+        message: 'We have received your message and will contact you as soon as possible',
+    });
+
+    res.status(200).json(responseData);
+});
+
 module.exports = router;

@@ -9,7 +9,7 @@ import {compose} from 'redux';
 
 import injectReducerSaga from '@library/redux/utils/injectReducerSaga';
 import screen from '@themes/Screen';
-import {isEmpty} from '@utils/equal';
+import LoaderContainer from '@components/organisms/LoaderContainer';
 import pageAction, {reducer, saga} from '../store';
 
 type Props = {
@@ -36,7 +36,7 @@ const List = (props: Props) => {
 
     return (
         <Section>
-            <div className="container">
+            <LoaderContainer className="container" isLoading={isFetching}>
 
                 {/* 標題 */}
                 <div className="row justify-content-center mb-4">
@@ -93,7 +93,7 @@ const List = (props: Props) => {
                     </div>
                 </div>
 
-            </div>
+            </LoaderContainer>
         </Section>
     );
 };

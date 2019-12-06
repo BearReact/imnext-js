@@ -34,7 +34,8 @@
       "email": "电子邮件",
       "message": "信息"
     },
-    "sendNow": "现在发送"
+    "sendNow": "现在发送",
+    "successMessage": "我们已收到您的讯息了, 将会尽速与您联络"
   }
 }
 

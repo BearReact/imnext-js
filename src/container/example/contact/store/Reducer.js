@@ -1,15 +1,14 @@
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 
-const PREFIX = 'example';
+const PREFIX = 'contact';
 
 /** -----------------------------------------
  Initial State
  /** ---------------------------------------*/
 export const INITIAL_STATE = Immutable({
-    isFetching: false,
+    isSubmitting: false,
     message: '',
-    currentData: undefined,
 });
 
 /** -----------------------------------------
@@ -24,11 +23,11 @@ export const Selectors = {
  /** ---------------------------------------*/
 export const {Types, Creators} = createActions(
     {
-        // 取明細
-        fetchCurrent: ['id'],
-        fetchCurrentBegin: null,
-        fetchCurrentSuccess: ['data'],
-        fetchCurrentFail: ['message'],
+        // 送出表單
+        submitForm: ['data'],
+        submitFormBegin: null,
+        submitFormSuccess: ['message'],
+        submitFormFail: ['message'],
     },
     {prefix: `${PREFIX}/`}
 );
@@ -40,23 +39,22 @@ export default Creators;
  /** ---------------------------------------*/
 
 const Reducers = {
-    // 查明細
-    FetchCurrent: {
+    // 查詢列表
+    submitForm: {
         begin(state) {
             return state.merge({
-                isFetching: true,
+                isSubmitting: true,
             });
         },
         success(state, action) {
             return state.merge({
-                isFetching: false,
-                currentData: action.data,
+                isSubmitting: false,
                 message: null,
             });
         },
         fail(state, action) {
             return state.merge({
-                isFetching: false,
+                isSubmitting: false,
                 message: action.message,
             });
         },
@@ -67,7 +65,7 @@ const Reducers = {
  Hookup Reducers To Types (注意更改 Types, Saga對應必須同步更改)
  /** -------------------------------------------------------------*/
 export const reducer = createReducer(INITIAL_STATE, {
-    [Types.FETCH_CURRENT_BEGIN]: Reducers.FetchCurrent.begin,
-    [Types.FETCH_CURRENT_SUCCESS]: Reducers.FetchCurrent.success,
-    [Types.FETCH_CURRENT_FAIL]: Reducers.FetchCurrent.fail,
+    [Types.SUBMIT_FORM_BEGIN]: Reducers.submitForm.begin,
+    [Types.SUBMIT_FORM_SUCCESS]: Reducers.submitForm.success,
+    [Types.SUBMIT_FORM_FAIL]: Reducers.submitForm.fail,
 });

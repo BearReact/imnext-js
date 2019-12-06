@@ -3,6 +3,7 @@
 import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
+import get from 'lodash/get';
 import styled, {css} from 'styled-components';
 import cx from 'classnames';
 import {i18n, withTranslation} from '@library/i18next/configureI18Next';
@@ -33,7 +34,7 @@ const Layout = (props: Props) => {
     const {pathname} = useRouter();
 
     const menu = [
-        {text: t('example:menu.home'), href: '/example'},
+        {text: t('example:menu.home'), href: '/example', isHome: true},
         {text: t('example:menu.news'), href: '/example/news'},
         {text: t('example:menu.contact'), href: '/example/contact'},
     ];
@@ -57,7 +58,10 @@ const Layout = (props: Props) => {
                                     <ul className="navbar-nav m-auto row">
                                         {menu.map(row => (
                                             <NavItem
-                                                className={cx('col-auto', {active: pathname === row.href})}
+                                                className={cx('col-auto', {
+                                                    active: (pathname === row.href)
+                                                        || (get(row, 'isHome', false) === false && pathname.indexOf(row.href) === 0),
+                                                })}
                                                 key={row.href}
                                             >
                                                 <Link href={row.href}>

@@ -9,6 +9,7 @@ import Link from 'next/link';
 import injectReducerSaga from '@library/redux/utils/injectReducerSaga';
 import screen from '@themes/Screen';
 import {isEmpty} from '@utils/equal';
+import LoaderContainer from '@components/organisms/LoaderContainer';
 import pageAction, {reducer, saga} from '../store';
 
 type Props = {
@@ -37,7 +38,8 @@ const List = (props: Props) => {
 
     return (
         <Section>
-            <div className="container">
+
+            <LoaderContainer className="container" isLoading={isFetching}>
 
                 {/* 標題 */}
                 <div className="row justify-content-center mb-4">
@@ -55,14 +57,15 @@ const List = (props: Props) => {
                             className="col-lg-8 col-md-12 col-sm-16 mb-5"
                             key={row.id}
                         >
-                            <Link href={`/example/news/${row.id}`}>
+                            <Link href="/example/news/[id]" as={`/example/news/${row.id}`}>
                                 <a>
                                     <Thumb src={row.thumb} alt="news" className="mb-4"/>
                                 </a>
                             </Link>
                             <div>
                                 <Title className="mb-3">
-                                    <Link href={`/example/news/${row.id}`}>
+
+                                    <Link href="/example/news/[id]" as={`/example/news/${row.id}`}>
                                         <a>
                                             {row.title}
                                         </a>
@@ -81,7 +84,7 @@ const List = (props: Props) => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </LoaderContainer>
         </Section>
     );
 };

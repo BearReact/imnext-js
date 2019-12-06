@@ -16,6 +16,8 @@ export function* fetchPaginate(payload) {
         const response = yield call(ApiService.getNewsList);
         const {data: responseData} = response;
 
+        yield delay(2000);
+
         yield put(Actions.fetchPaginateSuccess(responseData.data.rows));
 
     } catch (e) {
@@ -34,6 +36,8 @@ export function* fetchCurrent(payload) {
 
         const response = yield call(ApiService.getNewsDetail, id);
         const {data: responseData} = response;
+
+        yield delay(2000);
 
         yield put(Actions.fetchCurrentSuccess(responseData.data));
 

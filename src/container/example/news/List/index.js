@@ -55,14 +55,18 @@ const List = (props: Props) => {
                             className="col-lg-8 col-md-12 col-sm-16 mb-5"
                             key={row.id}
                         >
-                            <a href="blog-details.html">
-                                <Thumb src={row.thumb} alt="news" className="mb-4"/>
-                            </a>
+                            <Link href={`/example/news/${row.id}`}>
+                                <a>
+                                    <Thumb src={row.thumb} alt="news" className="mb-4"/>
+                                </a>
+                            </Link>
                             <div>
                                 <Title className="mb-3">
-                                    <a href="blog-details.html">
-                                        {row.title}
-                                    </a>
+                                    <Link href={`/example/news/${row.id}`}>
+                                        <a>
+                                            {row.title}
+                                        </a>
+                                    </Link>
                                 </Title>
                                 <div className="blog-author d-flex align-items-center">
                                     <div className="pr-4">

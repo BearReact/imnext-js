@@ -22,7 +22,6 @@ const SignupSchema = Yup.object().shape({
         .required('Email Required'),
 });
 
-
 type Props = {
     t: (localeKey: string) => string,
 };

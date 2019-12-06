@@ -3,7 +3,6 @@
 import * as React from 'react';
 import Link from 'next/link';
 
-
 type Props = {
     isFetching?: boolean,
     currentData: boolean,
@@ -57,6 +56,5 @@ const WithInjectSaga = (props: Props) => {
 WithInjectSaga.defaultProps = {
     isFetching: false,
 };
-
 
 export default WithInjectSaga;

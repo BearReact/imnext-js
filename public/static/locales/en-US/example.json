@@ -7,7 +7,8 @@
   },
   "button": {
     "signUp": "SIGN UP",
-    "menu": "MENU"
+    "menu": "MENU",
+    "back": "BACK"
   },
   "pageHome": {
     "heroTitle": "<b>Server </b> <span>Side </span><b>Render </b>",
@@ -17,6 +18,7 @@
   "pageNews": {
     "title": "Latest <span>News.</span>",
     "subTitle": "OUR BLOG",
-    "postedBy": "Posted By"
+    "postedBy": "Posted By",
+    "categories": "categories"
   }
 }

@@ -5,7 +5,6 @@ import {withTranslation} from '@library/i18next/configureI18Next';
 import screen from '@themes/Screen';
 import Layout from '@layouts/example';
 
-
 type Props = {
     t: (localeKey: string) => string,
 };
@@ -78,7 +77,6 @@ const Button = styled.button`
         height: auto;
     }
 `;
-
 
 const HeroTitle = styled.h1`
     font-size: 28px;

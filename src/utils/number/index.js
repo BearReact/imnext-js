@@ -1,7 +1,6 @@
 // @flow
 import {isEmpty} from '@utils/equal';
 
-
 /**
  * 保留小數第二位
  * @returns {string}
@@ -24,7 +23,6 @@ export function toDecimal2(x: number) {
     }
     return s;
 }
-
 
 /**
  * 千分位格式化

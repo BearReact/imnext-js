@@ -92,7 +92,6 @@ const Layout = (props: Props) => {
                 </div>
             </Header>
 
-
             <div className="col pt-3">
                 {children}
             </div>
@@ -125,7 +124,6 @@ Layout.getInitialProps = async () => ({
 });
 
 export default withTranslation()(Layout);
-
 
 const Footer = styled.footer`
     background-image: url('/static/images/example/footer-bg.jpg');
@@ -167,7 +165,6 @@ const NavItem = styled.li`
     }
 `;
 
-
 const NavBarCollapse = styled.div`
     display: none;
    
@@ -200,7 +197,6 @@ const NavCol = styled.div`
         position: static;
     }
 `;
-
 
 const Button = styled.button`
     font-weight: 700;

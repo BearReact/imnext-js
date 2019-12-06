@@ -57,7 +57,6 @@ export default initialState => {
         store.asyncSagas[key] = key;
     };
 
-
     // =========== API Setting ================
     // 回應攔截處理
     apiService.addResponseTransform(response => {

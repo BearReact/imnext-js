@@ -9,13 +9,13 @@ type Props = {
     t: (localeKey: string) => string,
 };
 
-const News = (props: Props) => (
+const Index = (props: Props) => (
     <Container {...props}/>
 );
 
-News.Layout = Layout;
-News.getInitialProps = async () => ({
+Index.Layout = Layout;
+Index.getInitialProps = async () => ({
     namespacesRequired: ['example'],
 });
 
-export default withTranslation()(News);
+export default withTranslation()(Index);

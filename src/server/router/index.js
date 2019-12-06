@@ -1,37 +1,33 @@
 const express = require('express');
+const newsData = require('../../services/mock/news/getNewsList');
 
 const router = express.Router();
-
-const responseData = {
+const exampleResponseData = {
     statusCode: null,
     message: null,
     data: {},
 };
 
-router.get('/api/promotion/eventData', async (req, res) => {
-    responseData.data.rows = [
-        {
-            id: 1,
-            title: 'Build a Universal JavaScript App with Next.js',
-            author: 'Imagine',
-            thumb: '/static/images/example/news-1.jpg',
-            avatar: '/static/images/example/author-1.jpg',
+/**
+ * 取得最新消息明細
+ */
+router.get('/api/news/:id', async (req, res) => {
+    const responseData = Object.assign(exampleResponseData, {
+        data: newsData.find(row => String(row.id) === req.params.id),
+    });
+
+    res.status(200).json(responseData);
+});
+
+/**
+ * 取得最新消息列表
+ */
+router.get('/api/news', async (req, res) => {
+    const responseData = Object.assign(exampleResponseData, {
+        data: {
+            rows: newsData,
         },
-        {
-            id: 2,
-            title: 'Using Google Analytics with Next.js',
-            author: 'Gary',
-            thumb: '/static/images/example/news-2.jpg',
-            avatar: '/static/images/example/author-2.jpg',
-        },
-        {
-            id: 3,
-            title: '5 (of the Many Reasons) to love Zeit\'s Next.js',
-            author: 'Chris',
-            thumb: '/static/images/example/news-3.jpg',
-            avatar: '/static/images/example/author-3.jpg',
-        },
-    ];
+    });
 
     res.status(200).json(responseData);
 });

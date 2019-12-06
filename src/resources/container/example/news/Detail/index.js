@@ -9,7 +9,7 @@ import {compose} from 'redux';
 
 import injectReducerSaga from '@library/redux/utils/injectReducerSaga';
 import screen from '@themes/Screen';
-import LoaderContainer from '@components/organisms/LoaderContainer';
+import LoaderContainer from '@components/atoms/Loader';
 import pageAction, {reducer, saga} from '../store';
 
 type Props = {

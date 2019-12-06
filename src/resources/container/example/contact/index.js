@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import injectReducerSaga from '@library/redux/utils/injectReducerSaga';
-import LoaderContainer from '@components/organisms/LoaderContainer';
+import LoaderContainer from '@components/atoms/Loader';
 import pageAction, {reducer, saga} from './store';
 
 type Props = {

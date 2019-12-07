@@ -18,7 +18,7 @@ function I18nProviderWrapper(props: Props) {
     const {children, i18n, locale} = props;
 
     React.useEffect(() => {
-        // i18n.changeLanguage(locale);
+        i18n.changeLanguage(locale);
     }, [i18n, locale]);
 
     return (
@@ -33,7 +33,7 @@ I18nProviderWrapper.defaultProps = {
 
 export default {
     provider: I18nProviderWrapper,
-    providerProps: {providerProps},
+    providerProps: {i18n: providerProps},
     supportedLocales: ['en-US', 'zh-CN'],
     providerLocaleKey: 'locale',
 };

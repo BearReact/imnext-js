@@ -69,6 +69,7 @@ module.exports = {
         'no-trailing-spaces': ['error', { 'ignoreComments': true, 'skipBlankLines': true }],
         'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 1 }],
         'padded-blocks': 'off',
+        'prefer-object-spread': 'off',
     },
     settings: {
         'import/resolver': {

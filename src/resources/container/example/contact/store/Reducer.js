@@ -9,6 +9,8 @@ const PREFIX = 'contact';
 export const INITIAL_STATE = Immutable({
     isSubmitting: false,
     message: '',
+    timeSec: 5,
+    progress: 0,
 });
 
 /** -----------------------------------------
@@ -16,6 +18,7 @@ export const INITIAL_STATE = Immutable({
  /** --------------------------------------*/
 export const Selectors = {
     queryParam: state => state[PREFIX].queryParam,
+    progress: state => state[PREFIX].progress,
 };
 
 /** -----------------------------------------
@@ -28,6 +31,8 @@ export const {Types, Creators} = createActions(
         submitFormBegin: null,
         submitFormSuccess: ['message'],
         submitFormFail: ['message'],
+
+        setProgress: ['progress'],
     },
     {prefix: `${PREFIX}/`}
 );
@@ -44,6 +49,7 @@ const Reducers = {
         begin(state) {
             return state.merge({
                 isSubmitting: true,
+                progress: 0,
             });
         },
         success(state, action) {
@@ -59,6 +65,11 @@ const Reducers = {
             });
         },
     },
+    setProgress(state, action) {
+        return state.merge({
+            progress: action.progress,
+        });
+    },
 };
 
 /** ---------------------------------------------------------------
@@ -68,4 +79,5 @@ export const reducer = createReducer(INITIAL_STATE, {
     [Types.SUBMIT_FORM_BEGIN]: Reducers.submitForm.begin,
     [Types.SUBMIT_FORM_SUCCESS]: Reducers.submitForm.success,
     [Types.SUBMIT_FORM_FAIL]: Reducers.submitForm.fail,
+    [Types.SET_PROGRESS]: Reducers.setProgress,
 });

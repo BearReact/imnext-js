@@ -17,23 +17,34 @@ type Props = {
     isFullMaskBody?: boolean,
     rollingAlign?: 'full' | 'area',
     isHasPanel?: boolean,
+    rolling?: React.Node,
+    visibleMode?: string,
 };
 
 const Loader = (props: Props) => {
     const {
-        className, style, children, isLoading, size, backgroundColor, isFullMaskBody, isHasPanel, rollingAlign,
+        className, style, children, isLoading, size, backgroundColor, isFullMaskBody, isHasPanel, rollingAlign, rolling, visibleMode,
     } = props;
     const isShowMask = (rollingAlign === 'full' || rollingAlign === 'area');
     return (
         <LoaderContainer className={className} style={style} isFullSize={rollingAlign === 'full'}>
-            {isShowMask
-                && (
-                    <Mask isLoading={isLoading} isFullSize={rollingAlign === 'full'} isHasPanel={isHasPanel} backgroundColor={backgroundColor}>
-                        <MaskBody isFullMaskBody={isFullMaskBody}>
-                            <Rolling size={size}/>
-                        </MaskBody>
-                    </Mask>
-                )}
+            {(visibleMode === 'render' && isLoading) && (
+                <Mask isLoading={isLoading} isFullSize={rollingAlign === 'full'} isHasPanel={isHasPanel} backgroundColor={backgroundColor}>
+                    <MaskBody isFullMaskBody={isFullMaskBody}>
+
+                        {rolling || <Rolling size={size}/>}
+                    </MaskBody>
+                </Mask>
+            )}
+
+            {(isShowMask && visibleMode === 'opacity') && (
+                <Mask isLoading={isLoading} isFullSize={rollingAlign === 'full'} isHasPanel={isHasPanel} backgroundColor={backgroundColor}>
+                    <MaskBody isFullMaskBody={isFullMaskBody}>
+
+                        {rolling || <Rolling size={size}/>}
+                    </MaskBody>
+                </Mask>
+            )}
 
             {children}
         </LoaderContainer>
@@ -50,6 +61,8 @@ Loader.defaultProps = {
     isFullMaskBody: false,
     isHasPanel: false,
     rollingAlign: 'full',
+    rolling: undefined,
+    visibleMode: 'opacity',
 };
 
 export default Loader;

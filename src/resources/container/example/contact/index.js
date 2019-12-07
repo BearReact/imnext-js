@@ -9,16 +9,20 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import injectReducerSaga from '@library/redux/utils/injectReducerSaga';
 import LoaderContainer from '@components/atoms/Loader';
+import ProgressBar from '@components/atoms/ProgressBar';
 import pageAction, {reducer, saga} from './store';
 
 type Props = {
     t: (localeKey: string) => string,
     isSubmitting?: boolean,
     onSubmit: Function,
+    progress?: number,
 };
 
 const Contact = (props: Props) => {
-    const {t, onSubmit, isSubmitting} = props;
+    const {
+        t, onSubmit, isSubmitting, progress,
+    } = props;
 
     const SignUpSchema = Yup.object().shape({
         name: Yup.string()
@@ -35,7 +39,17 @@ const Contact = (props: Props) => {
 
     return (
         <section>
-            <LoaderContainer className="container" isLoading={isSubmitting}>
+            <LoaderContainer
+                className="container"
+                isLoading={isSubmitting}
+                visibleMode="render"
+                rolling={(
+                    <CustomProgressBar
+                        progress={progress}
+                        isVisibleProgressText
+                    />
+                )}
+            >
 
                 {/* 標題 */}
                 <div className="row justify-content-center mb-4">
@@ -121,6 +135,8 @@ const Contact = (props: Props) => {
                                         }}
                                     >
                                         {t('example:pageContact.sendNow')}
+                                        {' '}
+s
                                     </MainBtn>
                                 </div>
                             </div>
@@ -134,6 +150,7 @@ const Contact = (props: Props) => {
 
 Contact.defaultProps = {
     isSubmitting: false,
+    progress: 0,
 };
 
 const mapDispatchToProps = {
@@ -142,12 +159,18 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => ({
     isSubmitting: state.contact.isSubmitting,
+    progress: state.contact.progress,
 });
 
 export default compose(
     injectReducerSaga('contact', {reducer, saga}),
     connect(mapStateToProps, mapDispatchToProps)
 )(Contact);
+
+const CustomProgressBar = styled(ProgressBar)`
+    width: 400px;
+    height: 20px;
+`;
 
 const MainBtn = styled.button`
     display: inline-block;

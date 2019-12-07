@@ -18,7 +18,7 @@ function I18nProviderWrapper(props: Props) {
     const {children, i18n, locale} = props;
 
     React.useEffect(() => {
-        i18n.changeLanguage(locale);
+        // i18n.changeLanguage(locale);
     }, [i18n, locale]);
 
     return (

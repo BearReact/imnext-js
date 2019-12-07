@@ -5,7 +5,8 @@
 Imnext is a web application framework with nextjs, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Imnext takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://nextjs.org).
-- [Powerful dependency injection redux and redux-saga](https://redux.js.org).
+- [Powerful dependency injection redux](https://redux.js.org).
+- [Aims to make application side effects library redux-saga](https://redux-saga.js.org/).
 - [Internationalization-framework i18Next Language](https://www.i18next.com).
 - [Expressive, intuitive Storybook](https://storybook.js.org).
 - [Form controller Formlk](https://jaredpalmer.com/formik/docs/overview).

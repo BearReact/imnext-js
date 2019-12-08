@@ -38,6 +38,7 @@ module.exports = {
         'react/jsx-indent-props': ['error', 'first'],
         'react/jsx-tag-spacing': ['error', {closingSlash: 'never', beforeSelfClosing: 'never', afterOpening: 'never', beforeClosing: 'never'}],
         'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx']}],
+        'react/jsx-one-expression-per-line': 'off',
         'react/no-danger': 'off',
         'react/prefer-stateless-function': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',

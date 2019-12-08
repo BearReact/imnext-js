@@ -122,7 +122,7 @@ const Contact = (props: Props) => {
                                     />
                                 </div>
                                 <p className="form-message"/>
-                                <div className="col-md-24">
+                                <div className="col-md-24 mb-4">
                                     <MainBtn
                                         type="submit"
                                         onClick={() => {
@@ -135,8 +135,6 @@ const Contact = (props: Props) => {
                                         }}
                                     >
                                         {t('example:pageContact.sendNow')}
-                                        {' '}
-s
                                     </MainBtn>
                                 </div>
                             </div>

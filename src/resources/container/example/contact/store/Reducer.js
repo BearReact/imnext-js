@@ -27,7 +27,7 @@ export const Selectors = {
 export const {Types, Creators} = createActions(
     {
         // 送出表單
-        submitForm: ['data'],
+        submitForm: ['data', 'callBack'],
         submitFormBegin: null,
         submitFormSuccess: ['message'],
         submitFormFail: ['message'],

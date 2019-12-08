@@ -31,7 +31,7 @@ function* runProgress() {
 export function* submitForm(payload) {
     try {
         yield put(Actions.submitFormBegin());
-        const {id} = payload;
+        const {id, callBack} = payload;
 
         // 避免 API回傳時間過長, 需要設定讀取進度讓使用者感覺不會等太久
         // 並將時間設定回傳時間為5秒內, 超過時間未回傳則彈出逾時訊息並取消
@@ -46,6 +46,12 @@ export function* submitForm(payload) {
 
             const {data: responseData} = response;
             yield put(Actions.submitFormSuccess(responseData.message));
+
+            // reset form
+            if (callBack) {
+                callBack();
+            }
+
             alert(responseData.message);
         } else {
             yield delay(500);

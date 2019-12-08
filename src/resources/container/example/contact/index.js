@@ -66,10 +66,10 @@ const Contact = (props: Props) => {
                     validationSchema={SignUpSchema}
                     validateOnChange={false}
                     validateOnBlur={false}
-                    onSubmit={(values, {setSubmitting}) => {
+                    onSubmit={(values, {setSubmitting, resetForm}) => {
 
                         // 送出表單
-                        onSubmit(values);
+                        onSubmit(values, resetForm);
 
                         // setTimeout(() => {
                         //     alert(JSON.stringify(values, null, 2));

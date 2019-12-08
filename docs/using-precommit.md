@@ -9,9 +9,9 @@
 ```json
 {
     "validate-commit-msg": "2.14.0",
-    "husky": "1.3.1",
+    "husky": "3.1.0",
     "pre-commit": "1.2.2",
-    "lint-staged": "7.3.0",
+    "lint-staged": "9.5.0",
     "cz-conventional-changelog": "3.0.2",
     "cz-customizable": "6.2.0"
 }

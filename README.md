@@ -25,6 +25,8 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 
 ## How to use
 
+`Check your nodejs version is 12`
+
 #### Quick Start
 
 ```zsh

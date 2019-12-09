@@ -41,6 +41,18 @@ $ yarn dev
 ```
 open browser example in http://localhost:3000/example
 
+#### Develop
+
+```zsh
+# Ready Release
+$ docker-compose build
+
+# Run
+$ docker-compose up
+
+> 🚀 Ready on http://localhost:3000
+```
+
 #### Remove example
 
 ```zsh

@@ -32,7 +32,7 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 $ clone git@github.com:imagine10255/imnext.git my-imnext-project
 
 # Enter folder and Install, then copy environment setting
-$ cd my-imnext-project && yarn && cp .env.devlop .env
+$ cd my-imnext-project && yarn && cp .env.develop .env
 
 # Start develop
 $ yarn dev

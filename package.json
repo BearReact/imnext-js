@@ -1,6 +1,8 @@
 {
     "name": "imnext-js",
+    "description": "A React framework for web artisans nextjs 9",
     "version": "1.1.0",
+    "author": "imagine10255",
     "license": "MIT",
     "scripts": {
         "dev": "node index.js",

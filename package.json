@@ -1,5 +1,5 @@
 {
-    "name": "custom-server-express",
+    "name": "imnext-js",
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
@@ -13,7 +13,13 @@
         "lint:js": "eslint .",
         "lint:staged": "lint-staged",
         "log": "git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblueby %an %Cgreen(%cr)%Creset'",
-        "cz": "git cz"
+        "cz": "git cz",
+        "release": "standard-version",
+        "release:major": "standard-version -r major",
+        "release:minor": "standard-version -r minor",
+        "release:patch": "standard-version -r patch",
+        "release:pre": "standard-version --prerelease alpha",
+        "release:push": "git push --follow-tags origin master"
     },
     "engines": {
         "npm": ">=5",
@@ -98,6 +104,7 @@
         "lint-staged": "9.5.0",
         "pre-commit": "1.2.2",
         "storybook-addon-i18n": "5.1.13",
-        "validate-commit-msg": "2.14.0"
+        "validate-commit-msg": "2.14.0",
+        "standard-version": "7.1.0"
     }
 }

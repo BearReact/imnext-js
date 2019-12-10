@@ -1,6 +1,5 @@
 /* eslint-disable */
 
-import config from '@config/app';
 import {uploadUrl, asset, routePath, serialize, parseQueryString, getMainDomain, getSubDomain} from '../index';
 
 describe('test utils uri', () => {
@@ -9,7 +8,7 @@ describe('test utils uri', () => {
     });
 
     it('串接前端的靜態資源基礎網址', () => {
-        expect(asset('promotion/test.jpg', '/static')).toBe(`/static/promotion/test.jpg?v=${config.assetVersion}`);
+        expect(asset('promotion/test.jpg', '/static')).toBe(`/static/promotion/test.jpg`);
     });
 
     it('串接前端的路由基礎網址', () => {

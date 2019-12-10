@@ -1,4 +1,5 @@
 import Colors from './Colors';
 import Fonts from './Fonts';
+import Screen from './Screen';
 
-export {Colors, Fonts};
+export {Colors, Fonts, Screen};

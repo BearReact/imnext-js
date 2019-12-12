@@ -7,13 +7,13 @@ export default {
      * @returns {*}
      */
     getNewsList() {
-        return api.get('news');
+        return api.get('news/list.json');
     },
     /**
      * 查詢 優惠活動/活動任務/詳細內容
      * @returns {*}
      */
     getNewsDetail(id) {
-        return api.get(`news/${id}`);
+        return api.get(`news/detail/${id}.json`);
     },
 };

@@ -1,0 +1,13 @@
+{
+    "statusCode": null,
+    "message": "success",
+    "data": {
+        "id": 3,
+        "title": "5 (of the Many Reasons) to love Zeit's Next.js",
+        "desc": "Next.js continues to be considered a “win” amongst a number of developers everywhere. If you couldn't guess, I am one of them! To help shine light on some of the reasons why I love the framework, I dediced to put together a series of posts on the topic. In this first one, I'm going to cut right to the chase and shed light on a few of the amazing things that Next.js makes possible.",
+        "author": "Chris",
+        "thumb": "/static/images/example/news-3.jpg",
+        "avatar": "/static/images/example/author-3.jpg"
+    }
+}
+

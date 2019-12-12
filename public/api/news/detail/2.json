@@ -1,0 +1,13 @@
+{
+    "statusCode": null,
+    "message": "success",
+    "data": {
+        "id": 2,
+        "title": "Using Google Analytics with Next.js",
+        "desc": "React is a JavaScript view library, which is based on components. Next.js uses React for generating views seamlessly on the server as well as the client. This means that we can extend and add tracking functionality to our view components to track user behavior using Google Analytics by faking real page loads (in the traditional sense) in our templates.\n Next.js offers a bunch of good examples to work with other use cases, in this case walk through on how to use the React-GA example in your own projects. First to help with working with React there is a utility library called react-ga, that abstracts the Google Analytics library. First start by adding this to your project’s package.json file using Yarn (the NPM client works just as fine):",
+        "author": "Gary",
+        "thumb": "/static/images/example/news-2.jpg",
+        "avatar": "/static/images/example/author-2.jpg"
+    }
+}
+

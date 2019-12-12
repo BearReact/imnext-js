@@ -56,7 +56,7 @@ $ docker-compose up
 > 🚀 Ready on http://localhost:3000
 ```
 
-#### Export No Server file
+#### Export No Server File
 
 ```zsh
 # Build and Exprot

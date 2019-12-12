@@ -2,11 +2,11 @@
 .idea/
 .next/
 .cache/
+.dist/
 node_modules/
 static/
 coverage/
 plugins/
-out/
 docs/
 package-lock.json
 package.json

@@ -56,6 +56,18 @@ $ docker-compose up
 > 🚀 Ready on http://localhost:3000
 ```
 
+#### Export No Server file
+
+```zsh
+# Build and Exprot
+$ yarn build && yarn export
+
+# Test Run
+$ yarn export:start
+
+> Local: http://localhost:8080 
+```
+
 #### Remove example
 
 ```zsh

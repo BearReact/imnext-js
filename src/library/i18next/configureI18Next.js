@@ -1,20 +1,33 @@
 // @flow
-const React = require('react');
-// const { localeSubpaths } = require('next/config').default().publicRuntimeConfig;
-// const {initReactI18next} = require('react-i18next');
+const remove = require('lodash/remove');
 const NextI18Next = require('next-i18next').default;
 
+/** ==================
+        全部語系
+================== */
+const languagesObj = [
+    {code: 'en-US', subPath: 'en'},
+    {code: 'zh-CN', subPath: 'cn'},
+];
+const allLanguages = languagesObj.map(row => row.code);
+
+/** ==================
+        預設語系
+================== */
+const defaultLanguage = 'en-US';
+
+/** ==================
+     初始化I18Next (https://github.com/isaachinman/next-i18next#options)
+ ================== */
 const I18Next = new NextI18Next({
-    defaultLanguage: 'en-US',
-    otherLanguages: ['en-US', 'zh-CN'],
+    defaultLanguage,
+    defaultNS: 'common',
+    otherLanguages: allLanguages,
     cleanCode: true,
     localePath: typeof window === 'undefined' ? 'public/static/locales' : 'static/locales',
-    // localeSubpaths,
-    // localeSubpaths: {
-    //     'zh-CN': 'cn',
-    //     'en-US': 'en',
-    // }
-    // use: [initReactI18next],
 });
+
+// 將預設語系從全部語系中刪除 (若重複將導致 next export 缺少語系, 變成無法切換)
+I18Next.i18n.languages = allLanguages.filter(code => code !== defaultLanguage);
 
 module.exports = I18Next;

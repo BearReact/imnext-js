@@ -5,7 +5,33 @@ const withSass = require('@zeit/next-sass');
 const withCss = require('@zeit/next-css');
 const webpackConfig = require('./webpack.config');
 
+const LANGUAGES = ['en', 'cn'];
+
 const nextConfig = {
+    exportTrailingSlash: false,
+    exportPathMap() {
+        const pathMap = {};
+
+        const defaultPathMap = {
+            '/': {page: '/'}, // fix not change language in first
+            '/example/contact': {page: '/example/contact'},
+            '/example/news': {page: '/example/news'},
+            '/example': {page: '/example'},
+        };
+
+        console.log(defaultPathMap);
+
+        // Object.entries(defaultPathMap).forEach(([key, value]) => {
+        //     pathMap[key] = value;
+        //
+        //     LANGUAGES.forEach(language => {
+        //         pathMap[`/${language}${key}`] = {...value, query: {language}};
+        //     });
+        // });
+
+        return defaultPathMap;
+    },
+
     publicRuntimeConfig: {
         localeSubpaths: typeof process.env.LOCALE_SUBPATHS === 'string' ? process.env.LOCALE_SUBPATHS : 'none',
     },

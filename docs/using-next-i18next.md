@@ -35,3 +35,24 @@ export default withTranslation()(PageName);
 const ComponentName = ({t}) => <div>{t('example:title')}</div>;
 export default withTranslation(['example'])(ComponentName);
 ``` 
+
+
+## Next Export First Render Can't Change Language
+check config src/library/i18next/configureI18Next.js, default language cannot in the list
+
+```js
+// this is error:
+const I18Next = new NextI18Next({
+    defaultLanguage: ['en-US'],
+    otherLanguages: ['en-US', 'zh-CN'],
+});
+I18Next.i18n.languages = ['en-US', 'zh-CN']; // <~ check this
+
+// this is success:
+const I18Next = new NextI18Next({
+    defaultLanguage: ['en-US'],
+    otherLanguages: ['en-US', 'zh-CN'],
+});
+I18Next.i18n.languages = ['zh-CN']; // <~ check this
+
+``` 

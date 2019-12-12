@@ -2,7 +2,7 @@
 
 ## Version mapping (`Don't install and upgrade react-i18next`)
 - "react": "16.12.0"
-- "next": "9.1.4"
+- "next": "9.1.5"
 - "next-i18next": "2.1.1"
 - "storybook-addon-i18n": "5.1.13"
 

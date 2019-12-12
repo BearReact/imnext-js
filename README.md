@@ -21,9 +21,13 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 
 ## Learning Imnext
 
-- Nextjs [documentation](https://nextjs.org/docs)
-- Imnext [documentation](https://github.com/imagine10255/imnext/tree/master/docs)
-
+- Nextjs [Documentation](https://nextjs.org/docs)
+- Imnext-js
+  - [use Webstorm](https://github.com/imagine10255/imnext-js/blob/master/docs/use-webstorm.md)
+  - [use Precommit](https://github.com/imagine10255/imnext-js/blob/master/docs/use-precommit.md)
+  - [use Bootstrap](https://github.com/imagine10255/imnext-js/blob/master/docs/use-bootstrap.md)
+  - [use Next-i18next](https://github.com/imagine10255/imnext-js/blob/master/docs/use-next-i18next.md)
+  
 ## How to use
 
 `Check your nodejs version is 12`

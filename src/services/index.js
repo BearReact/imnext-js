@@ -7,7 +7,7 @@ import {isEmpty} from '@utils/equal';
 import {useSelector} from 'react-redux';
 
 const apiService = apisauce.create({
-    baseURL: '/api',
+    baseURL: '/mock',
     headers: {
         'Cache-Control': 'no-cache',
         'Content-Type': 'application/json',

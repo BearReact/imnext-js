@@ -7,33 +7,31 @@ const webpackConfig = require('./webpack.config');
 
 const LANGUAGES = ['en', 'cn'];
 
+// https://github.com/zeit/next.js/issues/5509#issuecomment-432456576
+const generateLocalePath = defaultPathMap => {
+    const pathMap = {};
+    Object.entries(defaultPathMap).forEach(([key, value]) => {
+        pathMap[key] = value;
+
+        LANGUAGES.forEach(language => {
+            pathMap[`/${language}${key}`] = {...value, query: {language}};
+        });
+    });
+};
+
 const nextConfig = {
     exportTrailingSlash: false,
     exportPathMap() {
-        const pathMap = {};
-
-        const defaultPathMap = {
+        const pathMap = {
             '/': {page: '/'}, // fix not change language in first
             '/example/contact': {page: '/example/contact'},
             '/example/news': {page: '/example/news'},
             '/example': {page: '/example'},
         };
 
-        console.log(defaultPathMap);
+        return pathMap;
 
-        // Object.entries(defaultPathMap).forEach(([key, value]) => {
-        //     pathMap[key] = value;
-        //
-        //     LANGUAGES.forEach(language => {
-        //         pathMap[`/${language}${key}`] = {...value, query: {language}};
-        //     });
-        // });
-
-        return defaultPathMap;
-    },
-
-    publicRuntimeConfig: {
-        localeSubpaths: typeof process.env.LOCALE_SUBPATHS === 'string' ? process.env.LOCALE_SUBPATHS : 'none',
+        // return generateLocalePath(defaultPathMap);
     },
 
     webpack: config => {

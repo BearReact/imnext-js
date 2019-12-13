@@ -1,5 +1,4 @@
 const express = require('express');
-const newsData = require('../../services/mock/news/getNewsList');
 
 const router = express.Router();
 const exampleResponseData = {

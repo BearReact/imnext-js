@@ -56,3 +56,4 @@ const I18Next = new NextI18Next({
 I18Next.i18n.languages = ['zh-CN']; // <~ check this
 
 ``` 
+then and issue: https://github.com/isaachinman/next-i18next/issues/585

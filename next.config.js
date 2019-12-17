@@ -21,7 +21,7 @@ const generateLocalePath = defaultPathMap => {
 
 const nextConfig = {
     exportTrailingSlash: false,
-    assetPrefix: process.env.ASSET_BASE_PATH || '',
+    assetPrefix: process.env.BUNDLE_BASE_PATH || '',
     exportPathMap() {
         const pathMap = {
             '/': {page: '/'}, // fix not change language in first

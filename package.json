@@ -6,7 +6,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "node index.js",
-        "build": "NODE_ENV=production next build",
+        "build": "NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 next build",
         "export": "yarn build && next export -o .dist",
         "export:start": "serve .dist -p 8080",
         "start": "cross-env NODE_ENV=production node src/server",

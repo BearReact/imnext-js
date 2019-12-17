@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {withTranslation} from '@library/i18next/configureI18Next';
 import screen from '@themes/Screen';
 import Layout from '@layouts/example';
+import {asset} from '@utils/uri';
 
 type Props = {
     t: (localeKey: string) => string,
@@ -37,7 +38,7 @@ Example.getInitialProps = async () => ({
 export default withTranslation()(Example);
 
 const HeaderHero = styled.div`
-    background-image: url('/static/images/example/header-bg.jpg');
+    background-image: url(${asset('images/example/header-bg.jpg')});
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

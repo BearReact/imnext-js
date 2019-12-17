@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 import get from 'lodash/get';
 import styled, {css} from 'styled-components';
+import {asset} from '@utils/uri';
 import cx from 'classnames';
 import {i18n, withTranslation} from '@library/i18next/configureI18Next';
 import screen from '@themes/Screen';
@@ -130,7 +131,7 @@ Layout.getInitialProps = async () => ({
 export default withTranslation()(Layout);
 
 const Footer = styled.footer`
-    background-image: url('/static/images/example/footer-bg.jpg');
+    background-image: url(${asset('images/example/footer-bg.jpg')});
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

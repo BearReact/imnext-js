@@ -23,7 +23,7 @@ export function uploadUrl(path: string = '', prefix: string) {
  * @param prefix 前綴路徑
  * @returns {string}
  */
-export function asset(path, prefix: string) {
+export function asset(path, prefix: string = process.env.STATIC_BASE_URL || '/static') {
     return `${prefix}/${path}`;
 }
 

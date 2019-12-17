@@ -5,15 +5,15 @@ const withSass = require('@zeit/next-sass');
 const withCss = require('@zeit/next-css');
 const webpackConfig = require('./webpack.config');
 
-const LANGUAGES = ['en', 'cn'];
-
 // https://github.com/zeit/next.js/issues/5509#issuecomment-432456576
 const generateLocalePath = defaultPathMap => {
     const pathMap = {};
+    const allLanguage = ['en', 'cn'];
+
     Object.entries(defaultPathMap).forEach(([key, value]) => {
         pathMap[key] = value;
 
-        LANGUAGES.forEach(language => {
+        allLanguage.forEach(language => {
             pathMap[`/${language}${key}`] = {...value, query: {language}};
         });
     });
@@ -21,6 +21,7 @@ const generateLocalePath = defaultPathMap => {
 
 const nextConfig = {
     exportTrailingSlash: false,
+    assetPrefix: process.env.ASSET_BASE_PATH || '',
     exportPathMap() {
         const pathMap = {
             '/': {page: '/'}, // fix not change language in first

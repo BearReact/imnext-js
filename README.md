@@ -55,7 +55,7 @@ open browser example in http://localhost:3000/example
 $ docker-compose build
 
 # Run
-$ docker-compose up
+$ docker-compose up --build
 
 > 🚀 Ready on http://localhost:3000
 ```

@@ -70,6 +70,12 @@ const Layout = (props: Props) => {
                                                 </Link>
                                             </NavItem>
                                         ))}
+
+                                        <Link href="/">
+                                            <a>NextLink回首頁</a>
+                                        </Link>
+                                        <a href="/">一般回首頁</a>
+
                                     </ul>
                                 </NavBarCollapse>
                             </nav>

@@ -6,11 +6,13 @@ import {compose} from 'redux';
 import {Provider} from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
+import {asset} from '@utils/uri';
 
 import createStore from '@library/redux/configureStore';
 import {appWithTranslation} from '@library/i18next/configureI18Next';
 
 import '@assets/styles/dist/bootstrap.css';
+import '@public/static/plugins/iconfont/iconfont.css';
 import '@assets/styles/dist/app.scss';
 
 const Noop = ({children}) => children;
@@ -32,7 +34,7 @@ class MyApp extends App {
         const Layout = Component.Layout || Noop;
 
         // eslint-disable-next-line no-console
-        console.log('__global__', __global__);
+        // console.log('__global__', __global__);
 
         return (
             <>
@@ -49,6 +51,9 @@ class MyApp extends App {
                     {/* Google Seo Boot */}
                     {__global__.googleBot.noIndex
                         && <meta name="robots" content="noindex, nofollow"/>}
+
+                    {/* iconfont */}
+                    <script src={asset('plugins/iconfont/iconfont.js')}/>
                 </Head>
 
                 <Provider store={store}>

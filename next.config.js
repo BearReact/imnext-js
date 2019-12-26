@@ -1,8 +1,10 @@
 require('dotenv').config();
 const path = require('path');
 const DotEnv = require('dotenv-webpack');
+const withPlugins = require('next-compose-plugins');
 const withSass = require('@zeit/next-sass');
 const withCss = require('@zeit/next-css');
+const withFonts = require('next-fonts');
 const webpackConfig = require('./webpack.config');
 
 // https://github.com/zeit/next.js/issues/5509#issuecomment-432456576
@@ -23,6 +25,7 @@ const nextConfig = {
     poweredByHeader: false,
     exportTrailingSlash: false,
     assetPrefix: process.env.BUNDLE_BASE_PATH || '',
+    enableSvg: true,
     exportPathMap() {
         const pathMap = {
             '/': {page: '/'}, // fix not change language in first
@@ -51,6 +54,11 @@ const nextConfig = {
             }),
         ];
 
+        config.module.rules = [
+            ...config.module.rules,
+            // setting your custom rules...
+        ];
+
         // 附加 webpack.config 的 alias 別名路徑設定
         config.resolve.alias = Object.assign(config.resolve.alias, webpackConfig.resolve.alias);
 
@@ -58,4 +66,7 @@ const nextConfig = {
     },
 };
 
-module.exports = withSass(withCss(nextConfig));
+module.exports = withPlugins(
+    [withCss, withSass, withFonts],
+    nextConfig
+);

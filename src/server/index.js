@@ -12,6 +12,17 @@ const handle = app.getRequestHandler();
     await app.prepare();
     const server = express();
 
+    /**
+     * 開發 | 部署設定站台代碼
+     * 若 .env 有設定 SITE_CODE 則捨動 Set Header Site-Code,
+     * 反之則由反向代理伺服器 add_Header Site-Code proxy_pass
+     */
+    server.use((req, res, appNext) => {
+        const siteCode = (process.env.SITE_CODE || res.getHeader('Site-Code')) || 'default';
+        res.append('Site-Code', siteCode);
+        appNext();
+    });
+
     server.use(nextI18NextMiddleware(nextI18next));
 
     server.get('*', (req, res) => handle(req, res));

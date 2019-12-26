@@ -20,6 +20,7 @@ const generateLocalePath = defaultPathMap => {
 };
 
 const nextConfig = {
+    poweredByHeader: false,
     exportTrailingSlash: false,
     assetPrefix: process.env.BUNDLE_BASE_PATH || '',
     exportPathMap() {

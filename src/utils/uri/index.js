@@ -24,6 +24,20 @@ export function uploadUrl(path: string = '', prefix: string) {
  * @returns {string}
  */
 export function asset(path, prefix: string = process.env.STATIC_BASE_URL || '/static') {
+    const prefixLastIndex = get(prefix, 'length', 1) - 1;
+    const pathLastIndex = get(path, 'length', 1) - 1;
+
+    if (prefix.substr(prefixLastIndex, 1) === '/') {
+        // 檢查 Prefix 結尾不可有斜線
+        throw Error('utils asset function, prefix last string can\'t have symbol("/")');
+    } else if (path.substr(pathLastIndex, 1) === '/') {
+        // 檢查 Path 結尾不可有斜線
+        throw Error('utils asset function, path last string can\'t have symbol("/")');
+    } else if (path.substr(0, 1) === '/') {
+        // 檢查 Path 開頭不可有斜線
+        throw Error('utils asset function, path first string can\'t have symbol("/")');
+    }
+
     return `${prefix}/${path}`;
 }
 

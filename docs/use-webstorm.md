@@ -3,6 +3,9 @@
 ## `.next` folder search file index is slow,
 so you can set `.next` folder `mark directory as` / `excluded`
 
+## `coverage` folder search file index is slow,
+so you can set `coverage` folder `mark directory as` / `excluded`
+
 ## `src/pages` folder is Link Root Path
 so you can set `src/pages` folder `mark directory as` / `Resource Root`
 

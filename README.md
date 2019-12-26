@@ -32,6 +32,17 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 
 `Check your nodejs version is 12`
 
+
+## Environmental parameters
+
+- PORT: 運行埠號
+- SITE_ENV: sandbox (開發), staging (前哨) production (正式)
+- SITE_CODE: 站台代號 (ref: src/config/site.js, ex: imnext)
+- BUNDLE_BASE_PATH: /_next 前綴路徑 (ex: /)
+- STATIC_BASE_URL: 前端靜態資源路徑 (ex: /static)
+- API_BASE_URL: API Base path
+
+
 #### Quick Start
 
 ```zsh
@@ -39,7 +50,7 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 $ clone git@github.com:imagine10255/imnext.git my-imnext-project
 
 # Enter folder and Install, then copy environment setting
-$ cd my-imnext-project && yarn && cp .env.develop .env
+$ cd my-imnext-project && yarn && cp .env.sandbox .env
 
 # Start develop
 $ yarn dev

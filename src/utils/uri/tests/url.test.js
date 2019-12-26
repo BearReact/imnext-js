@@ -31,12 +31,12 @@ describe('test utils uri', () => {
     it('取得主網域(二級域名)', () => {
         expect(getMainDomain('www.google.com')).toBe('google.com');
         expect(getMainDomain('vv-5a.test88b.net')).toBe('test88b.net');
-        expect(getMainDomain('vv.ibet.test-88b.net')).toBe('test-88b.net');
+        expect(getMainDomain('vv.imnext.test-88b.net')).toBe('test-88b.net');
     });
 
     it('取得子網域(最後一段)', () => {
         expect(getSubDomain('www.google.com')).toBe('www');
         expect(getSubDomain('vv-5a.test88b.net')).toBe('vv-5a');
-        expect(getSubDomain('vv.ibet.test88b.net')).toBe('vv');
+        expect(getSubDomain('vv.imnextZ.test88b.net')).toBe('vv');
     });
 });

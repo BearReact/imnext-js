@@ -95,5 +95,6 @@ module.exports = {
         document: true,
         api: true,
         appVersion: true,
+        __global__: true
     }
 };

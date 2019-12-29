@@ -24,7 +24,10 @@ const generateLocalePath = defaultPathMap => {
 const nextConfig = {
     poweredByHeader: false,
     exportTrailingSlash: false,
-    assetPrefix: process.env.BUNDLE_BASE_PATH || '',
+    assetPrefix: process.env.ROUTE_PREFIX_PATH || '',
+    publicRuntimeConfig: {
+        assetPrefix: process.env.ROUTE_PREFIX_PATH || '',
+    },
     enableSvg: true,
     exportPathMap() {
         const pathMap = {

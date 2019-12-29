@@ -3,10 +3,12 @@ const next = require('next');
 const nextI18NextMiddleware = require('next-i18next/middleware').default;
 
 const nextI18next = require('../library/i18next/configureI18Next');
+const routes = require('../library/next-route');
 
 const port = process.env.PORT || 3000;
 const app = next({dev: process.env.NODE_ENV !== 'production'});
-const handle = app.getRequestHandler();
+// const handle = app.getRequestHandler();
+const handle = routes.getRequestHandler(app);
 
 (async () => {
     await app.prepare();

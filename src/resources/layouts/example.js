@@ -1,7 +1,8 @@
 // @flow
 
 import React, {useState, useEffect} from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
+import {Link} from '@library/next-route';
 import {useRouter} from 'next/router';
 import get from 'lodash/get';
 import styled, {css} from 'styled-components';
@@ -35,9 +36,11 @@ const Layout = (props: Props) => {
     const {pathname} = useRouter();
 
     const menu = [
-        {text: t('example:menu.home'), href: '/example', isHome: true},
-        {text: t('example:menu.news'), href: '/example/news'},
-        {text: t('example:menu.contact'), href: '/example/contact'},
+        {
+            name: 'example', text: t('example:menu.home'), isHome: true,
+        },
+        {name: 'example-news', text: t('example:menu.news')},
+        {name: 'example-contact', text: t('example:menu.contact')},
     ];
 
     return (
@@ -47,7 +50,7 @@ const Layout = (props: Props) => {
                     <div className="row align-items-center">
                         {/* LOGO */}
                         <div className="col col-md-2">
-                            <Link href="/example">
+                            <Link route="home">
                                 <Logo>IMNEXT.js</Logo>
                             </Link>
                         </div>
@@ -60,12 +63,12 @@ const Layout = (props: Props) => {
                                         {menu.map(row => (
                                             <NavItem
                                                 className={cx('col-auto', {
-                                                    active: (pathname === row.href)
+                                                    active: (pathname === row.name)
                                                         || (get(row, 'isHome', false) === false && pathname.indexOf(row.href) === 0),
                                                 })}
-                                                key={row.href}
+                                                key={row.name}
                                             >
-                                                <Link href={row.href}>
+                                                <Link route={row.name}>
                                                     <a>{row.text}</a>
                                                 </Link>
                                             </NavItem>

@@ -36,11 +36,11 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 ## Environmental parameters
 
 - PORT: 運行埠號
-- SITE_ENV: sandbox (開發), staging (前哨) production (正式)
-- SITE_CODE: 站台代號 (ref: src/config/site.js, ex: imnext)
-- BUNDLE_BASE_PATH: /_next 前綴路徑 (ex: /)
-- STATIC_BASE_URL: 前端靜態資源路徑 (ex: /static)
-- API_BASE_URL: API Base path
+- SITE_ENV: sandbox, staging) production
+- SITE_CODE: site code (ref: src/config/site.js, ex: imnext)
+- ROUTE_PREFIX_PATH: next-route, /_next prefix path (ex: /)
+- STATIC_BASE_URL: Static file base url (ex: http://static.com/static, /static)
+- API_BASE_URL: API Base path (ex: http://static.com/static, /static)
 
 
 #### Quick Start

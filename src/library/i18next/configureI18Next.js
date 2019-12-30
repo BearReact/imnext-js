@@ -18,7 +18,7 @@ const defaultLanguage = 'en-US';
 let clientStaticBaseUrl = process.env.STATIC_BASE_URL || 'static';
 
 // first string can not '/' (ex: /static)
-if (clientStaticBaseUrl.substr(0) === '/') {
+if (clientStaticBaseUrl.substr(0, 1) === '/') {
     clientStaticBaseUrl = clientStaticBaseUrl.substr(1);
 }
 

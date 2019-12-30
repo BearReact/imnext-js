@@ -1,15 +1,24 @@
-version: '2'
+version: '3.4'
 services:
-    imdock-nginx:
+    reproxy:
       restart: always
       image: nginx
-      container_name: ezapp-mobile-v1
+      container_name: imnextjs2-reproxy
       volumes:
           - "./default.conf:/etc/nginx/conf.d/default.conf"
           - "./sites-module:/etc/nginx/sites-module"
       ports:
           - "3001:80"
       command: [nginx-debug, '-g', 'daemon off;']
+
+    frontend:
+      user: 1000:1000
+      build:
+        context: ../../
+        dockerfile: Dockerfile
+      container_name: imnextjs-web
+      ports:
+        - '3000:3000'
 
 
 

@@ -4,7 +4,6 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            // CUSTOM PACKAGES:
             '@public': path.resolve(__dirname, 'public'),
             '@assets': path.resolve(__dirname, 'src/resources/assets'),
             '@layouts': path.resolve(__dirname, 'src/resources/layouts'),

@@ -1,8 +1,31 @@
 {
-  "presets": ["next/babel"],
+  "presets": [
+    "next/babel"
+  ],
   "plugins": [
     "transform-flow-strip-types",
     "lodash",
-    ["styled-components", { "ssr": true }]
+    ["styled-components", { "ssr": true }],
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@public": "./public",
+          "@assets": "./src/resources/assets",
+          "@layouts": "./src/resources/layouts",
+          "@pages": "./src/pages",
+          "@container": "./src/resources/container",
+          "@components": "./src/resources/components",
+          "@themes": "./src/resources/themes",
+          "@utils": "./src/utils",
+          "@library": "./src/library",
+          "@services": "./src/services",
+          "@middleware": "./src/middleware",
+          "@config": "./src/config"
+        }
+      }
+    ]
   ]
+
 }

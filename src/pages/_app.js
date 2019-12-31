@@ -33,9 +33,6 @@ class MyApp extends App {
         const {Component, pageProps, store} = this.props;
         const Layout = Component.Layout || Noop;
 
-        // eslint-disable-next-line no-console
-        // console.log('__global__', __global__);
-
         return (
             <>
                 <Head>

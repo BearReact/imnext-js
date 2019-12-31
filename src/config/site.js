@@ -12,7 +12,7 @@ export default [
             noIndex: true,
         },
         country: 'malaysia',
-        defaultLang: 'en-US',
+        defaultLang: 'zh-CN',
         blackLang: ['en-US', 'zh-CN'],
         siteId: {
             sandbox: 'A',

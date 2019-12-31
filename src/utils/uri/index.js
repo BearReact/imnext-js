@@ -48,7 +48,7 @@ export function asset(path, prefix: string = process.env.STATIC_BASE_URL || '/st
  * @returns {string}
  */
 export function routePath(path, prefix: string) {
-    return `${prefix}/${path}`.replace('//', '/');
+    return fixDoubleSlashPath(`${prefix}/${path}`);
 }
 
 /**
@@ -84,6 +84,15 @@ export function parseQueryString(val: string = '') {
         return obj;
     }
     return undefined;
+}
+
+/**
+ * 修正雙斜線的路徑
+ * @param path 路徑
+ * @returns {undefined}
+ */
+export function fixDoubleSlashPath(path: string = '') {
+    return path.replace('//', '/');
 }
 
 /**

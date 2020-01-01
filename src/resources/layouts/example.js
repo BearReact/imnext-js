@@ -114,7 +114,7 @@ const Layout = (props: Props) => {
                                 Imagine
                             </a>
                             {' '}
-                            All Rights Reserved.
+                            All Rights Reserved ({__global__.appVersion}).
                         </p>
                     </FooterCopyRight>
                 </div>

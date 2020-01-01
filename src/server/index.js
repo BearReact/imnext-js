@@ -5,6 +5,7 @@ import get from 'lodash/get';
 import sites from '@config/site';
 import nextI18next from '../library/i18next/configureI18Next';
 import routes from '../library/next-route';
+import {version} from '../../package';
 
 const port = process.env.PORT || 3000;
 const app = next({dev: process.env.NODE_ENV !== 'production'});
@@ -38,6 +39,7 @@ const handle = routes.getRequestHandler(app);
         // eslint-disable-next-line no-underscore-dangle
         global.__global__ = {
             ...config,
+            appVersion: version, // version
             siteId: get(siteId, siteEnv, ''), // SiteId 因配合後端設計特例
         };
         // ========================================================================

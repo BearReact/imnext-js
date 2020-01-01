@@ -1,5 +1,4 @@
 // @flow
-const remove = require('lodash/remove');
 const NextI18Next = require('next-i18next').default;
 
 /** ==================
@@ -14,7 +13,7 @@ const allLanguages = languagesObj.map(row => row.code);
 /** ==================
         預設語系
 ================== */
-const defaultLanguage = 'en-US';
+const defaultLanguage = 'en-US'; // after in server/index.js init ({lng})
 let clientStaticBaseUrl = process.env.STATIC_BASE_URL || 'static';
 
 // first string can not '/' (ex: /static)

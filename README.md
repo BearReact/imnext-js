@@ -40,7 +40,7 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 - SITE_CODE: site code (ref: src/config/site.js, ex: imnext)
 - ROUTE_PREFIX_PATH: next-route, /_next prefix path (ex: /)
 - STATIC_BASE_URL: Static file base url (ex: http://static.com/static, /static)
-- API_BASE_URL: API Base path (ex: http://static.com/static, /static)
+- API_BASE_URL: API Base path (ex: http://static.com/api, /api)
 
 
 #### Quick Start

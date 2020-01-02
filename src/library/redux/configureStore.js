@@ -64,10 +64,10 @@ export default initialState => {
             const {headers} = response;
 
             /** 請求成功, 額外處理區塊 */
-            if (headers.Authentication) {
-                // 設定認證
-                // store.dispatch(AuthAction.setToken(response.data.token));
-            }
+            // if (headers.Authentication) {
+            // 設定認證
+            // store.dispatch(AuthAction.setToken(response.data.token));
+            // }
         } else {
             /** 請求失敗, 額外處理區塊 */
             const {status, problem, config} = response;

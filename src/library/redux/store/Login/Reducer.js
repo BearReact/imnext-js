@@ -8,7 +8,7 @@ const PREFIX = 'login';
  Initial State
  /** ---------------------------------------*/
 export const INITIAL_STATE = Immutable({
-    isFetching: false,
+    isSubmitting: false,
     message: null,
 });
 

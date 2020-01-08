@@ -7,6 +7,7 @@
   },
   "button": {
     "signUp": "注册",
+    "signIn": "登入",
     "menu": "目录",
     "back": "返回"
   },

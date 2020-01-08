@@ -24,7 +24,7 @@ const Contact = (props: Props) => {
         t, onSubmit, isSubmitting, progress,
     } = props;
 
-    const SignUpSchema = Yup.object().shape({
+    const validationSchema = Yup.object().shape({
         name: Yup.string()
             .min(2, t('common:errorForm.tooShortString', {name: t('example:pageContact.label.name'), length: 2}))
             .max(10, t('common:errorForm.tooShortLong', {name: t('example:pageContact.label.name'), length: 10}))
@@ -63,7 +63,7 @@ const Contact = (props: Props) => {
 
                 <Formik
                     initialValues={{name: '', email: '', message: ''}}
-                    validationSchema={SignUpSchema}
+                    validationSchema={validationSchema}
                     validateOnChange={false}
                     validateOnBlur={false}
                     onSubmit={(values, {setSubmitting, resetForm}) => {

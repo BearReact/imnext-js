@@ -1,8 +1,14 @@
+// @flow
+
 import routes from 'next-routes';
 import config from '../../config/routes';
 import {fixDoubleSlashPath} from '../../utils/uri';
 
-const createRoute = routes();
+type RouteType = {
+    Link: any,
+};
+
+const createRoute: RouteType = routes();
 const routePrefix = process.env.ROUTE_PREFIX_PATH || '/';
 
 config.map(row => {

@@ -3,7 +3,7 @@ services:
     reproxy:
       restart: always
       image: nginx
-      container_name: imnextjs2-reproxy
+      container_name: imnextjs-reproxy
       volumes:
           - "./default.conf:/etc/nginx/conf.d/default.conf"
           - "./sites-module:/etc/nginx/sites-module"

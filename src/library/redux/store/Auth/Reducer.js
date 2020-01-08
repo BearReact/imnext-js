@@ -10,18 +10,10 @@ const PREFIX = 'auth';
  /** ---------------------------------------*/
 export const INITIAL_STATE = Immutable({
     token: null,
-    isHasFavorite: null,
-    memberLevelCode: null,
-    memberLevelName: null,
     account: null,
-    signUpDate: null,
 
     isAuth: false,
     isRemember: false,
-    updatePhoneTime: null,
-    updateEmailTime: null,
-    agentFinanceLivechatUrl: null,
-    agentCustomerLivechatUrl: null,
 });
 
 /** -----------------------------------------
@@ -30,8 +22,6 @@ export const INITIAL_STATE = Immutable({
 export const Selectors = {
     token: state => state[PREFIX].token,
     isAuth: state => state[PREFIX].isAuth,
-    agentFinanceLivechatUrl: state => state[PREFIX].agentFinanceLivechatUrl,
-    agentCustomerLivechatUrl: state => state[PREFIX].agentCustomerLivechatUrl,
 };
 
 /** -----------------------------------------
@@ -42,13 +32,6 @@ export const {Types, Creators} = createActions(
         // 登入系統
         handleSetAuth: [
             'account',
-            'signUpDate',
-            'isHasFavorite',
-            'memberLevelCode',
-            'memberLevelName',
-            'isRemember',
-            'agentFinanceLivechatUrl',
-            'agentCustomerLivechatUrl',
         ],
 
         // 登出系統

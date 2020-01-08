@@ -23,6 +23,7 @@ module.exports = {
     rules: {
         'class-methods-use-this': 'off',
         'no-param-reassign': 'off',
+        'no-throw-literal': 'off',
         'no-alert': 'off',
         'no-unused-vars': 'off',
         'max-len': 'off',
@@ -41,6 +42,7 @@ module.exports = {
         'react/jsx-one-expression-per-line': 'off',
         'react/no-danger': 'off',
         'react/prefer-stateless-function': 'off',
+        'react/display-name': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/anchor-is-valid': 'off',
         'jsx-a11y/label-has-for': 'off',
@@ -93,8 +95,6 @@ module.exports = {
         alert: true,
         window: true,
         document: true,
-        api: true,
-        appVersion: true,
         __global__: true
     }
 };

@@ -20,4 +20,4 @@ $ yarn test:reproxy down && yarn test:reproxy up --build
 
 > 🚀 Ready on http://localhost:3001/ap-main/example
 ```
-open browser example in http://localhost:3000/example
+open browser example in http://localhost:3001/ap-main/example

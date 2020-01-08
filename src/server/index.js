@@ -3,13 +3,13 @@ import next from 'next';
 import bodyParser from 'body-parser';
 import nextI18NextMiddleware from 'next-i18next/middleware';
 import nextI18next from '../library/i18next/configureI18Next';
-import routes from '../library/next-route';
+import {getRequestHandler} from '../library/nextRoute';
 import multiPlatformInit from './middleware/multiPlatformInit';
 import mockApi from './mockApi';
 
 const port = process.env.PORT || 3000;
 const app = next({dev: process.env.NODE_ENV !== 'production'});
-const handle = routes.getRequestHandler(app);
+const handle = getRequestHandler(app);
 
 (async () => {
     await app.prepare();

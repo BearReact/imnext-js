@@ -2,12 +2,12 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import {useRouter} from 'next/router';
-import Link from 'next/link';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
-
+import {useRouter} from 'next/router';
+import A from '@components/atoms/A';
 import injectReducerSaga from '@library/redux/utils/injectReducerSaga';
+
 import screen from '@themes/Screen';
 import LoaderContainer from '@components/atoms/Loader';
 import pageAction, {reducer, saga} from '../store';
@@ -62,11 +62,11 @@ const List = (props: Props) => {
                                 </Desc>
 
                                 <div className="text-center mb-4">
-                                    <Link href="/example/news">
+                                    <A route="news">
                                         <Button type="button" className="btn col-auto mr-2">
                                             {t('example:button.back')}
                                         </Button>
-                                    </Link>
+                                    </A>
                                 </div>
                             </>
                         )}

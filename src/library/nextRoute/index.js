@@ -1,11 +1,13 @@
 // @flow
 
 import routes from 'next-routes';
+
 import config from '../../config/routes';
 import {fixDoubleSlashPath} from '../../utils/uri';
 
 type RouteType = {
     Link: any,
+    getRequestHandler: Function,
 };
 
 const createRoute: RouteType = routes();
@@ -19,4 +21,5 @@ config.map(row => {
     return true;
 });
 
-module.exports = createRoute;
+export default createRoute.Link;
+export const getRequestHandler = app => createRoute.getRequestHandler(app);

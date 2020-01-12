@@ -45,8 +45,6 @@ export const {Types, Creators} = createActions(
         kickSetGuestBegin: null,
         kickSetGuestSuccess: null,
         kickSetGuestFail: ['message'],
-
-        handleSetToken: ['token'],
     },
     {
         prefix: `${PREFIX}/`,

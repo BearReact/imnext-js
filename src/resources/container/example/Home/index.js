@@ -1,29 +1,103 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
+import {compose} from 'redux';
+import * as Yup from 'yup';
+import {Formik} from 'formik';
 import screen from '@themes/Screen';
 import {asset} from '@utils/uri';
-import {Formik} from 'formik';
-import * as Yup from 'yup';
 import pageAction from '@library/redux/store/Login/Reducer';
-import {compose} from 'redux';
-import {connect} from 'react-redux';
 import LoaderContainer from '@components/atoms/Loader';
-
-type Props = {
-    t: (localeKey: string) => string,
-    onSubmit: Function,
-    isSubmitting?: boolean,
-};
+import get from 'lodash/get';
 
 const Home = (props: Props) => {
-    const {t, onSubmit, isSubmitting} = props;
+    const {
+        t, onSignIn, isSubmitting, isAuth, token,
+    } = props;
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
             .email(t('common:errorForm.invalid', {name: t('example:pageContact.label.email')}))
             .required(t('common:errorForm.require', {name: t('example:pageContact.label.email')})),
     });
+
+    const renderForm = () => {
+        const {onSignOut} = props;
+        if (isAuth) {
+            return (
+                <div>
+                    <textarea style={{width: '100%', height: '200px'}} defaultValue={token}/>
+                    <Button
+                        as="button"
+                        className="btn btn-block"
+                        type="button"
+                        onClick={onSignOut}
+                    >
+                        {t('example:button.signOut')}
+                    </Button>
+                </div>
+            );
+        }
+
+        return (
+            <Formik
+                initialValues={{email: ''}}
+                validationSchema={validationSchema}
+                validateOnChange={false}
+                validateOnBlur={false}
+                onSubmit={(values, {setSubmitting, resetForm}) => {
+
+                    // 送出表單
+                    onSignIn(values, resetForm);
+
+                    // setTimeout(() => {
+                    //     alert(JSON.stringify(values, null, 2));
+                    //     setSubmitting(false);
+                    // }, 400);
+                }}
+            >
+                {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    validateForm,
+                    /* and other goodies */
+                }) => (
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="email"
+                            placeholder={t('example:pageHome.email')}
+                            name="email"
+                            value={values.email}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                        <Button
+                            type="button"
+                            className="btn btn-block"
+                            onClick={() => {
+                                validateForm().then(validateErrors => {
+                                    const field = get(Object.keys(validateErrors), 0, false);
+                                    if (field) {
+                                        alert(validateErrors[field]);
+                                    } else {
+                                        handleSubmit();
+                                    }
+                                });
+
+                            }}
+                        >{t('example:button.signIn')}
+                        </Button>
+                    </form>
+                )}
+            </Formik>
+        );
+
+    };
 
     return (
         <HeaderHero className="d-lg-flex">
@@ -34,46 +108,7 @@ const Home = (props: Props) => {
                         <HeroTitle dangerouslySetInnerHTML={{__html: t('example:pageHome.heroTitle')}}/>
                         <HeroText className="text">{t('example:pageHome.heroText')}</HeroText>
                         <HeroSignUp>
-                            <Formik
-                                initialValues={{email: ''}}
-                                validationSchema={validationSchema}
-                                validateOnChange={false}
-                                validateOnBlur={false}
-                                onSubmit={(values, {setSubmitting, resetForm}) => {
-
-                                    // 送出表單
-                                    onSubmit(values, resetForm);
-
-                                // setTimeout(() => {
-                                //     alert(JSON.stringify(values, null, 2));
-                                //     setSubmitting(false);
-                                // }, 400);
-                                }}
-                            >
-                                {({
-                                    values,
-                                    errors,
-                                    touched,
-                                    handleChange,
-                                    handleBlur,
-                                    handleSubmit,
-                                    validateForm,
-                                /* and other goodies */
-                                }) => (
-                                    <form onSubmit={handleSubmit}>
-                                        <input
-                                            type="email"
-                                            placeholder={t('example:pageHome.email')}
-                                            name="email"
-                                            value={values.email}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                        />
-                                        <Button as="button" className="btn btn-block">{t('example:button.signIn')}</Button>
-                                    </form>
-                                )}
-                            </Formik>
-
+                            {renderForm()}
                         </HeroSignUp>
                     </div>
                 </div>
@@ -82,17 +117,30 @@ const Home = (props: Props) => {
     );
 };
 
+type Props = {
+    t: (localeKey: string) => string,
+    onSignIn: Function,
+    onSignOut: Function,
+    isSubmitting?: boolean,
+    token?: string,
+    isAuth?: boolean,
+};
+
 Home.defaultProps = {
     isSubmitting: false,
+    token: null,
+    isAuth: false,
 };
 
 const mapDispatchToProps = {
-    onSubmit: pageAction.submitLogin,
+    onSignIn: pageAction.submitLogin,
+    onSignOut: pageAction.submitLogout,
 };
 
 const mapStateToProps = state => ({
     isSubmitting: state.login.isSubmitting,
-    progress: state.login.progress,
+    token: state.auth.token,
+    isAuth: state.auth.isAuth,
 });
 
 export default compose(

@@ -8,6 +8,7 @@
   "button": {
     "signUp": "SIGN UP",
     "signIn": "SIGN IN",
+    "signOut": "SIGN OUT",
     "menu": "MENU",
     "back": "BACK"
   },

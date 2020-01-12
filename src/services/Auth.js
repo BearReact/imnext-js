@@ -10,4 +10,11 @@ export default {
     submitLogin(email: string) {
         return api.post('auth/login', {email});
     },
+    /**
+     * 登出
+     * @returns {*}
+     */
+    submitLogout() {
+        return api.post('auth/logout');
+    },
 };

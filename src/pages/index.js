@@ -5,12 +5,8 @@ import cookie from 'js-cookie';
 
 const Homepage = () => (
     <main>
-            Nextjs 9, test to
+        Nextjs 9, test to
         <button type="button" onClick={() => Router.push('/example')}>go example</button>
-        <div>
-                client get cookie token:
-            {cookie.get('token')}
-        </div>
     </main>
 );
 

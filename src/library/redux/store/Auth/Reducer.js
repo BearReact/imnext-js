@@ -1,6 +1,5 @@
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
-import cookie from 'js-cookie';
 
 const PREFIX = 'auth';
 
@@ -8,19 +7,18 @@ const PREFIX = 'auth';
  Initial State
  /** ---------------------------------------*/
 export const INITIAL_STATE = Immutable({
-    token: null,
-    account: null,
-
     isAuth: false,
-    isRemember: false,
+    token: null,
+    exp: null,
+    email: null,
 });
 
 /** -----------------------------------------
  Selectors
  /** --------------------------------------*/
 export const Selectors = {
-    token: state => state[PREFIX].token,
     isAuth: state => state[PREFIX].isAuth,
+    token: state => state[PREFIX].token,
 };
 
 /** -----------------------------------------
@@ -29,13 +27,10 @@ export const Selectors = {
 export const {Types, Creators} = createActions(
     {
         // 登入系統
-        handleSetAuth: ['email'],
+        handleSetAuth: ['token', 'exp', 'email'],
 
         // 登出系統
         handleClearAuth: null,
-
-        // 設定 Token
-        handleSetToken: ['token'],
     },
     {
         prefix: `${PREFIX}/`,
@@ -52,21 +47,19 @@ const Reducers = {
     // 設定登入資訊
     handleSetAuth(state, action) {
         return state.merge({
-            email: action.email,
+            isAuth: true,
+            token: action.token,
             exp: action.exp,
+            email: action.email,
         });
     },
     // 清除登入資訊
     handleClearAuth(state, action) {
-        return state.merge(INITIAL_STATE);
-    },
-    // 設定Token
-    handleSetToken(state, action) {
-        cookie.set('token', action.token);
-
         return state.merge({
-            token: action.token,
-            isAuth: true,
+            isAuth: false,
+            token: null,
+            exp: null,
+            email: null,
         });
     },
 };
@@ -77,5 +70,4 @@ const Reducers = {
 export const reducer = createReducer(INITIAL_STATE, {
     [Types.HANDLE_SET_AUTH]: Reducers.handleSetAuth,
     [Types.HANDLE_CLEAR_AUTH]: Reducers.handleClearAuth,
-    [Types.HANDLE_SET_TOKEN]: Reducers.handleSetToken,
 });

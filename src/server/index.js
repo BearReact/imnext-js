@@ -1,10 +1,11 @@
 import express from 'express';
 import next from 'next';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import nextI18NextMiddleware from 'next-i18next/middleware';
 import nextI18next from '../library/i18next/configureI18Next';
 import {getRequestHandler} from '../library/nextRoute';
-import multiPlatformInit from './middleware/multiPlatformInit';
+import siteGlobalMiddleware from './middleware/siteGlobalMiddleware';
 import mockApi from './mockApi';
 
 const port = process.env.PORT || 3000;
@@ -15,11 +16,13 @@ const handle = getRequestHandler(app);
     await app.prepare();
     const server = express();
 
+    // Middleware
     server.use(bodyParser.json());
-    server.use(multiPlatformInit);
+    server.use(cookieParser());
+    server.use(siteGlobalMiddleware);
     server.use(nextI18NextMiddleware(nextI18next));
 
-    // 模擬後端資料
+    // Mock Backend Api
     server.use('/mockApi', mockApi);
 
     server.get('*', (req, res) => handle(req, res));

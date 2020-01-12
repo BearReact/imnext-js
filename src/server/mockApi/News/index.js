@@ -3,24 +3,26 @@ import express from 'express';
 
 const route = express.Router();
 
+/**
+ * 最新消息列表
+ */
 route.get('/news', async (req, res) => {
-    const data = require('./mock/list.json');
     res.json({
         statusCode: null,
         message: 'We have received your message and will contact you as soon as possible',
-        data,
+        data: require('./mock/list.json'),
     });
 });
 
+/**
+ * 最新消息明細
+ */
 route.get('/news/:id', async (req, res) => {
     const {id} = req.params;
-
-    const data = require(`./mock/detail/${id}.json`);
-
     res.json({
         statusCode: null,
         message: 'We have received your message and will contact you as soon as possible',
-        data,
+        data: require(`./mock/detail/${id}.json`),
     });
 });
 

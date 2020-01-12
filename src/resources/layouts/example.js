@@ -33,7 +33,6 @@ const Layout = (props: Props) => {
     };
 
     const {pathname} = useRouter();
-    console.log('pathname', pathname);
 
     const menu = [
         {

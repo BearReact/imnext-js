@@ -59,6 +59,7 @@
         "babel-plugin-transform-flow-strip-types": "6.22.0",
         "body-parser": "^1.19.0",
         "classnames": "2.2.6",
+        "cookie-parser": "^1.4.4",
         "core-js": "2.6.10",
         "cross-env": "6.0.3",
         "dayjs": "1.8.17",

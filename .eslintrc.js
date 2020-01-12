@@ -95,6 +95,7 @@ module.exports = {
         alert: true,
         window: true,
         document: true,
-        __global__: true
+        __global__: true,
+        __cookie__: true
     }
 };

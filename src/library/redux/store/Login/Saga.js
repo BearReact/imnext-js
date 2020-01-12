@@ -29,8 +29,7 @@ export function* submitLogin(payload) {
 
             const {exp} = jwtDecode(token);
 
-            yield put(AuthActions.handleSetAuth(email));
-            yield put(AuthActions.handleSetToken(token));
+            yield put(AuthActions.handleSetAuth(token, exp, email));
             yield put(Actions.submitLoginSuccess());
 
         } else {
@@ -42,4 +41,35 @@ export function* submitLogin(payload) {
     }
 }
 
-export default [takeLatest(Types.SUBMIT_LOGIN, submitLogin)];
+/**
+ * 使用者登入
+ * @returns {IterableIterator<*>}
+ */
+export function* submitLogout(payload) {
+
+    try {
+        yield put(Actions.submitLogoutBegin());
+
+        const response = yield call(ApiService.submitLogout);
+
+        const {data: responseData} = response;
+        if (response.ok) {
+            // 清除權限設定
+            yield put(AuthActions.handleClearAuth());
+
+            yield put(Actions.submitLogoutSuccess());
+
+        } else {
+            throw new Error(responseData.message);
+        }
+
+    } catch (e) {
+        yield put(Actions.submitLogoutFail(e.message));
+        yield put(UiActions.blockClose());
+    }
+}
+
+export default [
+    takeLatest(Types.SUBMIT_LOGIN, submitLogin),
+    takeLatest(Types.SUBMIT_LOGOUT, submitLogout),
+];

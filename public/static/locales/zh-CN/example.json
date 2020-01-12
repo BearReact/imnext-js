@@ -8,6 +8,7 @@
   "button": {
     "signUp": "注册",
     "signIn": "登入",
+    "signOut": "登出",
     "menu": "目录",
     "back": "返回"
   },

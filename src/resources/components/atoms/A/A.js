@@ -2,7 +2,7 @@
 
 import React, {Children} from 'react';
 import {useRouter} from 'next/router';
-import Link from 'next/link';
+import Link from '@library/nextRoute';
 
 type Props = {
     activeClassName: string,
@@ -10,7 +10,7 @@ type Props = {
     href: string,
 };
 
-const ActiveLink = props => {
+const A = (props: Props) => {
     const {children, activeClassName, ...otherProps} = props;
     const {pathname} = useRouter();
     const child = Children.only(children);
@@ -29,4 +29,4 @@ const ActiveLink = props => {
     );
 };
 
-export default ActiveLink;
+export default A;

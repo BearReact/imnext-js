@@ -1,15 +1,14 @@
 // @flow
 
 import React, {useState, useEffect} from 'react';
-// import Link from 'next/link';
-import {Link} from '@library/next-route';
-import {useRouter} from 'next/router';
-import get from 'lodash/get';
 import styled, {css} from 'styled-components';
-import {asset} from '@utils/uri';
 import cx from 'classnames';
+import get from 'lodash/get';
 import {i18n, withTranslation} from '@library/i18next/configureI18Next';
+import {useRouter} from 'next/router';
+import A from '@components/atoms/A';
 import screen from '@themes/Screen';
+import {asset} from '@utils/uri';
 
 type Props = {
     children?: React.Node,
@@ -37,10 +36,10 @@ const Layout = (props: Props) => {
 
     const menu = [
         {
-            name: 'example', text: t('example:menu.home'), isHome: true,
+            route: 'example', pathname: '/example', text: t('example:menu.home'), isHome: true,
         },
-        {name: 'example-news', text: t('example:menu.news')},
-        {name: 'example-contact', text: t('example:menu.contact')},
+        {route: 'example-news', pathname: '/example/news', text: t('example:menu.news')},
+        {route: 'example-contact', pathname: '/example/contact', text: t('example:menu.contact')},
     ];
 
     return (
@@ -50,9 +49,9 @@ const Layout = (props: Props) => {
                     <div className="row align-items-center">
                         {/* LOGO */}
                         <div className="col col-md-2">
-                            <Link route="home">
+                            <A route="home">
                                 <Logo>IMNEXT.js</Logo>
-                            </Link>
+                            </A>
                         </div>
 
                         {/* MENU */}
@@ -63,14 +62,14 @@ const Layout = (props: Props) => {
                                         {menu.map(row => (
                                             <NavItem
                                                 className={cx('col-auto', {
-                                                    active: (pathname === row.name)
+                                                    active: (pathname === row.pathname)
                                                         || (get(row, 'isHome', false) === false && pathname.indexOf(row.href) === 0),
                                                 })}
-                                                key={row.name}
+                                                key={row.route}
                                             >
-                                                <Link route={row.name}>
+                                                <A route={row.route}>
                                                     <a>{row.text}</a>
-                                                </Link>
+                                                </A>
                                             </NavItem>
                                         ))}
                                     </ul>

@@ -1,0 +1,8 @@
+{
+    "id": 1,
+    "title": "Build a Universal JavaScript App with Next.js",
+    "desc": "Just to provide a little context for the individuals that find Universal JavaScript to be a new term. \r\nThe term Universal simply means the ability to run the same code on the server, browsers, mobile devices and any other platform. Universal Javascript is a term people are leaning towards these days. A lot of developers also call it Isomorphic JavaScript. In short, there is a debate on the React repo about this term. Michael Jackson, a popular ReactJS developer wrote a blog post on Universal JavaScript. It's indeed true that naming things is one of the most difficult aspects of Computer Science.",
+    "author": "Imagine",
+    "thumb": "/static/images/example/news-1.jpg",
+    "avatar": "/static/images/example/author-1.jpg"
+}

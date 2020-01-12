@@ -126,3 +126,18 @@ export function getSubDomain(hostName: string): string {
     }
     return null;
 }
+
+/**
+ * 確認網址是否有效
+ * @param url 網址 (//location.com, http://location.com, https://location.com)
+ * @returns {boolean}
+ */
+export function checkIsUrl(url) {
+    // eslint-disable-next-line no-useless-escape
+    const regexParse = new RegExp('^(http\:\/\/|https\:\/\/|\/\/)[a-z-0-9]{2,63}.[a-z.]{2,5}');
+    const urlParts = regexParse.exec(url);
+    if (!urlParts) {
+        return false;
+    }
+    return true;
+}

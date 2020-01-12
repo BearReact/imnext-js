@@ -8,7 +8,7 @@ const PREFIX = 'login';
  Initial State
  /** ---------------------------------------*/
 export const INITIAL_STATE = Immutable({
-    isFetching: false,
+    isSubmitting: false,
     message: null,
 });
 
@@ -45,8 +45,6 @@ export const {Types, Creators} = createActions(
         kickSetGuestBegin: null,
         kickSetGuestSuccess: null,
         kickSetGuestFail: ['message'],
-
-        handleSetToken: ['token'],
     },
     {
         prefix: `${PREFIX}/`,

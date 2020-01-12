@@ -29,18 +29,6 @@ const nextConfig = {
         assetPrefix: process.env.ROUTE_PREFIX_PATH || '',
     },
     enableSvg: true,
-    exportPathMap() {
-        const pathMap = {
-            '/': {page: '/'}, // fix not change language in first
-            '/example/contact': {page: '/example/contact'},
-            '/example/news': {page: '/example/news'},
-            '/example': {page: '/example'},
-        };
-
-        return pathMap;
-
-        // return generateLocalePath(defaultPathMap);
-    },
 
     webpack: config => {
         config.node = {

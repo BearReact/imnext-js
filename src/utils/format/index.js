@@ -121,3 +121,20 @@ export function autoMapper(obj: {}, mapping: {}) {
 export function px2vw(pixels: number, pixelTotal: number = 320) {
     return `${(pixels / pixelTotal) * 100}vw`;
 }
+
+/**
+ * 解析JSON資料, 解析失敗時可回傳預設值
+ * @param jsonString
+ * @param catchReturn
+ * @returns {{}|*}
+ */
+export function jsonDecode(jsonString: string, catchReturn: {} = {}) {
+    try {
+        const obj = JSON.parse(jsonString);
+        if (typeof obj === 'object') {
+            return obj;
+        }
+    } catch (e) {
+        return catchReturn;
+    }
+}

@@ -3,7 +3,7 @@
 import apisauce from 'apisauce';
 
 const apiService = apisauce.create({
-    baseURL: process.env.API_BASE_URL || '/api',
+    baseURL: __global__.baseApiUrl,
     headers: {
         'Cache-Control': 'no-cache',
         'Content-Type': 'application/json',

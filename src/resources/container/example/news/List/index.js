@@ -4,8 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
-import Link from 'next/link';
-
+import A from '@components/atoms/A';
 import injectReducerSaga from '@library/redux/utils/injectReducerSaga';
 import screen from '@themes/Screen';
 import {isEmpty} from '@utils/equal';
@@ -57,19 +56,19 @@ const List = (props: Props) => {
                             className="col-lg-8 col-md-12 col-sm-16 mb-5"
                             key={row.id}
                         >
-                            <Link href="/example/news/[id]" as={`/example/news/${row.id}`}>
+                            <A route="example-news-detail" params={{id: row.id}}>
                                 <a>
                                     <Thumb src={row.thumb} alt="news" className="mb-4"/>
                                 </a>
-                            </Link>
+                            </A>
                             <div>
                                 <Title className="mb-3">
 
-                                    <Link href="/example/news/[id]" as={`/example/news/${row.id}`}>
+                                    <A route="example-news-detail" params={{id: row.id}}>
                                         <a>
                                             {row.title}
                                         </a>
-                                    </Link>
+                                    </A>
                                 </Title>
                                 <div className="blog-author d-flex align-items-center">
                                     <div className="pr-4">

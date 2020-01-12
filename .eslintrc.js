@@ -3,22 +3,23 @@ module.exports = {
     extends: [
         'airbnb',
         'eslint:recommended',
+        'plugin:import/recommended',
         'plugin:react/recommended',
-        'plugin:flowtype/recommended'
+        'plugin:flowtype/recommended',
     ],
     plugins: ['redux-saga', 'react', 'react-hooks', 'jsx-a11y', 'flowtype'],
     env: {
         jest: true,
         browser: true,
         node: true,
-        es6: true
+        es6: true,
     },
     parserOptions: {
         ecmaVersion: 6,
         sourceType: 'module',
         ecmaFeatures: {
-            jsx: true
-        }
+            jsx: true,
+        },
     },
     rules: {
         'class-methods-use-this': 'off',
@@ -37,7 +38,9 @@ module.exports = {
         semi: 'error',
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': ['error', 'first'],
-        'react/jsx-tag-spacing': ['error', {closingSlash: 'never', beforeSelfClosing: 'never', afterOpening: 'never', beforeClosing: 'never'}],
+        'react/jsx-tag-spacing': ['error', {
+            closingSlash: 'never', beforeSelfClosing: 'never', afterOpening: 'never', beforeClosing: 'never',
+        }],
         'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx']}],
         'react/jsx-one-expression-per-line': 'off',
         'react/no-danger': 'off',
@@ -49,7 +52,7 @@ module.exports = {
         'jsx-a11y/alt-text': 'off',
         'import/no-extraneous-dependencies': 'off',
         'import/extensions': 'off',
-        'import/no-unresolved': [2, {caseSensitive: true}],
+        'import/no-unresolved': [2, {caseSensitive: false}],
         'import/prefer-default-export': 'off',
         'import/no-named-as-default': 'off',
         'import/no-named-as-default-member': 'off',
@@ -58,19 +61,19 @@ module.exports = {
         'react/static-property-placement': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/prop-types': 'off',
-        "react-hooks/rules-of-hooks": 'error',
-        "react-hooks/exhaustive-deps": 'off',
-        'quotes': ['error', 'single'],
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'off',
+        quotes: ['error', 'single'],
         'global-require': 'off',
         'space-in-brackets': 'off',
         'no-plusplus': 'off',
         'flowtype/delimiter-dangle': ['error', 'always-multiline'],
         'no-use-before-define': 'off',
         'func-names': 'off',
-        'radix': ['error', 'as-needed'],
+        radix: ['error', 'as-needed'],
         'arrow-parens': ['error', 'as-needed'],
-        'no-trailing-spaces': ['error', { 'ignoreComments': true, 'skipBlankLines': true }],
-        'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 1 }],
+        'no-trailing-spaces': ['error', {ignoreComments: true, skipBlankLines: true}],
+        'no-multiple-empty-lines': ['error', {max: 1, maxEOF: 1}],
         'padded-blocks': 'off',
         'prefer-object-spread': 'off',
     },
@@ -85,16 +88,17 @@ module.exports = {
             // default to "createReactClass"
             pragma: 'React', // Pragma to use, default to "React"
             version: '16.12.0', // React version, default to the latest React stable release
-            flowVersion: '0.112.0' // Flow version
+            flowVersion: '0.112.0', // Flow version
         },
         flowtype: {
-            onlyFilesWithFlowAnnotation: true //只在添加flow註釋的文件才做檢查
-        }
+            onlyFilesWithFlowAnnotation: true, // 只在添加flow註釋的文件才做檢查
+        },
     },
     globals: {
         alert: true,
         window: true,
         document: true,
-        __global__: true
-    }
+        __global__: true,
+        __cookie__: true,
+    },
 };

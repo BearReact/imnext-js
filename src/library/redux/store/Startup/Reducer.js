@@ -9,11 +9,6 @@ const PREFIX = 'startup';
 export const INITIAL_STATE = Immutable({
     isReady: false,
     isChecking: false,
-
-    isMaintain: false,
-    maintainMessage: null,
-    maintainEndTime: null,
-    clientIP: null,
 });
 
 /** -----------------------------------------
@@ -34,7 +29,6 @@ export const {Types, Creators} = createActions(
         checkingFail: null,
 
         resetApp: null,
-        setMaintain: ['maintainMessage', 'maintainEndTime'],
     },
     {
         prefix: `${PREFIX}/`,
@@ -59,11 +53,10 @@ const Reducers = {
             isChecking: false,
         });
     },
-    setMaintain(state, action) {
+    checkingFail(state) {
         return state.merge({
-            isMaintain: true,
-            maintainMessage: action.maintainMessage,
-            maintainEndTime: action.maintainEndTime,
+            isReady: false,
+            isChecking: false,
         });
     },
 };
@@ -73,8 +66,6 @@ const Reducers = {
  /** -------------------------------------------------------------*/
 export const reducer = createReducer(INITIAL_STATE, {
     [Types.CHECKING_BEGIN]: Reducers.checkingBegin,
-
     [Types.CHECKING_SUCCESS]: Reducers.checkingSuccess,
-
-    [Types.SET_MAINTAIN]: Reducers.setMaintain,
+    [Types.CHECKING_FAIL]: Reducers.checkingFail,
 });

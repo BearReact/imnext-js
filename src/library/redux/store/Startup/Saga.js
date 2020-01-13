@@ -5,14 +5,15 @@ import {
 import get from 'lodash/get';
 import cookie from 'js-cookie';
 import setWith from 'lodash/setWith';
-// import jwtDecode from 'jwt-decode';
-// import dayjs from 'dayjs';
+import jwtDecode from 'jwt-decode';
+import dayjs from 'dayjs';
 
 import {isEmpty} from '@utils/equal';
 import config from '@config/app';
 import Actions, {Types} from './Reducer';
+import SystemActions, {Types as SystemType} from '../System/Reducer';
+import AuthActions, {Selectors as AuthSelectors} from '../Auth/Reducer';
 
-// process STARTUP actions
 /**
  * 初始化流程控制
  * @returns {IterableIterator<*>}
@@ -22,33 +23,26 @@ export function* initializeFlow() {
         yield take(Types.CHECKING); // 等到 TYPE.CHECKING 觸發
         yield put(Actions.checkingBegin());
 
-        // 訂製流程:
-        // 1. 取得並設定APP站台設定
-        // yield put(SystemActions.fetchSetting());
+        // Get Site Setting
+        yield put(SystemActions.fetchSetting());
+        yield take(SystemType.FETCH_SETTING_SUCCESS);
 
-        // 判斷登入狀態
-        // let isAuth = yield select(AuthSelectors.isAuth);
 
-        // 檢查 Token 是否過期, 若判定過期 則清除登入狀態
-        // if (isAuth) {
-        //     const token = yield select(AuthSelectors.token);
-        //     const expiredTime = get(jwtDecode(token), 'exp', new Date());
-        //     if (expiredTime && dayjs(expiredTime).diff(dayjs()) >= 0) {
-        //         yield put(AuthAction.handleClearAuth());
-        //         isAuth = false;
-        //     }
-        // }
+        // Check token expired
+        let isAuth = yield select(AuthSelectors.isAuth);
+        if (isAuth) {
+            const token = yield select(AuthSelectors.token);
+            const expiredTime = get(jwtDecode(token), 'exp', new Date());
+            if (expiredTime && dayjs(expiredTime).diff(dayjs()) >= 0) {
+                yield put(AuthActions.handleClearAuth());
+            }
+        }
 
-        // 防閃爍
-        // yield delay(200);
-
-        // 完成檢查
+        // Done
         yield put(Actions.checkingSuccess());
-    } catch (e) {
-        // 檢查失敗
-        yield put(Actions.checkingFail());
 
-        console.log(e.message);
+    } catch (e) {
+        yield put(Actions.checkingFail());
     }
 }
 

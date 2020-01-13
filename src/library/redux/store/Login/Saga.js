@@ -24,25 +24,20 @@ export function* submitLogin(payload) {
         const response = yield call(ApiService.submitLogin, email.trim());
 
         const {data: responseData} = response;
-        if (response.ok) {
-            const {token} = responseData.data;
 
-            const {exp} = jwtDecode(token);
+        const {token} = responseData.data;
+        const {exp} = jwtDecode(token);
+        yield put(AuthActions.handleSetAuth(token, exp, email));
+        yield put(Actions.submitLoginSuccess());
 
-            yield put(AuthActions.handleSetAuth(token, exp, email));
-            yield put(Actions.submitLoginSuccess());
-
-        } else {
-            throw new Error('Cannot log in for you without obtaining a server-side token');
-        }
     } catch (e) {
         yield put(Actions.submitLoginFail(e.message));
-        yield put(UiActions.modalOpenError(e.message, e.statusCode));
+        // yield put(UiActions.modalOpenError(e.message, e.statusCode));
     }
 }
 
 /**
- * 使用者登入
+ * 使用者登出
  * @returns {IterableIterator<*>}
  */
 export function* submitLogout(payload) {
@@ -53,19 +48,13 @@ export function* submitLogout(payload) {
         const response = yield call(ApiService.submitLogout);
 
         const {data: responseData} = response;
-        if (response.ok) {
-            // 清除權限設定
-            yield put(AuthActions.handleClearAuth());
 
-            yield put(Actions.submitLogoutSuccess());
-
-        } else {
-            throw new Error(responseData.message);
-        }
+        // 清除權限設定
+        yield put(AuthActions.handleClearAuth());
+        yield put(Actions.submitLogoutSuccess());
 
     } catch (e) {
         yield put(Actions.submitLogoutFail(e.message));
-        yield put(UiActions.blockClose());
     }
 }
 

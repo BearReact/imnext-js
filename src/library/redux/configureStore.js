@@ -3,23 +3,21 @@ import createSagaMiddleware from 'redux-saga';
 import Immutable from 'seamless-immutable';
 import get from 'lodash/get';
 
-import {isEmpty} from '@utils/equal';
-import {i18n} from '@library/i18next/configureI18Next';
-import apiService from '@services';
 import createReducer from './reducers';
 import rootSaga from './store/rootSaga';
-import {Selectors} from './store/Auth/Reducer';
-import StartupActions from './store/Startup/Reducer';
 
+// eslint-disable-next-line import/no-mutable-exports
+let store = null;
 export default initialState => {
     const sagaMiddleware = createSagaMiddleware();
 
     const middlewares = [sagaMiddleware];
     const enhancers = [applyMiddleware(...middlewares)];
+    const isServer = typeof window === 'undefined';
 
     // If Redux DevTools Extension is installed use it, otherwise use Redux compose
     const composeEnhancers = (process.env.NODE_ENV !== 'production'
-            && typeof window !== 'undefined'
+            && !isServer
             // eslint-disable-next-line no-underscore-dangle
             && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
         || compose;
@@ -27,12 +25,12 @@ export default initialState => {
     // Create Store
     // 在 Server端 從Cookie同步需持久化的Redux State
     let immutableInitialState = Immutable(initialState || {});
-    if (typeof window === 'undefined' && immutableInitialState) {
+    if (isServer && immutableInitialState) {
         immutableInitialState = immutableInitialState.merge(get(__cookie__, 'persistState', {}), {deep: true});
     }
 
     // console.log('initialState', immutableImmutable);
-    const store = createStore(createReducer(), immutableInitialState, composeEnhancers(...enhancers));
+    store = createStore(createReducer(), immutableInitialState, composeEnhancers(...enhancers));
 
     // Create an object for any later reducers
     store.asyncReducers = {};
@@ -66,50 +64,7 @@ export default initialState => {
         store.asyncSagas[key] = key;
     };
 
-    // 啟動檢查
-    store.dispatch(StartupActions.checking());
-
-    // =========== API Setting ================
-    // 回應攔截處理
-    apiService.addResponseTransform(response => {
-        if (response.ok) {
-            const {headers} = response;
-
-            /** 請求成功, 額外處理區塊 */
-            // if (headers.Authentication) {
-            // 設定認證
-            // store.dispatch(AuthAction.setToken(response.data.token));
-            // }
-        } else {
-            /** 請求失敗, 額外處理區塊 */
-            const {status, problem, config} = response;
-
-            if (!isEmpty(status)) {
-                throw new Error(i18n.t(`common:errorHttp.${status}`));
-
-            } else if (problem === 'NETWORK_ERROR') {
-                throw new Error(i18n.t('common:errorHttp.networkError'));
-
-            } else if (problem === 'TIMEOUT_ERROR') {
-                throw new Error(i18n.t('common:errorHttp.timeoutError', {sec: (config.timeout / 1000)}));
-
-            }
-        }
-        return response;
-    });
-
-    // 請求攔截處理
-    apiService.addRequestTransform(request => {
-        const token = Selectors.token(store.getState());
-
-        // 語系設定
-        request.headers['Accept-Language'] = i18n.language;
-
-        if (token) {
-            // 設定授權
-            request.headers.Authorization = `Bearer ${token}`;
-        }
-    });
-
     return store;
 };
+
+export {store};

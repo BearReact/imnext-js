@@ -3,6 +3,7 @@ import {
 } from 'redux-saga/effects';
 
 import jwtDecode from 'jwt-decode';
+import get from 'lodash/get';
 
 import ApiService from '@services/Auth';
 import UiActions from '@library/redux/store/Ui/Reducer';
@@ -21,18 +22,21 @@ export function* submitLogin(payload) {
             formParam: {email},
         } = payload;
 
-        const response = yield call(ApiService.submitLogin, email.trim());
+        // call api
+        const {data: responseData} = yield call(ApiService.submitLogin, email.trim());
 
-        const {data: responseData} = response;
-
-        const {token} = responseData.data;
+        // handle data
+        const token = get(responseData, 'data.token', '');
         const {exp} = jwtDecode(token);
+
         yield put(AuthActions.handleSetAuth(token, exp, email));
+
+        // done
         yield put(Actions.submitLoginSuccess());
 
     } catch (e) {
         yield put(Actions.submitLoginFail(e.message));
-        // yield put(UiActions.modalOpenError(e.message, e.statusCode));
+        console.log('error', e.message);
     }
 }
 
@@ -55,6 +59,7 @@ export function* submitLogout(payload) {
 
     } catch (e) {
         yield put(Actions.submitLogoutFail(e.message));
+        console.error(e.message);
     }
 }
 

@@ -1,16 +1,81 @@
 // @flow
 
-import apisauce from 'apisauce';
+import axios from 'axios';
+import {create} from 'apisauce';
+import get from 'lodash/get';
 
-const apiService = apisauce.create({
+import {isEmpty} from '@utils/equal';
+import {i18n} from '@library/i18next/configureI18Next';
+import {Selectors as AuthSelectors} from '@library/redux/store/Auth/Reducer';
+import LoginActions from '@library/redux/store/Login/Reducer';
+import {store} from '@library/redux/configureStore';
+
+const customAxiosInstance = axios.create({
     baseURL: __global__.baseApiUrl,
     headers: {
         'Cache-Control': 'no-cache',
         'Content-Type': 'application/json',
+        'Accept-Language': __global__.defaultLang,
         'Site-ID': __global__.siteId,
     },
-    withCredentials: false, // 是否允許帶Cookie(會影響跨來源資源共用CORS)
     timeout: 20000,
+});
+const apiService = create({axiosInstance: customAxiosInstance});
+
+apiService.addResponseTransform(response => {
+    if (response.ok) {
+        const {headers} = response;
+
+        /** 請求成功, 額外處理區塊 */
+        // if (headers.Authentication) {
+        // 設定認證
+        // store.dispatch(AuthAction.setToken(response.data.token));
+        // }
+    } else {
+        /** 請求失敗, 額外處理區塊 */
+        const {
+            status, problem, config, data: responseData,
+        } = response;
+
+        if (!isEmpty(status)) {
+
+            const message = get(responseData, 'message', i18n.t(`common:errorHttp.${status}`));
+            const statusCode = get(responseData, 'statusCode', status);
+
+            switch (response.status) {
+                case 401:
+                    store.dispatch(LoginActions.kickSetGuest());
+                    throw new Error(message);
+
+                case 511:
+                    // store.dispatch(replace('/no-access'));
+                    throw new Error(message);
+
+                default:
+                    throw new Error(message);
+            }
+
+        } else if (problem === 'NETWORK_ERROR') {
+            throw new Error(i18n.t('common:errorHttp.networkError'));
+
+        } else if (problem === 'TIMEOUT_ERROR') {
+            throw new Error(i18n.t('common:errorHttp.timeoutError', {sec: (config.timeout / 1000)}));
+
+        }
+    }
+    return response;
+});
+
+// 請求攔截處理
+apiService.addRequestTransform(request => {
+
+    // 語系設定
+    request.headers['Accept-Language'] = i18n.language;
+
+    const token = AuthSelectors.token(store.getState());
+    if (token) {
+        request.headers.Authorization = `Bearer ${token}`;
+    }
 });
 
 export default apiService;

@@ -51,6 +51,7 @@
         "@zeit/next-css": "^1.0.1",
         "@zeit/next-sass": "^1.0.1",
         "apisauce": "1.1.1",
+        "axios": "^0.19.1",
         "babel-loader": "8.0.6",
         "babel-plugin-lodash": "3.3.4",
         "babel-plugin-macros": "2.8.0",

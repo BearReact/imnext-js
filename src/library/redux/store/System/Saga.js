@@ -14,27 +14,24 @@ export function* fetchSetting() {
         yield put(Actions.fetchSettingBegin());
 
         const response = yield call(ApiService.getSetting);
-
         const {data: responseData} = response;
-        if (response.ok) {
-            const {
+        const {
+            isMaintain,
+            maintainMessage,
+            maintainEndTime,
+        } = responseData.data;
+
+        yield put(
+            Actions.fetchSettingSuccess(
                 isMaintain,
                 maintainMessage,
                 maintainEndTime,
-            } = responseData.data;
+            )
+        );
 
-            yield put(
-                Actions.fetchSettingSuccess(
-                    isMaintain,
-                    maintainMessage,
-                    maintainEndTime,
-                )
-            );
-
-        }
     } catch (e) {
         yield put(Actions.fetchSettingFail(e.message));
-        console.log(e.message);
+        console.error(e.message);
     }
 }
 

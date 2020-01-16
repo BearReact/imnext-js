@@ -1,16 +1,17 @@
 {
   "errorForm": {
+    "require": "The {{name}} not be between required",
     "tooShortString": "Not less than {{length}}",
     "tooLongString": "Not greater than {{length}}",
     "tooShortNumber": "Not less than {{length}}",
     "tooLongNumber": "Not greater than {{length}}",
     "tooRange": "The {{name}} must be between {{min}}-{{max}}",
-    "require": "The {{name}} not be between required",
     "invalid": "Please match the correct format of the {{name}}"
   },
   "errorHttp": {
     "401": "Please login before continuing",
     "404": "Request Not Found/Route",
+    "500": "Internal Server Error",
     "504": "Please check your network and try again",
     "networkError": "Your mobile network connection is unstable. Please check your network connection status and try again.",
     "timeoutError": "The server has not responded for more than {{sec}} seconds. Please confirm your network connection status or contact customer service."

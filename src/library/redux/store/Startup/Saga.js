@@ -13,6 +13,7 @@ import config from '@config/app';
 import Actions, {Types} from './Reducer';
 import SystemActions, {Types as SystemType} from '../System/Reducer';
 import AuthActions, {Selectors as AuthSelectors} from '../Auth/Reducer';
+import {submitLogin} from '@library/redux/store/Login/Saga';
 
 /**
  * 初始化流程控制
@@ -20,7 +21,8 @@ import AuthActions, {Selectors as AuthSelectors} from '../Auth/Reducer';
  */
 export function* initializeFlow() {
     try {
-        yield take(Types.CHECKING); // 等到 TYPE.CHECKING 觸發
+        yield take(Types.CHECKING);
+
         yield put(Actions.checkingBegin());
 
         // Get Site Setting
@@ -43,6 +45,7 @@ export function* initializeFlow() {
 
     } catch (e) {
         yield put(Actions.checkingFail());
+        console.error(e.message);
     }
 }
 

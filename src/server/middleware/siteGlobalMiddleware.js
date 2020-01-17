@@ -28,7 +28,7 @@ route.use(async (req, res, appNext) => {
 
     // 如果不是url是path, 則使用 req host 作為API前綴域名路徑
     const envApiBaseUrl = process.env.API_BASE_URL || '/';
-    const hostName = `//${req.headers.host}`;
+    const hostName = `${req.protocol}://${req.get('host')}`;
     const baseApiUrl = checkIsUrl(process.env.API_BASE_URL) ? process.env.API_BASE_URL : `${hostName}${envApiBaseUrl}`;
     const cookies = await req.cookies;
 

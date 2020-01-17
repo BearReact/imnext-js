@@ -10,7 +10,6 @@ import {asset} from '@utils/uri';
 
 import createStore from '@library/redux/configureStore';
 import {appWithTranslation} from '@library/i18next/configureI18Next';
-import StartupAction from '@library/redux/store/Startup/Reducer';
 
 import '@assets/styles/dist/bootstrap.css';
 import '@public/static/plugins/iconfont/iconfont.css';
@@ -23,18 +22,11 @@ class MyApp extends App {
         let pageProps = {};
 
         if (Component.getInitialProps) {
-            const customPageProps = await Component.getInitialProps({ctx});
+            const customPageProps = await Component.getInitialProps(ctx);
             pageProps = Object.assign(pageProps, customPageProps);
         }
 
         return {pageProps};
-    }
-
-    componentDidMount() {
-        const {store} = this.props;
-
-        // checking...
-        store.dispatch(StartupAction.checking());
     }
 
     render() {

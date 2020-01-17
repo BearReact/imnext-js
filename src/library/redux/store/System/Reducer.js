@@ -1,6 +1,6 @@
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
-import {isEmpty} from '@utils/equal';
+import dayjs from 'dayjs';
 
 const PREFIX = 'system';
 
@@ -12,6 +12,7 @@ export const INITIAL_STATE = Immutable({
     maintainMessage: null,
     maintainEndTime: null,
     clientIP: null,
+    updateTime: null,
 });
 
 /** -----------------------------------------
@@ -34,6 +35,7 @@ export const {Types, Creators} = createActions(
             'maintainMessage',
             'maintainEndTime',
             'clientIP',
+            'updateTime',
         ],
         fetchSettingFail: ['message'],
     },
@@ -54,6 +56,7 @@ const Reducers = {
             });
         },
         success(state, action) {
+            const updateTime = dayjs().format('YYYY-MM-DD H:mm:ss');
             return state.merge({
                 isFetching: false,
                 message: null,
@@ -61,6 +64,7 @@ const Reducers = {
                 maintainMessage: action.maintainMessage,
                 maintainEndTime: action.maintainEndTime,
                 clientIP: action.clientIP,
+                updateTime,
             });
         },
         fail(state, action) {

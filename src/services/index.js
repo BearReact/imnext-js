@@ -22,6 +22,23 @@ const customAxiosInstance = axios.create({
 });
 const apiService = create({axiosInstance: customAxiosInstance});
 
+/**
+ * Request After Middleware
+ */
+apiService.addRequestTransform(request => {
+
+    // 語系設定
+    request.headers['Accept-Language'] = i18n.language;
+
+    const token = AuthSelectors.token(store.getState());
+    if (token) {
+        request.headers.Authorization = `Bearer ${token}`;
+    }
+});
+
+/**
+ * Response After Middleware
+ */
 apiService.addResponseTransform(response => {
     if (response.ok) {
         const {headers} = response;
@@ -31,10 +48,11 @@ apiService.addResponseTransform(response => {
         // 設定認證
         // store.dispatch(AuthAction.setToken(response.data.token));
         // }
+
     } else {
         /** 請求失敗, 額外處理區塊 */
         const {
-            status, problem, config, data: responseData,
+            status, problem, originalError, config, data: responseData,
         } = response;
 
         if (!isEmpty(status)) {
@@ -55,27 +73,20 @@ apiService.addResponseTransform(response => {
                     throw new Error(message);
             }
 
-        } else if (problem === 'NETWORK_ERROR') {
-            throw new Error(i18n.t('common:errorHttp.networkError'));
+        } else if (!isEmpty(problem)) {
+            switch (problem) {
+                case 'NETWORK_ERROR':
+                    throw new Error(i18n.t('common:errorHttp.networkError'));
 
-        } else if (problem === 'TIMEOUT_ERROR') {
-            throw new Error(i18n.t('common:errorHttp.timeoutError', {sec: (config.timeout / 1000)}));
+                case 'TIMEOUT_ERROR':
+                    throw new Error(i18n.t('common:errorHttp.networkError'));
 
+                default:
+                    throw new Error(`${problem}: ${originalError}`);
+            }
         }
     }
     return response;
-});
-
-// 請求攔截處理
-apiService.addRequestTransform(request => {
-
-    // 語系設定
-    request.headers['Accept-Language'] = i18n.language;
-
-    const token = AuthSelectors.token(store.getState());
-    if (token) {
-        request.headers.Authorization = `Bearer ${token}`;
-    }
 });
 
 export default apiService;

@@ -6,7 +6,7 @@ import nextI18NextMiddleware from 'next-i18next/middleware';
 import nextI18next from '../library/i18next/configureI18Next';
 import {getRequestHandler} from '../library/nextRoute';
 import siteGlobalMiddleware from './middleware/siteGlobalMiddleware';
-import devProxyMiddleware from './middleware/devProxyMiddleware';
+import reverseProxyMiddleware from './middleware/reverseProxyMiddleware';
 import mockApi from './mockApi';
 
 const port = process.env.PORT || 3000;
@@ -27,7 +27,7 @@ const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
 
     // Develop mode use reProxy api
     if (isDevMode && proxyMiddlewareApiBaseUrl) {
-        server.use(devProxyMiddleware);
+        server.use(reverseProxyMiddleware);
     }
 
     // Mock Backend Api

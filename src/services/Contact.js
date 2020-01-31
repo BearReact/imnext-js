@@ -7,7 +7,7 @@ export default {
      * @returns {*}
      */
     submitContact() {
-        return api.get('contact');
+        return api.post('contact');
     },
 
 };

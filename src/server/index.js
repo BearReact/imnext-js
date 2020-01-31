@@ -19,16 +19,16 @@ const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
     await app.prepare();
     const server = express();
 
+    // Develop mode use reProxy api
+    if (isDevMode && proxyMiddlewareApiBaseUrl) {
+        server.use(reverseProxyMiddleware);
+    }
+
     // Middleware
     server.use(bodyParser.json());
     server.use(cookieParser());
     server.use(siteGlobalMiddleware);
     server.use(nextI18NextMiddleware(nextI18next));
-
-    // Develop mode use reProxy api
-    if (isDevMode && proxyMiddlewareApiBaseUrl) {
-        server.use(reverseProxyMiddleware);
-    }
 
     // Mock Backend Api
     server.use('/mockApi', mockApi);

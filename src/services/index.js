@@ -27,11 +27,6 @@ const apiService = create({axiosInstance: customAxiosInstance});
  */
 apiService.addRequestTransform(request => {
 
-    // 若為POST, 改變 Content-Type
-    if (request.method === 'post') {
-        request.headers['Content-Type'] = 'multipart/form-data';
-    }
-
     // 語系設定
     request.headers['Accept-Language'] = i18n.language;
 

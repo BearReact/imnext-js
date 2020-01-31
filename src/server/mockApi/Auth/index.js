@@ -20,10 +20,9 @@ route.post('/auth/login', async (req, res) => {
  * 登出
  */
 route.post('/auth/logout', async (req, res) => {
-    const {email} = req.body;
     res.json({
         statusCode: null,
-        message: `${email} Congratulations, we have successfully logged in for you`,
+        message: 'Congratulations, we have successfully logged out for you',
     });
 });
 

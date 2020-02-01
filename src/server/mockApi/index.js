@@ -3,4 +3,5 @@ module.exports = [
     require('./Auth'),
     require('./News'),
     require('./Contact'),
+    require('./Profile'),
 ];

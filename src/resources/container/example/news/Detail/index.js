@@ -23,7 +23,7 @@ type Props = {
     },
 };
 
-const List = (props: Props) => {
+const Detail = (props: Props) => {
 
     const {
         t, isFetching, currentData, fetchCurrent,
@@ -98,7 +98,7 @@ const List = (props: Props) => {
     );
 };
 
-List.defaultProps = {
+Detail.defaultProps = {
     isFetching: false,
     currentData: null,
 };
@@ -115,7 +115,7 @@ const mapStateToProps = state => ({
 export default compose(
     injectReducerSaga('news', {reducer, saga}),
     connect(mapStateToProps, mapDispatchToProps)
-)(List);
+)(Detail);
 
 const Button = styled.button`
     font-weight: 700;

@@ -3,7 +3,8 @@
   "menu": {
     "home": "主页",
     "news": "最新消息",
-    "contact": "联络我们"
+    "contact": "联络我们",
+    "profile": "我的帳戶"
   },
   "button": {
     "signUp": "注册",
@@ -38,6 +39,16 @@
     },
     "sendNow": "现在发送",
     "successMessage": "我们已收到您的讯息了, 将会尽速与您联络"
+  },
+  "pageProfile": {
+    "title": "我的个人资料",
+    "subTitle": "关于 {{email}}",
+    "label" : {
+      "name": "全名",
+      "email": "电子邮件",
+      "country": "信息",
+      "signUpDate": "注册日期"
+    }
   }
 }
 

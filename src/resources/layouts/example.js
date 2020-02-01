@@ -40,6 +40,7 @@ const Layout = (props: Props) => {
         },
         {route: 'example-news', pathname: '/example/news', text: t('example:menu.news')},
         {route: 'example-contact', pathname: '/example/contact', text: t('example:menu.contact')},
+        {route: 'example-profile', pathname: '/example/profile', text: t('example:menu.profile')},
     ];
 
     return (

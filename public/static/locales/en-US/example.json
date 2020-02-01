@@ -3,7 +3,8 @@
   "menu": {
     "home": "Home",
     "contact": "Contact",
-    "news": "News"
+    "news": "News",
+    "profile": "My Profile"
   },
   "button": {
     "signUp": "SIGN UP",
@@ -38,5 +39,15 @@
     },
     "sendNow": "Send Now",
     "successMessage": "We have received your message and will contact you as soon as possible"
+  },
+  "pageProfile": {
+    "title": "My Profile",
+    "subTitle": "About {{email}}",
+    "label" : {
+      "name": "Full Name",
+      "email": "Email",
+      "country": "Country",
+      "signUpDate": "Sign Up Date"
+    }
   }
 }

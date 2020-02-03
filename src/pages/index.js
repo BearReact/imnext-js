@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
 import Layout from '@layouts/main';
-import Router from 'next/router';
-import cookie from 'js-cookie';
+import {Router} from '@library/nextRoute';
 
 const Homepage = () => (
     <main>
         Nextjs 9, test to
-        <button type="button" onClick={() => Router.push('/example')}>go example</button>
+        <button type="button" onClick={() => Router.pushRoute('example')}>go example</button>
     </main>
 );
 

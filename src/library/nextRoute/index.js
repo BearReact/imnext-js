@@ -23,3 +23,4 @@ config.map(row => {
 
 export default createRoute.Link;
 export const getRequestHandler = app => createRoute.getRequestHandler(app);
+export const Router = createRoute.Router;

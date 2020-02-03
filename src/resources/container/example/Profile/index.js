@@ -94,7 +94,6 @@ const Section = styled.div`
     flex: 1 1 auto;
 `;
 
-
 const PageSubTitle = styled.h6`
     font-size: 18px;
     font-weight: 400;

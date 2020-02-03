@@ -1,4 +1,15 @@
 /* eslint no-multi-assign: "off" */
+
+/**
+ * Route Setting
+ *
+ * name: route push name
+ * pattern: route rules
+ * page: next pages path (in: src/pages)
+ *
+ * @type {*[]}
+ */
+
 const rules = [
     {name: 'example', pattern: '/example', page: '/example'},
     {name: 'example-news', pattern: '/example/news', page: '/example/news'},

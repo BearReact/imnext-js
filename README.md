@@ -25,6 +25,7 @@ Imnext is accessible, powerful, and provides tools required for large, robust ap
 - Imnext-js
   - [use Webstorm](https://github.com/imagine10255/imnext-js/blob/master/docs/use-webstorm.md)
   - [use Precommit](https://github.com/imagine10255/imnext-js/blob/master/docs/use-precommit.md)
+  - [use Next-Routes](https://github.com/imagine10255/imnext-js/blob/master/docs/use-next-routes.md)
   - [use Bootstrap](https://github.com/imagine10255/imnext-js/blob/master/docs/use-bootstrap.md)
   - [use Next-i18next](https://github.com/imagine10255/imnext-js/blob/master/docs/use-next-i18next.md)
   

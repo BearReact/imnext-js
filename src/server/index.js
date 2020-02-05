@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import nextI18NextMiddleware from 'next-i18next/middleware';
 import nextI18next from '../library/i18next/configureI18Next';
-import {getRequestHandler} from '../library/nextRoute';
+// import {getRequestHandler} from '../library/nextRoute';
 import siteGlobalMiddleware from './middleware/siteGlobalMiddleware';
 import reverseProxyMiddleware from './middleware/reverseProxyMiddleware';
 import mockApi from './mockApi';
@@ -12,7 +12,8 @@ import mockApi from './mockApi';
 const port = process.env.PORT || 3000;
 const isDevMode = process.env.NODE_ENV !== 'production';
 const app = next({dev: isDevMode});
-const handle = getRequestHandler(app);
+const handle = app.getRequestHandler();
+
 const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
 
 (async () => {

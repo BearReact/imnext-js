@@ -6,7 +6,7 @@ import cx from 'classnames';
 import get from 'lodash/get';
 import {i18n, withTranslation} from '@library/i18next/configureI18Next';
 import {useRouter} from 'next/router';
-import A from '@components/atoms/A';
+import A from '@components/atoms/A2';
 import screen from '@themes/Screen';
 import {asset} from '@utils/uri';
 
@@ -36,12 +36,13 @@ const Layout = (props: Props) => {
 
     const menu = [
         {
-            route: 'example', pathname: '/example', text: t('example:menu.home'), isHome: true,
+            route: 'example', href: '/example', text: t('example:menu.home'), isHome: true,
         },
-        {route: 'example-news', pathname: '/example/news', text: t('example:menu.news')},
-        {route: 'example-contact', pathname: '/example/contact', text: t('example:menu.contact')},
-        {route: 'example-profile', pathname: '/example/profile', text: t('example:menu.profile')},
+        {route: 'example-news', href: '/example/news', text: t('example:menu.news')},
+        {route: 'example-contact', href: '/example/contact', text: t('example:menu.contact')},
+        {route: 'example-profile', href: '/example/profile', text: t('example:menu.profile')},
     ];
+
 
     return (
         <div className="d-flex flex-column" style={{height: 'inherit'}}>
@@ -50,7 +51,7 @@ const Layout = (props: Props) => {
                     <div className="row align-items-center">
                         {/* LOGO */}
                         <div className="col col-md-2">
-                            <A route="home">
+                            <A href="/example/contact">
                                 <Logo>IMNEXT.js</Logo>
                             </A>
                         </div>
@@ -66,10 +67,10 @@ const Layout = (props: Props) => {
                                                     active: (pathname === row.pathname)
                                                         || (get(row, 'isHome', false) === false && pathname.indexOf(row.href) === 0),
                                                 })}
-                                                key={row.route}
+                                                key={row.href}
                                             >
-                                                <A route={row.route}>
-                                                    <a>{row.text}</a>
+                                                <A href={row.href}>
+                                                    {row.text}
                                                 </A>
                                             </NavItem>
                                         ))}
@@ -221,7 +222,7 @@ const Button = styled.button`
     }
 `;
 
-const Logo = styled.a`
+const Logo = styled.span`
     font-size: 20px;
     font-weight: 700;
 `;

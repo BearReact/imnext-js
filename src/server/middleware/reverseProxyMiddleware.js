@@ -17,6 +17,11 @@ const devProxy = {
         pathRewrite: {'^/api': '/'},
         changeOrigin: true,
     },
+    '/ap-main': {
+        target: 'http://localhost:3000/',
+        pathRewrite: {'^/ap-main': '/'},
+        changeOrigin: true,
+    },
 };
 
 Object.keys(devProxy).forEach(context => {

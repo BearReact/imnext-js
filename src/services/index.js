@@ -10,13 +10,19 @@ import {Selectors as AuthSelectors} from '@library/redux/store/Auth/Reducer';
 import LoginActions from '@library/redux/store/Login/Reducer';
 import {store} from '@library/redux/configureStore';
 
+if(typeof __gloabl__ === 'undefined'){
+    var __global__ = {};
+}
+
 const customAxiosInstance = axios.create({
-    baseURL: __global__.baseApiUrl,
+    baseURL: get(__global__,'baseApiUrl', '/api'),
     headers: {
         'Cache-Control': 'no-cache',
         'Content-Type': 'application/json',
-        'Accept-Language': __global__.defaultLang,
-        'Site-ID': __global__.siteId,
+        // 'Accept-Language': __global__.defaultLang,
+        // 'Site-ID': __global__.siteId,
+        // 'Site-ID':get(__global__,'siteId', '/api'),,
+
     },
     timeout: 20000,
 });

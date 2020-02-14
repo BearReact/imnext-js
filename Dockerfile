@@ -1,14 +1,27 @@
-# Do the npm install or yarn install in the full image
-FROM mhart/alpine-node:12.13.1 AS builder
-WORKDIR /app
-COPY package.json .
-RUN yarn install --production
-COPY . .
-RUN yarn build
+FROM node:alpine
 
-# And then copy over node_modules, etc from that stage to the smaller base image
-FROM mhart/alpine-node:12.13.1
-WORKDIR /app
-COPY --from=builder /app .
+RUN mkdir -p /opt/app
+RUN apk add --no-cache libc6-compat
+ENV NODE_ENV production
+ENV PORT 3000
 EXPOSE 3000
-CMD ["yarn", "start"]
+
+WORKDIR /opt/app
+
+COPY package.json /opt/app
+#COPY package-lock.json /opt/app
+
+RUN npm install --no-optional
+
+COPY . /opt/app
+
+RUN npm run build
+
+RUN npx next telemetry disable
+
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+
+USER nextjs
+
+CMD [ "npm", "start" ]

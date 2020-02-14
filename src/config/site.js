@@ -1,6 +1,4 @@
-import {asset} from '@utils/uri';
-
-export default [
+module.exports = [
     {
         siteCode: 'default',
         siteName: 'IMNEXT-JS',
@@ -21,7 +19,7 @@ export default [
         },
         templateCode: 'default',
         image: {
-            loginLogo: asset('site/default/images/login-logo.png'),
+            loginLogo: 'site/default/images/login-logo.png',
         },
         theme: {
             pwaStartUpBackground: '#0e0f13',

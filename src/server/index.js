@@ -1,28 +1,39 @@
 import express from 'express';
-import next from 'next';
+import nextCreate from 'next';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import nextI18NextMiddleware from 'next-i18next/middleware';
 import nextI18next from '../library/i18next/configureI18Next';
-import {getRequestHandler} from '../library/nextRoute';
+// import {getRequestHandler} from '../library/nextRoute';
 import siteGlobalMiddleware from './middleware/siteGlobalMiddleware';
-import reverseProxyMiddleware from './middleware/reverseProxyMiddleware';
+// import reverseProxyMiddleware from './middleware/reverseProxyMiddleware';
 import mockApi from './mockApi';
 
 const port = process.env.PORT || 3000;
 const isDevMode = process.env.NODE_ENV !== 'production';
-const app = next({dev: isDevMode});
-const handle = getRequestHandler(app);
-const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
+const app = nextCreate({dev: isDevMode});
+const handle = app.getRequestHandler();
+// const reverseProxyMiddleware = require('./middleware/reverseProxyMiddleware');
+// const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
 
 (async () => {
     await app.prepare();
     const server = express();
 
     // Develop mode use reProxy api
-    if (isDevMode && proxyMiddlewareApiBaseUrl) {
-        server.use(reverseProxyMiddleware);
-    }
+    // if (isDevMode && proxyMiddlewareApiBaseUrl) {
+    //     server.use(reverseProxyMiddleware);
+    // }
+
+    // Develop mode use reProxy api
+    // if (isDevMode) {
+    //     const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
+    //
+    //     if (proxyMiddlewareApiBaseUrl) {
+    //         server.use(reverseProxyMiddleware);
+    //     }
+    //
+    // }
 
     // Middleware
     server.use(bodyParser.json());
@@ -32,6 +43,26 @@ const proxyMiddlewareApiBaseUrl = process.env.PROXY_MIDDLEWARE_API_BASE_URL;
 
     // Mock Backend Api
     server.use('/mockApi', mockApi);
+
+    // server.get('*', (req, res, next) => {
+    //     console.log('req.originalUrl', req.originalUrl);
+    //     req.url = isDevMode ? req.originalUrl
+    //         : req.originalUrl.replace('/ap-main', '');
+    //         // : `/ap-main/${req.originalUrl}`;
+    //
+    //     handle(req, res);
+    // });
+
+    server.use((err, _, res, __) => {
+        res.sendStatus(500);
+    });
+
+    const subRoute = '/ap-main';
+    app.setAssetPrefix(subRoute);
+    server.use((req, _, next) => {
+        req.url = req.url.replace(subRoute, '');
+        next();
+    });
 
     server.get('*', (req, res) => handle(req, res));
 

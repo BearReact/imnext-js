@@ -3,7 +3,7 @@
 import React from 'react';
 import {withTranslation} from '@library/i18next/configureI18Next';
 import Layout from '@layouts/example';
-import Container from '@container/example/Home';
+import Container from '@container/Example/Home';
 import StartupAction from '@library/redux/store/Startup/Reducer';
 
 type Props = {

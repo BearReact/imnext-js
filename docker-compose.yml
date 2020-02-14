@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   frontend:
-    user: 1000:1000
+#    user: 1000:1000
     build:
       context: .
       dockerfile: Dockerfile

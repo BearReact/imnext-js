@@ -43,7 +43,6 @@ const Layout = (props: Props) => {
         {route: 'example-profile', href: '/example/profile', text: t('example:menu.profile')},
     ];
 
-
     return (
         <div className="d-flex flex-column" style={{height: 'inherit'}}>
             <Header>
@@ -132,7 +131,7 @@ Layout.getInitialProps = async () => ({
     namespacesRequired: ['example'],
 });
 
-export default withTranslation()(Layout);
+export default withTranslation('example')(Layout);
 
 const Footer = styled.footer`
     background-image: url(${asset('images/example/footer-bg.jpg')});

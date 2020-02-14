@@ -11,11 +11,11 @@ WORKDIR /opt/app
 COPY package.json /opt/app
 #COPY package-lock.json /opt/app
 
-RUN npm install --no-optional
+RUN yarn install --production
 
 COPY . /opt/app
 
-RUN npm run build
+RUN yarn build
 
 RUN npx next telemetry disable
 
@@ -24,4 +24,4 @@ RUN adduser -S nextjs -u 1001
 
 USER nextjs
 
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]

@@ -3,7 +3,7 @@
 import React from 'react';
 import {withTranslation} from '@library/i18next/configureI18Next';
 import Layout from '@layouts/example';
-import Container from '@container/example/Contact';
+import Container from '@container/Example/Contact';
 
 type Props = {
     t: (localeKey: string) => string,
